@@ -1,6 +1,6 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1327" measuredH="892" mockupW="1100" mockupH="817">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1327" measuredH="889" mockupW="1100" mockupH="814">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="227" y="75" w="1100" h="817" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="227" y="75" w="1100" h="814" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Traveler%0Ahttp%3A//traveler</text>
       </controlProperties>
@@ -38,9 +38,10 @@
         <color>15658734</color>
       </controlProperties>
     </control>
-    <control controlID="97" controlTypeID="com.balsamiq.mockups::Button" x="362" y="438" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="86" controlTypeID="com.balsamiq.mockups::Label" x="258" y="264" w="-1" h="-1" measuredW="111" measuredH="26" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Filtruj</text>
+        <size>18</size>
+        <text>Nowy%20katalog</text>
       </controlProperties>
     </control>
     <control controlID="98" controlTypeID="com.balsamiq.mockups::Canvas" x="545" y="252" w="767" h="596" measuredW="100" measuredH="70" zOrder="8" locked="false" isInGroup="-1">
@@ -49,15 +50,15 @@
         <color>15658734</color>
       </controlProperties>
     </control>
-    <control controlID="99" controlTypeID="com.balsamiq.mockups::DataGrid" x="560" y="305" w="740" h="490" measuredW="170" measuredH="141" zOrder="9" locked="false" isInGroup="-1">
+    <control controlID="99" controlTypeID="com.balsamiq.mockups::DataGrid" x="560" y="305" w="740" h="490" measuredW="117" measuredH="141" zOrder="9" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nazwa%20%5Ev%2C%20Akcje%0AAll%20inclusive%0ADojazd%20autokarem%0ADojazd%20samolotem%0APaintball</text>
+        <text>Nazwa%20%5Ev%2C%20Akcje%0AZimowy%0AWiosenny%0ALetni%0AInny</text>
       </controlProperties>
     </control>
-    <control controlID="100" controlTypeID="com.balsamiq.mockups::Label" x="560" y="264" w="-1" h="-1" measuredW="257" measuredH="26" zOrder="10" locked="false" isInGroup="-1">
+    <control controlID="100" controlTypeID="com.balsamiq.mockups::Label" x="560" y="264" w="-1" h="-1" measuredW="246" measuredH="26" zOrder="10" locked="false" isInGroup="-1">
       <controlProperties>
         <size>18</size>
-        <text>Wyniki%20wyszukania%20sk%u0142adnik%F3w</text>
+        <text>Wyniki%20wyszukania%20katalog%F3w</text>
       </controlProperties>
     </control>
     <control controlID="109" controlTypeID="com.balsamiq.mockups::Label" x="914" y="810" w="-1" h="-1" measuredW="31" measuredH="21" zOrder="11" locked="false" isInGroup="-1">
@@ -161,33 +162,37 @@
         <text>edytuj</text>
       </controlProperties>
     </control>
-    <control controlID="141" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="242" y="213" w="-1" h="-1" measuredW="120" measuredH="24" zOrder="31" locked="false" isInGroup="-1">
+    <control controlID="129" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="242" y="213" w="-1" h="-1" measuredW="111" measuredH="24" zOrder="31" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Traveler%2C%20Sk%u0142adniki</text>
+        <text>Traveler%2C%20Katalogi</text>
       </controlProperties>
     </control>
-    <control controlID="142" controlTypeID="com.balsamiq.mockups::Label" x="258" y="264" w="-1" h="-1" measuredW="122" measuredH="26" zOrder="32" locked="false" isInGroup="-1">
+    <control controlID="130" controlTypeID="com.balsamiq.mockups::Alert" x="628" y="405" w="375" h="149" measuredW="200" measuredH="133" zOrder="32" locked="false" isInGroup="-1">
       <controlProperties>
-        <size>18</size>
-        <text>Nowy%20sk%u0142adnik</text>
+        <text>Potwierdzenie%0ACzy%20jeste%u015B%20pewien%2C%20%u017Ce%20chcesz%20usun%u0105%u0107%20katalog%20Zimowy%3F%0ANie%2C%20Tak</text>
       </controlProperties>
     </control>
-    <control controlID="143" controlTypeID="com.balsamiq.mockups::Button" x="353" y="305" w="-1" h="-1" measuredW="66" measuredH="27" zOrder="33" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Stw%F3rz</text>
-      </controlProperties>
-    </control>
-    <control controlID="144" controlTypeID="com.balsamiq.mockups::Label" x="258" y="388" w="-1" h="-1" measuredW="95" measuredH="21" zOrder="34" locked="false" isInGroup="-1">
+    <control controlID="131" controlTypeID="com.balsamiq.mockups::Label" x="258" y="388" w="-1" h="-1" measuredW="95" measuredH="21" zOrder="33" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Szukane%20s%u0142owo%3A</text>
       </controlProperties>
     </control>
-    <control controlID="145" controlTypeID="com.balsamiq.mockups::Label" x="258" y="347" w="-1" h="-1" measuredW="162" measuredH="26" zOrder="35" locked="false" isInGroup="-1">
+    <control controlID="132" controlTypeID="com.balsamiq.mockups::Label" x="258" y="347" w="-1" h="-1" measuredW="162" measuredH="26" zOrder="34" locked="false" isInGroup="-1">
       <controlProperties>
         <size>18</size>
         <text>Filtrowanie%20wynik%F3w</text>
       </controlProperties>
     </control>
-    <control controlID="146" controlTypeID="com.balsamiq.mockups::TextInput" x="375" y="385" w="145" h="-1" measuredW="79" measuredH="26" zOrder="36" locked="false" isInGroup="-1"/>
+    <control controlID="133" controlTypeID="com.balsamiq.mockups::TextInput" x="375" y="385" w="145" h="-1" measuredW="79" measuredH="26" zOrder="35" locked="false" isInGroup="-1"/>
+    <control controlID="134" controlTypeID="com.balsamiq.mockups::Button" x="360" y="437" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="36" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Filtruj</text>
+      </controlProperties>
+    </control>
+    <control controlID="135" controlTypeID="com.balsamiq.mockups::Button" x="353" y="305" w="-1" h="-1" measuredW="66" measuredH="27" zOrder="37" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Stw%F3rz</text>
+      </controlProperties>
+    </control>
   </controls>
 </mockup>
