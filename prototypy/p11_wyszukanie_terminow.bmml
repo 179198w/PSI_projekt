@@ -199,12 +199,12 @@
         <text>Data%20do%3A</text>
       </controlProperties>
     </control>
-    <control controlID="138" controlTypeID="com.balsamiq.mockups::DateChooser" x="376" y="424" w="155" h="-1" measuredW="90" measuredH="25" zOrder="39" locked="false" isInGroup="-1">
+    <control controlID="138" controlTypeID="com.balsamiq.mockups::DateChooser" x="376" y="424" w="144" h="-1" measuredW="90" measuredH="25" zOrder="39" locked="false" isInGroup="-1">
       <controlProperties>
         <text>%20</text>
       </controlProperties>
     </control>
-    <control controlID="139" controlTypeID="com.balsamiq.mockups::DateChooser" x="376" y="464" w="152" h="-1" measuredW="90" measuredH="25" zOrder="40" locked="false" isInGroup="-1">
+    <control controlID="139" controlTypeID="com.balsamiq.mockups::DateChooser" x="376" y="464" w="144" h="-1" measuredW="90" measuredH="25" zOrder="40" locked="false" isInGroup="-1">
       <controlProperties>
         <text>%20</text>
       </controlProperties>

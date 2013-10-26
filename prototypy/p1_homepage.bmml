@@ -89,14 +89,14 @@
         <text>dowolne</text>
       </controlProperties>
     </control>
-    <control controlID="47" controlTypeID="com.balsamiq.mockups::Label" x="641" y="371" w="-1" h="-1" measuredW="103" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Label" x="641" y="371" w="-1" h="-1" measuredW="49" measuredH="21" zOrder="13" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Data%20wyjazdu%20od%3A</text>
+        <text>Data%20od%3A</text>
       </controlProperties>
     </control>
-    <control controlID="49" controlTypeID="com.balsamiq.mockups::Label" x="642" y="411" w="-1" h="-1" measuredW="103" measuredH="21" zOrder="14" locked="false" isInGroup="-1">
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::Label" x="642" y="411" w="-1" h="-1" measuredW="49" measuredH="21" zOrder="14" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Data%20wyjazdu%20do%3A</text>
+        <text>Data%20do%3A</text>
       </controlProperties>
     </control>
     <control controlID="51" controlTypeID="com.balsamiq.mockups::Label" x="642" y="451" w="-1" h="-1" measuredW="35" measuredH="21" zOrder="15" locked="false" isInGroup="-1">

@@ -1,0 +1,59 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1322" measuredH="992" mockupW="1095" mockupH="917">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="227" y="75" w="1095" h="917" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Traveler%0Ahttp%3A//traveler</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Canvas" x="242" y="252" w="1058" h="196" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>15658734</color>
+      </controlProperties>
+    </control>
+    <control controlID="79" controlTypeID="com.balsamiq.mockups::Canvas" x="257" y="267" w="1028" h="166" measuredW="100" measuredH="70" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+      </controlProperties>
+    </control>
+    <control controlID="112" controlTypeID="com.balsamiq.mockups::Title" x="242" y="164" w="-1" h="-1" measuredW="147" measuredH="43" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Traveler</text>
+      </controlProperties>
+    </control>
+    <control controlID="128" controlTypeID="com.balsamiq.mockups::BreadCrumbs" x="242" y="213" w="-1" h="-1" measuredW="334" measuredH="24" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Traveler%2C%20Imprezy%2C%20Szczeg%F3%u0142y%20imprezy%2C%20Rezerwacja</text>
+      </controlProperties>
+    </control>
+    <control controlID="137" controlTypeID="com.balsamiq.mockups::Canvas" x="1222" y="155" w="90" h="34" measuredW="100" measuredH="70" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>none</borderStyle>
+        <color>15658734</color>
+      </controlProperties>
+    </control>
+    <control controlID="138" controlTypeID="com.balsamiq.mockups::Link" x="1237" y="163" w="-1" h="-1" measuredW="62" measuredH="19" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Logowanie</text>
+      </controlProperties>
+    </control>
+    <control controlID="139" controlTypeID="com.balsamiq.mockups::Label" x="273" y="282" w="-1" h="-1" measuredW="963" measuredH="26" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>Potwierdzenie%20rejestracji%20zosta%u0142o%20wys%u0142ane%20na%20podanego%20emaila.%20Zach%u0119camy%20do%20skorzystania%20z%20p%u0142atno%u015Bci%20internetowej</text>
+      </controlProperties>
+    </control>
+    <control controlID="140" controlTypeID="com.balsamiq.mockups::Link" x="719" y="332" w="-1" h="-1" measuredW="110" measuredH="24" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>Zap%u0142a%u0107%20teraz</text>
+      </controlProperties>
+    </control>
+    <control controlID="141" controlTypeID="com.balsamiq.mockups::Link" x="643" y="384" w="-1" h="-1" measuredW="270" measuredH="24" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>18</size>
+        <text>Przejd%u017A%20do%20szczeg%F3%u0142%F3w%20imprezy</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
