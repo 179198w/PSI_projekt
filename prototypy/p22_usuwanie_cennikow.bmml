@@ -83,7 +83,7 @@
     </control>
     <control controlID="99" controlTypeID="com.balsamiq.mockups::DataGrid" x="560" y="305" w="740" h="490" measuredW="531" measuredH="81" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nazwa%20%5Ev%2C%20Data%20od%20%5Ev%2C%20Data%20do%20%5Ev%2C%20Katalog%20%5Ev%2C%20Miasto%20%5Ev%2C%20Operator%20%5Ev%2C%20Akcje%0A100%2C%2012-12-2013%2C%2024-12-2013%2C%20Letni%2C%20Zakopane%2C%20Wycieczkowix%2C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A101%2C%2012-12-2013%2C%2024-12-2013%2C%20Letni%2C%20Ustka%2C%20Wycieczkowix</text>
+        <text>Nazwa%20%5Ev%2C%20Data%20od%20%5Ev%2C%20Data%20do%20%5Ev%2C%20Katalog%20%5Ev%2C%20Miasto%20%5Ev%2C%20Operator%20%5Ev%2C%20Akcje%0Aimpreza%2C%2012-12-2013%2C%2024-12-2013%2C%20Letni%2C%20Zakopane%2C%20Wycieczkowix%2C%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0Aimpreza%2C%2012-12-2013%2C%2024-12-2013%2C%20Letni%2C%20Ustka%2C%20Wycieczkowix</text>
       </controlProperties>
     </control>
     <control controlID="100" controlTypeID="com.balsamiq.mockups::Label" x="560" y="264" w="-1" h="-1" measuredW="239" measuredH="26" zOrder="17" locked="false" isInGroup="-1">

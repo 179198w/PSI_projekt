@@ -1,6 +1,6 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1322" measuredH="1284" mockupW="1095" mockupH="1209">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1322" measuredH="1013" mockupW="1095" mockupH="938">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="227" y="75" w="1095" h="1209" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="227" y="75" w="1095" h="938" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Traveler%0Ahttp%3A//traveler</text>
       </controlProperties>
@@ -10,7 +10,7 @@
         <text>Pa%u0144stwo%3A</text>
       </controlProperties>
     </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::Canvas" x="242" y="252" w="1058" h="985" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Canvas" x="242" y="252" w="1058" h="703" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>none</borderStyle>
         <color>15658734</color>
@@ -67,10 +67,10 @@
         <text>Operator%3A</text>
       </controlProperties>
     </control>
-    <control controlID="99" controlTypeID="com.balsamiq.mockups::Label" x="585" y="655" w="-1" h="-1" measuredW="78" measuredH="26" zOrder="16" locked="false" isInGroup="-1">
+    <control controlID="99" controlTypeID="com.balsamiq.mockups::Label" x="585" y="655" w="-1" h="-1" measuredW="64" measuredH="26" zOrder="16" locked="false" isInGroup="-1">
       <controlProperties>
         <size>18</size>
-        <text>Sk%u0142adniki</text>
+        <text>Terminy</text>
       </controlProperties>
     </control>
     <control controlID="112" controlTypeID="com.balsamiq.mockups::Title" x="242" y="164" w="-1" h="-1" measuredW="147" measuredH="43" zOrder="17" locked="false" isInGroup="-1">
@@ -93,14 +93,14 @@
         <text>Wy%u017Cywienie%3A</text>
       </controlProperties>
     </control>
-    <control controlID="130" controlTypeID="com.balsamiq.mockups::Label" x="273" y="848" w="-1" h="-1" measuredW="99" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
+    <control controlID="130" controlTypeID="com.balsamiq.mockups::Label" x="273" y="848" w="-1" h="-1" measuredW="45" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Zakwaterowanie%3A</text>
+        <text>Dojazd%3A</text>
       </controlProperties>
     </control>
-    <control controlID="133" controlTypeID="com.balsamiq.mockups::Label" x="273" y="886" w="-1" h="-1" measuredW="60" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="133" controlTypeID="com.balsamiq.mockups::Label" x="273" y="886" w="-1" h="-1" measuredW="47" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Transport%3A</text>
+        <text>Odjazd%3A</text>
       </controlProperties>
     </control>
     <control controlID="137" controlTypeID="com.balsamiq.mockups::Canvas" x="1222" y="155" w="90" h="34" measuredW="100" measuredH="70" zOrder="23" locked="false" isInGroup="-1">
@@ -159,74 +159,47 @@
         <text>All%20inclusive</text>
       </controlProperties>
     </control>
-    <control controlID="152" controlTypeID="com.balsamiq.mockups::Label" x="390" y="848" w="-1" h="-1" measuredW="67" measuredH="21" zOrder="34" locked="false" isInGroup="-1">
+    <control controlID="152" controlTypeID="com.balsamiq.mockups::Label" x="390" y="848" w="-1" h="-1" measuredW="48" measuredH="21" zOrder="34" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Sanatorium</text>
+        <text>Autobus</text>
       </controlProperties>
     </control>
-    <control controlID="153" controlTypeID="com.balsamiq.mockups::Label" x="390" y="886" w="-1" h="-1" measuredW="47" measuredH="21" zOrder="35" locked="false" isInGroup="-1">
+    <control controlID="153" controlTypeID="com.balsamiq.mockups::Label" x="390" y="886" w="-1" h="-1" measuredW="48" measuredH="21" zOrder="35" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Autokar</text>
+        <text>Autobus</text>
       </controlProperties>
     </control>
-    <control controlID="154" controlTypeID="com.balsamiq.mockups::Canvas" x="585" y="698" w="683" h="133" measuredW="100" measuredH="70" zOrder="36" locked="false" isInGroup="-1">
+    <control controlID="160" controlTypeID="com.balsamiq.mockups::DataGrid" x="593" y="698" w="669" h="209" measuredW="201" measuredH="111" zOrder="36" locked="false" isInGroup="-1">
       <controlProperties>
-        <borderStyle>none</borderStyle>
-        <color>15658734</color>
+        <text>Data%20od%2C%20Data%20do%2C%0A23-12-1013%2C%2023-01-1013%2C%20%20%20%20%20%20%20%20%20%0A23-12-1013%2C%2023-01-1013%0A23-12-1013%2C%2023-01-1013</text>
       </controlProperties>
     </control>
-    <control controlID="155" controlTypeID="com.balsamiq.mockups::Label" x="593" y="707" w="-1" h="-1" measuredW="50" measuredH="21" zOrder="37" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Paintball</text>
-      </controlProperties>
-    </control>
-    <control controlID="156" controlTypeID="com.balsamiq.mockups::Paragraph" x="593" y="736" w="658" h="80" measuredW="200" measuredH="80" zOrder="38" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Paintball%20%u2013%20rodzaj%20gry%20zespo%u0142owej%2C%20polegaj%u0105cej%20na%20prowadzeniu%20pozorowanej%20walki%20przy%20u%u017Cyciu%20marker%F3w%2C%20urz%u0105dze%u0144%20zbli%u017Conych%20kszta%u0142tem%20i%20zasad%u0105%20dzia%u0142ania%20do%20broni%20pneumatycznej%2C%20kt%F3re%20za%20pomoc%u0105%20spr%u0119%u017Conego%20powietrza%20lub%20dwutlenku%20w%u0119gla%20wyrzucaj%u0105%20kulki%20wype%u0142nione%20farb%u0105%20na%20bazie%20%u017Celatyny%20spo%u017Cywczej.%20Trafienie%20przeciwnika%2C%20podczas%20kt%F3rego%20kulka%20rozbija%20si%u0119%2C%20pozostawiaj%u0105c%20kolorowy%20%u015Blad%20%28nazywany%20przez%20graczy%20splatem%29%20na%20ciele%2C%20masce%20b%u0105d%u017A%20markerze%20zawodnika%2C%20powoduje%20jego%20eliminacj%u0119%20z%20gry.</text>
-      </controlProperties>
-    </control>
-    <control controlID="157" controlTypeID="com.balsamiq.mockups::Canvas" x="257" y="941" w="1026" h="279" measuredW="100" measuredH="70" zOrder="39" locked="false" isInGroup="-1">
-      <controlProperties>
-        <borderStyle>none</borderStyle>
-      </controlProperties>
-    </control>
-    <control controlID="158" controlTypeID="com.balsamiq.mockups::Label" x="273" y="956" w="-1" h="-1" measuredW="64" measuredH="26" zOrder="40" locked="false" isInGroup="-1">
-      <controlProperties>
-        <size>18</size>
-        <text>Terminy</text>
-      </controlProperties>
-    </control>
-    <control controlID="160" controlTypeID="com.balsamiq.mockups::DataGrid" x="273" y="997" w="997" h="195" measuredW="185" measuredH="111" zOrder="41" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Data%20od%2C%20Data%20do%2C%0A23-12-1013%2C%2023-01-1013%2C%20%20%20%20%20%0A23-12-1013%2C%2023-01-1013%0A23-12-1013%2C%2023-01-1013</text>
-      </controlProperties>
-    </control>
-    <control controlID="161" controlTypeID="com.balsamiq.mockups::Link" x="1196" y="1020" w="-1" h="-1" measuredW="66" measuredH="19" zOrder="42" locked="false" isInGroup="-1">
+    <control controlID="161" controlTypeID="com.balsamiq.mockups::Link" x="1183" y="723" w="-1" h="-1" measuredW="66" measuredH="19" zOrder="37" locked="false" isInGroup="-1">
       <controlProperties>
         <text>rezerwacja</text>
       </controlProperties>
     </control>
-    <control controlID="162" controlTypeID="com.balsamiq.mockups::Link" x="1196" y="1050" w="-1" h="-1" measuredW="66" measuredH="19" zOrder="43" locked="false" isInGroup="-1">
+    <control controlID="162" controlTypeID="com.balsamiq.mockups::Link" x="1183" y="753" w="-1" h="-1" measuredW="66" measuredH="19" zOrder="38" locked="false" isInGroup="-1">
       <controlProperties>
         <text>rezerwacja</text>
       </controlProperties>
     </control>
-    <control controlID="163" controlTypeID="com.balsamiq.mockups::Link" x="1196" y="1080" w="-1" h="-1" measuredW="66" measuredH="19" zOrder="44" locked="false" isInGroup="-1">
+    <control controlID="163" controlTypeID="com.balsamiq.mockups::Link" x="1183" y="783" w="-1" h="-1" measuredW="66" measuredH="19" zOrder="39" locked="false" isInGroup="-1">
       <controlProperties>
         <text>rezerwacja</text>
       </controlProperties>
     </control>
-    <control controlID="164" controlTypeID="com.balsamiq.mockups::Link" x="1150" y="1020" w="-1" h="-1" measuredW="39" measuredH="19" zOrder="45" locked="false" isInGroup="-1">
+    <control controlID="164" controlTypeID="com.balsamiq.mockups::Link" x="1137" y="723" w="-1" h="-1" measuredW="39" measuredH="19" zOrder="40" locked="false" isInGroup="-1">
       <controlProperties>
         <text>cennik</text>
       </controlProperties>
     </control>
-    <control controlID="165" controlTypeID="com.balsamiq.mockups::Link" x="1150" y="1050" w="-1" h="-1" measuredW="39" measuredH="19" zOrder="46" locked="false" isInGroup="-1">
+    <control controlID="165" controlTypeID="com.balsamiq.mockups::Link" x="1137" y="753" w="-1" h="-1" measuredW="39" measuredH="19" zOrder="41" locked="false" isInGroup="-1">
       <controlProperties>
         <text>cennik</text>
       </controlProperties>
     </control>
-    <control controlID="166" controlTypeID="com.balsamiq.mockups::Link" x="1150" y="1080" w="-1" h="-1" measuredW="39" measuredH="19" zOrder="47" locked="false" isInGroup="-1">
+    <control controlID="166" controlTypeID="com.balsamiq.mockups::Link" x="1137" y="783" w="-1" h="-1" measuredW="39" measuredH="19" zOrder="42" locked="false" isInGroup="-1">
       <controlProperties>
         <text>cennik</text>
       </controlProperties>

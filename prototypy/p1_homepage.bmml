@@ -59,9 +59,9 @@
         <text>dowolny</text>
       </controlProperties>
     </control>
-    <control controlID="38" controlTypeID="com.balsamiq.mockups::Label" x="956" y="411" w="-1" h="-1" measuredW="60" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Label" x="956" y="411" w="-1" h="-1" measuredW="57" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Transport%3A</text>
+        <text>Przyjazd%3A</text>
       </controlProperties>
     </control>
     <control controlID="39" controlTypeID="com.balsamiq.mockups::ComboBox" x="1073" y="409" w="145" h="-1" measuredW="77" measuredH="24" zOrder="23" locked="false" isInGroup="-1">
@@ -69,19 +69,19 @@
         <text>dowolny</text>
       </controlProperties>
     </control>
-    <control controlID="40" controlTypeID="com.balsamiq.mockups::Label" x="955" y="451" w="-1" h="-1" measuredW="74" measuredH="21" zOrder="24" locked="false" isInGroup="-1">
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Label" x="955" y="451" w="-1" h="-1" measuredW="47" measuredH="21" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Odjazd%3A</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::ComboBox" x="1072" y="449" w="145" h="-1" measuredW="77" measuredH="24" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>dowolny</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="955" y="491" w="-1" h="-1" measuredW="74" measuredH="21" zOrder="26" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Wy%u017Cywienie%3A</text>
-      </controlProperties>
-    </control>
-    <control controlID="41" controlTypeID="com.balsamiq.mockups::ComboBox" x="1072" y="449" w="145" h="-1" measuredW="78" measuredH="24" zOrder="25" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>dowolne</text>
-      </controlProperties>
-    </control>
-    <control controlID="44" controlTypeID="com.balsamiq.mockups::Label" x="955" y="491" w="-1" h="-1" measuredW="99" measuredH="21" zOrder="26" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>Zakwaterowanie%3A</text>
       </controlProperties>
     </control>
     <control controlID="45" controlTypeID="com.balsamiq.mockups::ComboBox" x="1072" y="489" w="145" h="-1" measuredW="78" measuredH="24" zOrder="27" locked="false" isInGroup="-1">

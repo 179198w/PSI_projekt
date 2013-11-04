@@ -38,9 +38,9 @@
         <text>Imprezy%20w%20katalogu</text>
       </controlProperties>
     </control>
-    <control controlID="100" controlTypeID="com.balsamiq.mockups::DataGrid" x="273" y="518" w="997" h="324" measuredW="297" measuredH="171" zOrder="7" locked="false" isInGroup="-1">
+    <control controlID="100" controlTypeID="com.balsamiq.mockups::DataGrid" x="273" y="518" w="997" h="324" measuredW="281" measuredH="171" zOrder="7" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nazwa%20%5Ev%2C%20Miasto%20%5Ev%2C%20Operator%20%5Ev%2C%20Akcje%0A100%2C%20Zakopane%2C%20Wycieczkowix%0A101%2C%20Ustka%2C%20Wycieczkowix%0A102%2C%20Warszawa%2C%20Wycieczkowix%0A103%2C%20Zakopane%2C%20Wycieczkowix%0A104%2C%20Ustka%2C%20Wycieczkowix</text>
+        <text>Nazwa%20%5Ev%2C%20Miasto%20%5Ev%2C%20Operator%20%5Ev%2C%20Akcje%0Aimpreza%2C%20Zakopane%2C%20Wycieczkowix%0Aimpreza%2C%20Ustka%2C%20Wycieczkowix%0Aimpreza%2C%20Warszawa%2C%20Wycieczkowix%0Aimpreza%2C%20Zakopane%2C%20Wycieczkowix%0Aimpreza%2C%20Ustka%2C%20Wycieczkowix</text>
         <verticalScrollbar>true</verticalScrollbar>
       </controlProperties>
     </control>

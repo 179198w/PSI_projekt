@@ -187,15 +187,5 @@
         <text>dni</text>
       </controlProperties>
     </control>
-    <control controlID="161" controlTypeID="com.balsamiq.mockups::Link" x="1230" y="587" w="-1" h="-1" measuredW="29" measuredH="19" zOrder="36" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>usu%u0144</text>
-      </controlProperties>
-    </control>
-    <control controlID="162" controlTypeID="com.balsamiq.mockups::Link" x="1230" y="617" w="-1" h="-1" measuredW="29" measuredH="19" zOrder="37" locked="false" isInGroup="-1">
-      <controlProperties>
-        <text>usu%u0144</text>
-      </controlProperties>
-    </control>
   </controls>
 </mockup>

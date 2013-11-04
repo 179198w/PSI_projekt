@@ -1,74 +1,119 @@
-Link: sbvr.co/#/lguHNO 
+http://www.sbvr.co/#LPd3zO
 
 Term: Offer
 Term: Tourist event
+Term: Operator
 Term: Tourist event component
 Term: Place
 Term: Description
+Term: Name
 Term: Photo
-Term: Regulations
+Term: Statute
+Term: People limit
 Term: Plane
 Term: All inclusive
 Term: Bus
-Term: HB
+Term: Train
+Term: Ship
+Term: On their own
+Term: Breakfast
+Term: Dinner
+Term: Supper
 Term: Feeding Type
 Term: Arrival
 Term: Departure
 Term: Catalog
-Term: Root catalog
-Term: Parent catalog
-Term: Child catalog
-Term: Availability
 Term: Period
 Term: Price
-Term: Dictionary
+Term: Adult price
+Term: Child price
+Term: Pricing
+Term: Country dictionary
+Term: City dictionary
+Term: Hotel dictionary
 Term: City
 Term: Country
 Term: Hotel
-Term: Pdf doc
+Term: Pdf
+Term: Doc
+Term: Date
+Term: Date from
+Term: Date to
+
 Fact type: Tourist event is Offer
+Fact type: Tourist event has Name
 Fact type: Tourist event has Photo
 Fact type: Tourist event has Place
+Fact type: Tourist event has Operator
+Fact type: Tourist event has Statute
+Fact type: Tourist event has Description
+Fact type: Tourist event has People limit
+Fact type: Tourist event has Tourist event component
+
 Fact type: Place consists City
 Fact type: Place consists Country
 Fact type: Place consists Hotel
-Fact type: Tourist event has Regulations
-Fact type: Regulations is type of Pdf doc
-Fact type: Tourist event has Description
-Fact type: Tourist event has Tourist event component
-Fact type: Tourist event has Availability
-Fact type: Availability has Price
-Fact type: Availability has Period
+
+Fact type: Statute can be Pdf
+Fact type: Statute can be Doc
+
+Fact type: Date from is type of Date
+Fact type: Date to is type of Date
+
+Fact type: Period consists Date from
+Fact type: Period consists Date to
+Fact type: Period has Tourist event
+
+Fact type: Tourist event component has Name
+Fact type: Tourist event component has Price
 Fact type: Tourist event component can be Arrival
 Fact type: Tourist event component can be Departure
 Fact type: Tourist event component can be Feeding Type
-Fact type: Feeding Type can be HB
+
+Fact type: Feeding Type can be Breakfast
+Fact type: Feeding Type can be Dinner
+Fact type: Feeding Type can be Supper
 Fact type: Feeding Type can be All inclusive
+Fact type: Feeding Type can be On their own
+
 Fact type: Arrival can be Plane
 Fact type: Arrival can be Bus
+Fact type: Arrival can be Train
+Fact type: Arrival can be Ship
+Fact type: Arrival can be On their own
+
 Fact type: Departure can be Plane
 Fact type: Departure can be Bus
-Fact type: Catalog can be Root catalog
-Fact type: Catalog can be Parent catalog
-Fact type: Catalog can be Child catalog
-Fact type: Root catalog has Child catalog
+Fact type: Departure can be Train
+Fact type: Departure can be Ship
+Fact type: Departure can be On their own
+
+Fact type: Catalog has Name
 Fact type: Catalog has Tourist event
-Fact type: Dictionary has City
-Fact type: Dictionary has Country
-Fact type: Dictionary has Hotel
+
+Fact type: Country has City
+Fact type: City has Hotel
+Fact type: City dictionary has City
+Fact type: Country dictionary has Country
+Fact type: Hotel dictionary has Hotel
+
+Fact type: Price can be Adult price
+Fact type: Price can be Child price
+
+Fact type: Pricing has Tourist event
+Fact type: Pricing has Period
+Fact type: Pricing has Tourist event component
+
 Rule: It is obligatory that each Tourist event has at least one Photo 
 Rule: It is not possible that a Tourist event has more than 10 Photo
 Rule: It is obligatory that each Tourist event has exactly one Place
-Rule: It is obligatory that each Tourist event has exactly one Regulations
+Rule: It is obligatory that each Tourist event has exactly one Statute
 Rule: It is obligatory that each Tourist event has exactly one Description
-Rule: It is obligatory that each Tourist event has at most 3 Tourist event component
+Rule: It is obligatory that each Tourist event has at least 3 Tourist event component
 Rule: It is obligatory that each Tourist event has exactly one Tourist event component that can be a Arrival
 Rule: It is obligatory that each Tourist event has exactly one Tourist event component that can be a Departure
 Rule: It is obligatory that each Tourist event has exactly one Tourist event component that can be a Feeding Type
-Rule: It is obligatory that each Tourist event has at least one Availability
-Rule: It is obligatory that each Availability has exactly one Price
-Rule: It is impossible that a Availability has more than one Price
-Rule: It is obligatory that each Availability has exactly one Period
+Rule: It is obligatory that each Period has at least one Tourist event
 Rule: It is obligatory that each Place consists exactly one City
 Rule: It is obligatory that each Place consists exactly one Country
 Rule: It is obligatory that each Place consists exactly one Hotel

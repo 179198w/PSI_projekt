@@ -125,9 +125,9 @@
         <text>Wy%u017Cywienie%3A</text>
       </controlProperties>
     </control>
-    <control controlID="199" controlTypeID="com.balsamiq.mockups::Label" x="256" y="588" w="-1" h="-1" measuredW="99" measuredH="21" zOrder="25" locked="false" isInGroup="-1">
+    <control controlID="199" controlTypeID="com.balsamiq.mockups::Label" x="256" y="588" w="-1" h="-1" measuredW="45" measuredH="21" zOrder="25" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Zakwaterowanie%3A</text>
+        <text>Dojazd%3A</text>
       </controlProperties>
     </control>
     <control controlID="200" controlTypeID="com.balsamiq.mockups::ComboBox" x="373" y="546" w="145" h="-1" measuredW="78" measuredH="24" zOrder="26" locked="false" isInGroup="-1">
@@ -140,9 +140,9 @@
         <text>dowolne</text>
       </controlProperties>
     </control>
-    <control controlID="202" controlTypeID="com.balsamiq.mockups::Label" x="256" y="626" w="-1" h="-1" measuredW="60" measuredH="21" zOrder="28" locked="false" isInGroup="-1">
+    <control controlID="202" controlTypeID="com.balsamiq.mockups::Label" x="256" y="626" w="-1" h="-1" measuredW="47" measuredH="21" zOrder="28" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Transport%3A</text>
+        <text>Odjazd%3A</text>
       </controlProperties>
     </control>
     <control controlID="203" controlTypeID="com.balsamiq.mockups::ComboBox" x="373" y="624" w="145" h="-1" measuredW="77" measuredH="24" zOrder="29" locked="false" isInGroup="-1">
