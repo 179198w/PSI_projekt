@@ -1,4 +1,4 @@
-http://www.sbvr.co/#LPd3zO
+http://www.sbvr.co/#TiZR82
 
 Term: Offer
 Term: Tourist event
@@ -6,7 +6,9 @@ Term: Operator
 Term: Tourist event component
 Term: Place
 Term: Description
-Term: Name
+Term: Event name
+Term: Component name
+Term: Catalog name
 Term: Photo
 Term: Statute
 Term: People limit
@@ -15,7 +17,8 @@ Term: All inclusive
 Term: Bus
 Term: Train
 Term: Ship
-Term: On their own
+Term: Feeding on their own
+Term: Transport on their own
 Term: Breakfast
 Term: Dinner
 Term: Supper
@@ -36,12 +39,11 @@ Term: Country
 Term: Hotel
 Term: Pdf
 Term: Doc
-Term: Date
 Term: Date from
 Term: Date to
 
 Fact type: Tourist event is Offer
-Fact type: Tourist event has Name
+Fact type: Tourist event has Event name
 Fact type: Tourist event has Photo
 Fact type: Tourist event has Place
 Fact type: Tourist event has Operator
@@ -57,14 +59,11 @@ Fact type: Place consists Hotel
 Fact type: Statute can be Pdf
 Fact type: Statute can be Doc
 
-Fact type: Date from is type of Date
-Fact type: Date to is type of Date
-
 Fact type: Period consists Date from
 Fact type: Period consists Date to
 Fact type: Period has Tourist event
 
-Fact type: Tourist event component has Name
+Fact type: Tourist event component has Component name
 Fact type: Tourist event component has Price
 Fact type: Tourist event component can be Arrival
 Fact type: Tourist event component can be Departure
@@ -74,21 +73,21 @@ Fact type: Feeding Type can be Breakfast
 Fact type: Feeding Type can be Dinner
 Fact type: Feeding Type can be Supper
 Fact type: Feeding Type can be All inclusive
-Fact type: Feeding Type can be On their own
+Fact type: Feeding Type can be Feeding on their own
 
 Fact type: Arrival can be Plane
 Fact type: Arrival can be Bus
 Fact type: Arrival can be Train
 Fact type: Arrival can be Ship
-Fact type: Arrival can be On their own
+Fact type: Arrival can be Transport on their own
 
 Fact type: Departure can be Plane
 Fact type: Departure can be Bus
 Fact type: Departure can be Train
 Fact type: Departure can be Ship
-Fact type: Departure can be On their own
+Fact type: Departure can be Transport on their own
 
-Fact type: Catalog has Name
+Fact type: Catalog has Catalog name
 Fact type: Catalog has Tourist event
 
 Fact type: Country has City
