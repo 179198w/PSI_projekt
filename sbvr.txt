@@ -1,4 +1,4 @@
-http://www.sbvr.co/#TiZR82
+Aktualny: http://sbvr.co/#/RIFlkT
 
 Term: Offer
 Term: Tourist event
@@ -28,6 +28,9 @@ Term: Departure
 Term: Catalog
 Term: Period
 Term: Price
+Term: Base price
+Term: Component price
+Term: Final price
 Term: Adult price
 Term: Child price
 Term: Pricing
@@ -61,7 +64,6 @@ Fact type: Statute can be Doc
 
 Fact type: Period consists Date from
 Fact type: Period consists Date to
-Fact type: Period has Tourist event
 
 Fact type: Tourist event component has Component name
 Fact type: Tourist event component has Price
@@ -96,12 +98,20 @@ Fact type: City dictionary has City
 Fact type: Country dictionary has Country
 Fact type: Hotel dictionary has Hotel
 
-Fact type: Price can be Adult price
-Fact type: Price can be Child price
+Fact type: Price has Adult price
+Fact type: Price has Child price
+Fact type: Price has Period
+Fact type: Price can be Base price
+Fact type: Price can be Component price
+Fact type: Price can be Final price
+Fact type: Final price is calculated from Base price and Component price
 
-Fact type: Pricing has Tourist event
-Fact type: Pricing has Period
-Fact type: Pricing has Tourist event component
+Fact type: Tourist event has Base price
+Fact type: Tourist event component has Component price
+Fact type: Offer has Final price
+
+
+Fact type: Pricing consists Component price
 
 Rule: It is obligatory that each Tourist event has at least one Photo 
 Rule: It is not possible that a Tourist event has more than 10 Photo
@@ -112,7 +122,6 @@ Rule: It is obligatory that each Tourist event has at least 3 Tourist event comp
 Rule: It is obligatory that each Tourist event has exactly one Tourist event component that can be a Arrival
 Rule: It is obligatory that each Tourist event has exactly one Tourist event component that can be a Departure
 Rule: It is obligatory that each Tourist event has exactly one Tourist event component that can be a Feeding Type
-Rule: It is obligatory that each Period has at least one Tourist event
 Rule: It is obligatory that each Place consists exactly one City
 Rule: It is obligatory that each Place consists exactly one Country
 Rule: It is obligatory that each Place consists exactly one Hotel
