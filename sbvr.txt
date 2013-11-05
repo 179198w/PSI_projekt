@@ -1,11 +1,5 @@
 Aktualny: http://sbvr.co/#/PTQqnJ
 
-Examples   New  Publish   179198@student.pwr.wroc.pl 
-RulemotionSBVR Lab 2.0
-Edit
-Logical Formulation
-Visualize
-
 Fact type: Feeding Type can be Breakfast
 Fact type: Feeding Type can be Dinner
 Fact type: Feeding Type can be Supper
