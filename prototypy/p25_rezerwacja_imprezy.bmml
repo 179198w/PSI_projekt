@@ -1,11 +1,11 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1322" measuredH="1506" mockupW="1095" mockupH="1431">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1322" measuredH="1558" mockupW="1095" mockupH="1483">
   <controls>
-    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="227" y="75" w="1095" h="1431" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="227" y="75" w="1095" h="1483" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Traveler%0Ahttp%3A//traveler</text>
       </controlProperties>
     </control>
-    <control controlID="9" controlTypeID="com.balsamiq.mockups::Canvas" x="242" y="252" w="1058" h="1149" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Canvas" x="242" y="252" w="1058" h="1208" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>none</borderStyle>
         <color>15658734</color>
@@ -177,7 +177,7 @@
         <text>Sk%u0142adniki</text>
       </controlProperties>
     </control>
-    <control controlID="170" controlTypeID="com.balsamiq.mockups::Button" x="799" y="1417" w="-1" h="-1" measuredW="79" measuredH="27" zOrder="34" locked="false" isInGroup="-1">
+    <control controlID="170" controlTypeID="com.balsamiq.mockups::Button" x="796" y="1481" w="-1" h="-1" measuredW="79" measuredH="27" zOrder="34" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Rezerwuj</text>
       </controlProperties>
@@ -212,7 +212,7 @@
         <text>Autobus</text>
       </controlProperties>
     </control>
-    <control controlID="177" controlTypeID="com.balsamiq.mockups::Canvas" x="257" y="1121" w="1028" h="259" measuredW="100" measuredH="70" zOrder="41" locked="false" isInGroup="-1">
+    <control controlID="177" controlTypeID="com.balsamiq.mockups::Canvas" x="257" y="1121" w="1028" h="319" measuredW="100" measuredH="70" zOrder="41" locked="false" isInGroup="-1">
       <controlProperties>
         <borderStyle>none</borderStyle>
       </controlProperties>
@@ -223,9 +223,9 @@
         <text>Cena</text>
       </controlProperties>
     </control>
-    <control controlID="179" controlTypeID="com.balsamiq.mockups::DataGrid" x="273" y="1177" w="997" h="171" measuredW="161" measuredH="171" zOrder="43" locked="false" isInGroup="-1">
+    <control controlID="179" controlTypeID="com.balsamiq.mockups::DataGrid" x="273" y="1177" w="997" h="236" measuredW="287" measuredH="231" zOrder="43" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>Nazwa%2C%20Cena%0ADojazd%2C%20900%5C%2C00%20z%u0142%0AOdjazd%2C%2080%5C%2C00%20z%u0142%0AAll%20inclusive%2C%2080%5C%2C00%20z%u0142%0A%20%0ASuma%3A%2C%201060%5C%2C00%20z%u0142</text>
+        <text>Nazwa%2C%20Liczba%2C%20Cena%0AOsoby%20doros%u0142e%2C%201%2C%20900%5C%2C00%20z%u0142%0ADzieci%2C%201%2C%20480%5C%2C00%20z%u0142%0ADojazd%20Autobus%2C%202%2C%20900%5C%2C00%20z%u0142%0AOdjazd%20Autobus%2C%202%2C%2080%5C%2C00%20z%u0142%0AWy%u017Cywienie%20All%20inclusive%2C%202%2C%2080%5C%2C00%20z%u0142%0A%20%0ASuma%3A%2C%20%2C1060%5C%2C00%20z%u0142</text>
       </controlProperties>
     </control>
     <control controlID="180" controlTypeID="com.balsamiq.mockups::Label" x="298" y="832" w="-1" h="-1" measuredW="83" measuredH="21" zOrder="44" locked="false" isInGroup="-1">
@@ -238,7 +238,7 @@
         <text>Dziecko</text>
       </controlProperties>
     </control>
-    <control controlID="182" controlTypeID="com.balsamiq.mockups::Button" x="655" y="1417" w="-1" h="-1" measuredW="104" measuredH="27" zOrder="46" locked="false" isInGroup="-1">
+    <control controlID="182" controlTypeID="com.balsamiq.mockups::Button" x="652" y="1481" w="-1" h="-1" measuredW="104" measuredH="27" zOrder="46" locked="false" isInGroup="-1">
       <controlProperties>
         <text>Przelicz%20cen%u0119</text>
       </controlProperties>
