@@ -1,47 +1,118 @@
-Aktualny: http://sbvr.co/#/PTQqnJ
+Aktualny: http://www.sbvr.co/#EcSAJS
+
+Term: Offer
+Term: Tourist event
+Term: Operator
+Term: Tourist event component
+Term: Place
+Term: Description
+Term: Event name
+Term: Component name
+Term: Catalog name
+Term: Photo
+Term: Statute
+Term: People limit
+Term: Plane
+Term: All inclusive
+Term: Bus
+Term: Train
+Term: Ship
+Term: Feeding on their own
+Term: Transport on their own
+Term: Breakfast
+Term: Dinner
+Term: Supper
+Term: Feeding Type
+Term: Arrival
+Term: Departure
+Term: Catalog
+Term: Period
+Term: Price
+Term: Base price
+Term: Component price
+Term: Final price
+Term: Adult price
+Term: Child price
+Term: Pricing
+Term: Country dictionary
+Term: City dictionary
+Term: Hotel dictionary
+Term: City
+Term: Country
+Term: Hotel
+Term: Pdf
+Term: Doc
+Term: Date from
+Term: Date to
+
+Fact type: Tourist event is Offer
+Fact type: Tourist event has Event name
+Fact type: Tourist event has Photo
+Fact type: Tourist event has Place
+Fact type: Tourist event has Operator
+Fact type: Tourist event has Statute
+Fact type: Tourist event has Description
+Fact type: Tourist event has People limit
+Fact type: Tourist event has Tourist event component
+
+Fact type: Place consists City
+Fact type: Place consists Country
+Fact type: Place consists Hotel
+
+Fact type: Statute can be Pdf
+Fact type: Statute can be Doc
+
+Fact type: Period consists Date from
+Fact type: Period consists Date to
+Fact type: Period has Tourist event
+
+Fact type: Tourist event component has Component name
+Fact type: Tourist event component can be Arrival
+Fact type: Tourist event component can be Departure
+Fact type: Tourist event component can be Feeding Type
 
 Fact type: Feeding Type can be Breakfast
 Fact type: Feeding Type can be Dinner
 Fact type: Feeding Type can be Supper
 Fact type: Feeding Type can be All inclusive
 Fact type: Feeding Type can be Feeding on their own
- 
+
 Fact type: Arrival can be Plane
 Fact type: Arrival can be Bus
 Fact type: Arrival can be Train
 Fact type: Arrival can be Ship
 Fact type: Arrival can be Transport on their own
- 
+
 Fact type: Departure can be Plane
 Fact type: Departure can be Bus
 Fact type: Departure can be Train
 Fact type: Departure can be Ship
 Fact type: Departure can be Transport on their own
- 
+
 Fact type: Catalog has Catalog name
 Fact type: Catalog has Tourist event
- 
+
 Fact type: Country has City
 Fact type: City has Hotel
 Fact type: City dictionary has City
 Fact type: Country dictionary has Country
 Fact type: Hotel dictionary has Hotel
- 
+
 Fact type: Price has Adult price
 Fact type: Price has Child price
 Fact type: Price has Period
 Fact type: Price can be Base price
 Fact type: Price can be Component price
-Fact type: Price can be Final price
 Fact type: Final price is calculated from Base price and Component price
- 
-Fact type: Tourist event has Base price
-Fact type: Tourist event component has Component price
+
+Fact type: Base price has Tourist event
+Fact type: Component price has Tourist event component
+Fact type: Component price has Tourist event
 Fact type: Offer has Final price
- 
- 
+
 Fact type: Pricing consists Component price
- 
+Fact type: Pricing consists Base price
+
 Rule: It is obligatory that each Tourist event has at least one Photo 
 Rule: It is not possible that a Tourist event has more than 10 Photo
 Rule: It is obligatory that each Tourist event has exactly one Place
