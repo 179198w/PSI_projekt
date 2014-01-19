@@ -50,8 +50,8 @@ public class TouristEvent {
 
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "photos", joinColumns = @JoinColumn(name = "id"))
-	@Column(name = "photo")
-	private List<String> photos;
+	@Column(name = "photo_urls")
+	private List<String> photoUrls;
 	
 	@ManyToMany(mappedBy = "touristEvents", fetch = FetchType.LAZY)
 	private List<Catalog> catalogs;

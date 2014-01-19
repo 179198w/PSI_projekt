@@ -10,7 +10,6 @@ public class HomepageController {
 
 	@RequestMapping("/")
 	public String homepage() {
-		City c = new City();
 		
 		return "homepage";
 	}

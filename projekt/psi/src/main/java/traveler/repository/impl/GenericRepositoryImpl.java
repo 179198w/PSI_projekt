@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.springframework.transaction.annotation.Transactional;
 
 import traveler.repository.GenericRepository;
@@ -63,4 +65,13 @@ public abstract class GenericRepositoryImpl<E, I extends Serializable> implement
 		session().delete(entity);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<E> getAllWithOuterJoin(String... properties) {
+		Criteria criteria = session().createCriteria(getEntityClass());
+		for (String property : properties) {
+			criteria.createAlias(property, property, JoinType.LEFT_OUTER_JOIN);
+		}
+		return (List<E>) criteria.list();
+	}
+	
 }

@@ -18,5 +18,7 @@ public interface GenericRepository<E, I extends Serializable> {
 	E getBy(String propertyName, Object value);
 
 	List<E> getAllBy(String propertyName, Object value);
+	
+	List<E> getAllWithOuterJoin(String... properties);
 
 }
