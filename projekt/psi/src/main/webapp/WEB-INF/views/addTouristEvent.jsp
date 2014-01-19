@@ -15,46 +15,62 @@
 	<title>Lista imprez turystycznych</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="${basepath}/styles/style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="main-panel">
 	<form:form method="post" enctype="multipart/form-data">
 		<div class="long-panel">
 			<div class="panel-header">
-				<h2>Informacje</h2>
+				<h3>Informacje</h3>
 			</div>
 			<div class="panel-content">
 				<form:label path="name">Nazwa:</form:label>
 				<form:input path="name" />
+				<br />
+				<br />
 				<form:label path="description">Opis:</form:label>
 				<form:textarea path="description"/>
+				<br />
+				<br />
 				<form:label path="operator">Operator:</form:label>
 				<form:input path="operator"/>
+				<br />
+				<br />
 				<form:label path="statue">Regulamin:</form:label>
-				<input type="file" name="statue"/>
+				<input type="file" name="statue" class="display-inline-block" />
+				<br />
+				<br />
 				<form:label path="peopleLimit">Liczba miejsc:</form:label>
 				<form:input path="peopleLimit"/>
+				<br />
+				<br />
 				<form:label path="photos">Zdjęcia:</form:label>
-				<input type="file" name="photos[0]" multiple="multiple" />
+				<input type="file" name="photos[0]" class="display-inline-block" />
 			</div>
 		</div>
 		<div class="left-panel">
 			<div class="panel-header">
-				<h2>Miejsce</h2>
+				<h3>Miejsce</h3>
 			</div>
 			<div class="panel-content">
 				<label for="countryId">Państwo:</label>
 				<select id="countryId"></select>
+				<br />
+				<br />
 				<label for="cityId">Miasto:</label>
 				<select id="cityId"></select>
+				<br />
+				<br />
 				<form:label path="hotelId">Hotel:</form:label>
 				<form:select path="hotelId"/>
 			</div>
 		</div>
 		<div class="right-panel">
 			<div class="panel-header">
-				<h2>Składniki</h2>
+				<h3>Składniki</h3>
 			</div>
 			<div class="panel-content">
 				<form:hidden path="touristEventComponentIds"/>
@@ -62,7 +78,7 @@
 				<select id="touristEventComponents"></select>
 				<input type="button" value="Dodaj" />
 				<label for="touristEventComponentList">Lista:</label>
-				<table>
+				<table class="results-list">
 					<tr>
 						<th>Typ</th>
 						<th>Nazwa</th>
@@ -71,12 +87,13 @@
 				</table>
 			</div>
 		</div>
-		<div class="long-panel">
-			<div class="panel-content">
+		<div class="long-panel text-align-center">
+			<div class="display-inline-block">			
 				<input type="submit" value="Wyślij" />
 				<input type="button" value="Anuluj" onclick="window.location='${basepath}/lista-imprez-turystycznych'" />
 			</div>
 		</div>
 	</form:form>
+</div>
 </body>
 </html>

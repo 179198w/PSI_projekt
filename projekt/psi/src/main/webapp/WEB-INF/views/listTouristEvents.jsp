@@ -13,6 +13,7 @@
 	<title>Lista imprez turystycznych</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="${basepath}/styles/style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script>
@@ -40,20 +41,21 @@
 	</script>
 </head>
 <body>
+<div class="main-panel">
 	<div class="left-panel">
 		<div class="panel-header">
-			<h2>Nowa impreza</h2>
+			<h3>Nowa impreza</h3>
 		</div>
 		<div clas="panel-content">
-			<input type="button" value="Stwórz" onclick="window.location='${basepath}/dodaj-impreze-turystyczna'" />
+			<input type="button" value="Stwórz" onclick="window.location='${basepath}/dodaj-impreze-turystyczna'" class="margin-auto margin-top-10 display-block"/>
 		</div>
 	</div>
 	<div class="right-panel">
 		<div class="panel-header">
-			<h2>Wyniki wyszukiwania imprez</h2>
+			<h3>Wyniki wyszukiwania imprez</h3>
 		</div>
 		<div class="panel-content">
-			<table>
+			<table class="results-list">
 				<tr>
 					<th>Nazwa</th>
 					<th>Katalog</th>
@@ -85,5 +87,6 @@
 			</table>
 		</div>
 	</div>
+</div>
 </body>
 </html>

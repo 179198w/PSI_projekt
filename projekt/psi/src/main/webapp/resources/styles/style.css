@@ -1,0 +1,85 @@
+html, body {
+    height:100%;
+}
+
+.main-panel {
+	margin: auto;
+	width: 1000px;
+	overflow: hidden;
+}
+
+.left-panel {
+	float: left;
+	width: 35%;
+
+}
+
+.right-panel {
+	float: right;
+	width: 65%;
+}
+
+.left-panel, .right-panel, .long-panel {
+	background-color: #B3CEEC;
+	padding: 10px;
+	border: solid #FFFFFF 2px;
+	height: 100%;
+	overflow:hidden;	
+}
+
+.margin-auto {
+	margin: auto;
+}
+
+.display-block {
+	display: block;
+}
+
+.display-inline-block {
+	display: inline-block !important;
+}
+
+
+.margin-top-10 {
+	margin-top: 10px;
+}
+
+.panel-content {
+	width: 100%;
+}
+
+.results-list {
+	width: 100%;
+}
+
+.long-panel {
+	width: 100%;
+}
+
+.width-100-pc {
+	width: 100%;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+label { 
+	display: inline-block; 
+	width: 100px;
+	margin-right: 10px; 
+	text-align: right; 
+}
+
+textarea {
+    resize: none;
+    border-style: inset;
+    border-width: 2px;
+    width: 600px;
+    height: 100px;
+}
+
+input[type=text], select {
+	width: 200px;
+}
+​
