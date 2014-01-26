@@ -33,7 +33,6 @@ public class CatalogController {
 		return "addCatalog";
 	}
 	
-	
 	@RequestMapping(value = "/dodaj-katalog", method = RequestMethod.POST)
 	public String addCatalog(Model model, CatalogCommand catalogCommand) {
 		catalogService.addCatalog(catalogCommand);
