@@ -11,6 +11,7 @@
 	<mvc:resources mapping="/scripts/**" location="/resources/scripts/" cache-period="31536000" />
 	<mvc:resources mapping="/styles/**" location="/resources/styles/" cache-period="31536000" />
 	<mvc:resources mapping="/images/**" location="/resources/images/" cache-period="31536000" />
+	<mvc:resources mapping="/files/**" location="/resources/files/" cache-period="31536000" />
 
 	<mvc:annotation-driven />
 

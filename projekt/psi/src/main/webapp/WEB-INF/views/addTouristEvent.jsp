@@ -56,16 +56,25 @@
 				<h3>Miejsce</h3>
 			</div>
 			<div class="panel-content">
-				<label for="countryId">Państwo:</label>
-				<select id="countryId"></select>
+				<form:label path="countryId">Państwo:</form:label >
+				<form:select path="countryId">
+					<form:option value="0">Wybierz państwo</form:option>
+					<form:options items="${countries}" itemLabel="name" itemValue="id" />
+				</form:select>
 				<br />
 				<br />
-				<label for="cityId">Miasto:</label>
-				<select id="cityId"></select>
+				<form:label path="cityId">Miasto:</form:label >
+				<form:select path="cityId">
+					<form:option value="0">Wybierz miasto</form:option>
+					<form:options items="${cities}" itemLabel="name" itemValue="id" />
+				</form:select>
 				<br />
 				<br />
 				<form:label path="hotelId">Hotel:</form:label>
-				<form:select path="hotelId"/>
+				<form:select path="hotelId">
+					<form:option value="0">Wybierz hotel</form:option>
+					<form:options items="${hotels}" itemLabel="name" itemValue="id" />
+				</form:select>
 			</div>
 		</div>
 		<div class="right-panel">

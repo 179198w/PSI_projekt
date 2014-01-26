@@ -2,6 +2,7 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -53,7 +54,7 @@ public class TouristEvent {
 	@Column(name = "photo_urls")
 	private List<String> photoUrls;
 	
-	@ManyToMany(mappedBy = "touristEvents", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "touristEvents", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Catalog> catalogs;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -76,7 +77,7 @@ public class TouristEvent {
 	@OneToMany(mappedBy = "touristEvent", fetch = FetchType.LAZY)
 	private List<Period> periods;
 	
-	@ManyToMany(mappedBy = "touristEvents", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "touristEvents", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<TouristEventComponent> touristEventComponents;
 	
 	@OneToMany(mappedBy = "touristEvent", fetch = FetchType.LAZY)

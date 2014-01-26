@@ -21,6 +21,10 @@ public class TouristEventCommand {
 	
 	private List<MultipartFile> photos;
 	
+	private Long countryId;
+	
+	private Long cityId;
+	
 	private Long hotelId;
 	
 	private List<String> touristEventComponentIds;

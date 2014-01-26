@@ -9,8 +9,8 @@ public interface TouristEventService {
 
 	List<TouristEvent> listTouristEvents();
 
-	void addTouristEvent(TouristEventCommand touristEventCommand);
-
 	void removeTouristEvent(Long touristEventId);
+
+	void addTouristEvent(TouristEventCommand touristEventCommand, String rootPath);
 
 }
