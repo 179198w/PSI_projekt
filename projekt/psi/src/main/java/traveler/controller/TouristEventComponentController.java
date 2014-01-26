@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import traveler.controller.command.TouristEventComponentCommand;
 import traveler.model.TouristEventComponentType;
 import traveler.service.TouristEventComponentService;
 

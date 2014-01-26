@@ -2,7 +2,7 @@ package traveler.service;
 
 import java.util.List;
 
-import traveler.controller.TouristEventCommand;
+import traveler.controller.command.TouristEventCommand;
 import traveler.model.TouristEvent;
 
 public interface TouristEventService {

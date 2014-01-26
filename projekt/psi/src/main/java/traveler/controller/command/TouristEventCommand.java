@@ -1,4 +1,4 @@
-package traveler.controller;
+package traveler.controller.command;
 
 import java.util.List;
 

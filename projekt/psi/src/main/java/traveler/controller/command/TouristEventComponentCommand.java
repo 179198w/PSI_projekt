@@ -1,4 +1,4 @@
-package traveler.controller;
+package traveler.controller.command;
 
 import lombok.Data;
 import traveler.model.TouristEventComponentType;

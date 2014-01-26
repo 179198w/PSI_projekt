@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import traveler.controller.TouristEventCommand;
+import traveler.controller.command.TouristEventCommand;
 import traveler.model.Hotel;
 import traveler.model.Operator;
 import traveler.model.TouristEvent;

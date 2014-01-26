@@ -22,7 +22,7 @@ import org.hibernate.annotations.SelectBeforeUpdate;
 @DynamicInsert
 @DynamicUpdate
 @SelectBeforeUpdate
-@Table(name = "catalog")
+@Table(name = "catalogs")
 @Data
 public class Catalog {
 
