@@ -7,10 +7,12 @@ import traveler.model.TouristEvent;
 
 public interface TouristEventService {
 
-	List<TouristEvent> listTouristEvents();
+	List<TouristEvent> listTouristEventsWithRelatedData();
 
 	void removeTouristEvent(Long touristEventId);
 
 	void addTouristEvent(TouristEventCommand touristEventCommand, String rootPath);
+
+	List<TouristEvent> listTouristEvents();
 
 }

@@ -41,8 +41,13 @@ public class TouristEventServiceImpl implements TouristEventService {
 	private HotelRepository hotelRepository;
 	
 	@Override
-	public List<TouristEvent> listTouristEvents() {
+	public List<TouristEvent> listTouristEventsWithRelatedData() {
 		return touristEventRepository.getAllWithOuterJoin("catalogs", "hotel", "hotel.city", "operator");
+	}
+	
+	@Override
+	public List<TouristEvent> listTouristEvents() {
+		return touristEventRepository.getAll();
 	}
 
 	@Override

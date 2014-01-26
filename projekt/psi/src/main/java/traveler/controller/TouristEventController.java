@@ -31,7 +31,7 @@ public class TouristEventController {
 	
 	@RequestMapping("/lista-imprez-turystycznych")
 	public String listTouristEvents(Model model) {
-		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
+		model.addAttribute("touristEvents", touristEventService.listTouristEventsWithRelatedData());
 		return "listTouristEvents";
 	}
 	
