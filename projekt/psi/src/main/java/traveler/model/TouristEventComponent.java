@@ -3,6 +3,8 @@ package traveler.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -33,7 +35,8 @@ public class TouristEventComponent {
 	private Long id;
 	
 	private String name;
-	
+
+	@Enumerated(EnumType.STRING)
 	private TouristEventComponentType type;
 	
 	private String description;

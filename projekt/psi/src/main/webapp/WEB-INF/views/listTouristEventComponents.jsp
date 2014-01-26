@@ -10,21 +10,21 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Lista imprez turystycznych</title>
+	<title>Lista składników</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="${basepath}/styles/style.css">
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 	<script>
-		function publishTouristEvent(touristEventId) {
-			alert(touristEventId);
+		function publishTouristEventComponent(touristEventComponentId) {
+			alert(touristEventComponentId);
 		}
-		function editTouristEvent(touristEventId) {
-			alert(touristEventId);
+		function editTouristEventComponent(touristEventComponentId) {
+			alert(touristEventComponentId);
 		}
-		function removeTouristEvent(touristEventId) {
-			doPost('${basepath}/usun-impreze-turystyczna', {touristEventId: touristEventId});
+		function removeTouristEventComponent(touristEventComponentId) {
+			alert(touristEventComponentId);
 		}
 		
 		function doPost(url, params) {
@@ -44,43 +44,35 @@
 <div class="main-panel">
 	<div class="left-panel">
 		<div class="panel-header">
-			<h3>Nowa impreza</h3>
+			<h3>Nowy składnik</h3>
 		</div>
 		<div class="panel-content">
-			<input type="button" value="Stwórz" onclick="window.location='${basepath}/dodaj-impreze-turystyczna'" class="margin-auto margin-top-10 display-block"/>
+			<input type="button" value="Stwórz" onclick="window.location='${basepath}/dodaj-skladnik'" class="margin-auto margin-top-10 display-block"/>
 		</div>
 	</div>
 	<div class="right-panel">
 		<div class="panel-header">
-			<h3>Wyniki wyszukiwania imprez</h3>
+			<h3>Wyniki wyszukiwania składników</h3>
 		</div>
 		<div class="panel-content">
 			<table class="results-list">
 				<tr>
+					<th>Typ</th>
 					<th>Nazwa</th>
-					<th>Katalog</th>
-					<th>Miasto</th>
-					<th>Operator</th>
 					<th>Akcje</th>
 				</tr>
-				<c:forEach var="touristEvent" items="${touristEvents}">
+				<c:forEach var="touristEventComponent" items="${touristEventComponents}">
 					<tr>
 						<td>
-							${touristEvent.name}
+							${touristEventComponent.type}
 						</td>
 						<td>
-							${touristEvent.catalogs.isEmpty() ? "" : touristEvent.catalogs[0].name}
+							${touristEventComponent.name}
 						</td>
 						<td>
-							${touristEvent.hotel.city.name}
-						</td>
-						<td>
-							${touristEvent.operator.name}
-						</td>
-						<td>
-							<input type="button" onclick="publishTouristEvent(${touristEvent.id});" value="publikuj" />
-							<input type="button" onclick="editTouristEvent(${touristEvent.id});" value="edytuj" />
-							<input type="button" onclick="removeTouristEvent(${touristEvent.id});" value="usuń" />
+							<input type="button" onclick="publishTouristEventComponent(${touristEventComponent.id});" value="publikuj" />
+							<input type="button" onclick="editTouristEventComponent(${touristEventComponent.id});" value="edytuj" />
+							<input type="button" onclick="removeTouristEventComponent(${touristEventComponent.id});" value="usuń" />
 						</td>
 					</tr>
 				</c:forEach>
