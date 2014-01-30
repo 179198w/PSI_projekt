@@ -20,19 +20,19 @@
 </head>
 <body>
 <div class="main-panel">
-	<div class="left-panel">
-		<div class="panel-header">
-			<h3>Nowa termin</h3>
+	<div class="left-panel panel panel-primary">
+		<div class="panel-heading">
+			<h3>Nowy termin</h3>
 		</div>
-		<div class="panel-content">
-			<input type="button" value="Stwórz" onclick="window.location='${basepath}/dodaj-termin'" class="margin-auto margin-top-10 display-block"/>
+		<div class="panel-body">
+			<input type="button" value="Stwórz" onclick="window.location='${basepath}/dodaj-termin'" class="margin-auto margin-top-10 display-block btn btn-lg btn-default"/>
 		</div>
 	</div>
-	<div class="right-panel">
-		<div class="panel-header">
+	<div class="right-panel panel panel-primary">
+		<div class="panel-heading">
 			<h3>Wyniki wyszukiwania terminów</h3>
 		</div>
-		<div class="panel-content">
+		<div class="panel-body">
 			<table class="results-list">
 				<tr>
 					<th>Data od</th>
@@ -60,8 +60,8 @@
 							
 						</td>
 						<td>							
-							<input type="button" onclick="editPeriod(${period.id});" value="edytuj" />
-							<input type="button" onclick="removePeriod(${period.id});" value="usuń" />
+							<input type="button" onclick="editPeriod(${period.id});" value="edytuj" class="btn btn-xs btn-default"/>
+							<input type="button" onclick="removePeriod(${period.id});" value="usuń" class="btn btn-xs btn-default" />
 						</td>
 					</tr>
 				</c:forEach>

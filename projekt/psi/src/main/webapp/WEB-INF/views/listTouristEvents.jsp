@@ -42,19 +42,19 @@
 </head>
 <body>
 <div class="main-panel">
-	<div class="left-panel">
-		<div class="panel-header">
+	<div class="left-panel panel panel-primary">
+		<div class="panel-heading">
 			<h3>Nowa impreza</h3>
 		</div>
-		<div class="panel-content">
-			<input type="button" value="Stwórz" onclick="window.location='${basepath}/dodaj-impreze-turystyczna'" class="margin-auto margin-top-10 display-block"/>
+		<div class="panel-body">
+			<input type="button" value="Stwórz" onclick="window.location='${basepath}/dodaj-impreze-turystyczna'" class="margin-auto margin-top-10 display-block display-block btn btn-lg btn-default"/>
 		</div>
 	</div>
-	<div class="right-panel">
-		<div class="panel-header">
+	<div class="right-panel panel panel-primary">
+		<div class="panel-heading">
 			<h3>Wyniki wyszukiwania imprez</h3>
 		</div>
-		<div class="panel-content">
+		<div class="panel-body">
 			<table class="results-list">
 				<tr>
 					<th>Nazwa</th>
@@ -78,9 +78,9 @@
 							${touristEvent.operator.name}
 						</td>
 						<td>
-							<input type="button" onclick="publishTouristEvent(${touristEvent.id});" value="publikuj" />
-							<input type="button" onclick="editTouristEvent(${touristEvent.id});" value="edytuj" />
-							<input type="button" onclick="removeTouristEvent(${touristEvent.id});" value="usuń" />
+							<input type="button" onclick="publishTouristEvent(${touristEvent.id});" value="publikuj" class="btn btn-xs btn-default" />
+							<input type="button" onclick="editTouristEvent(${touristEvent.id});" value="edytuj" class="btn btn-xs btn-default" />
+							<input type="button" onclick="removeTouristEvent(${touristEvent.id});" value="usuń" class="btn btn-xs btn-default" />
 						</td>
 					</tr>
 				</c:forEach>

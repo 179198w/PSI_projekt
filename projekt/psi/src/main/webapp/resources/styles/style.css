@@ -8,23 +8,25 @@ html, body {
 	overflow: hidden;
 }
 
+.panel {
+	margin: 1%;
+}
+
 .left-panel {
 	float: left;
-	width: 35%;
+	width: 33%;
 
 }
 
 .right-panel {
 	float: right;
-	width: 65%;
+	width: 62%;
 }
 
 .left-panel, .right-panel, .long-panel {
-	background-color: #B3CEEC;
 	padding: 10px;
-	border: solid #FFFFFF 2px;
 	height: 100%;
-	overflow:hidden;	
+	overflow: hidden;	
 }
 
 .margin-auto {
