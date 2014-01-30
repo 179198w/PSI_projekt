@@ -60,7 +60,7 @@
 							
 						</td>
 						<td>							
-							<input type="button" onclick="editPeriod(${period.id});" value="edytuj" class="btn btn-xs btn-default"/>
+							<input type="button" onclick="editPeriod(${period.id});" value="edytuj" class="btn btn-xs btn-default" />
 							<input type="button" onclick="removePeriod(${period.id});" value="usuń" class="btn btn-xs btn-default" />
 						</td>
 					</tr>

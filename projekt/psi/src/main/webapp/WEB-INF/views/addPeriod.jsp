@@ -34,11 +34,11 @@
 <body>
 <div class="main-panel">
 	<form:form method="post" enctype="multipart/form-data">
-		<div class="long-panel">
-			<div class="panel-header">
+		<div class="long-panel panel panel-primary">
+			<div class="panel-heading">
 				<h3>Informacje</h3>
 			</div>
-			<div class="panel-content">
+			<div class="panel-body">
 				<form:label path="from">Data od:</form:label>
 				<form:input path="from" />
 				<br />
@@ -66,11 +66,11 @@
 				<br />
 			</div>
 		</div>
-		<div class="long-panel">
-			<div class="panel-header">
+		<div class="long-panel panel panel-primary">
+			<div class="panel-heading">
 				<h3>Imprezy w terminie</h3>
 			</div>
-			<div class="panel-content">
+			<div class="panel-body">
 				<label>Nowa impreza w terminie:</label>
 				<select id="touristEvent">
 					<option>Wybierz imprezę turystyczną</option>
@@ -89,10 +89,10 @@
 				</table>
 			</div>
 		</div>
-		<div class="long-panel text-align-center">
-			<div class="display-inline-block">			
-				<input type="submit" value="Wyślij" />
-				<input type="button" value="Anuluj" onclick="window.location='${basepath}/lista-terminow'" />
+		<div class="long-panel text-align-center panel panel-primary">
+			<div class="display-inline-block panel-body">			
+				<input type="submit" value="Wyślij" class="btn btn-sm btn-success" />
+				<input type="button" value="Anuluj" onclick="window.location='${basepath}/lista-terminow'" class="btn btn-sm btn-default" />
 			</div>
 		</div>
 	</form:form>

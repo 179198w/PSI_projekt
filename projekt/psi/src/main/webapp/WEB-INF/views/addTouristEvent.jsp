@@ -22,11 +22,11 @@
 <body>
 <div class="main-panel">
 	<form:form method="post" enctype="multipart/form-data">
-		<div class="long-panel">
-			<div class="panel-header">
+		<div class="long-panel panel panel-primary">
+			<div class="panel-heading">
 				<h3>Informacje</h3>
 			</div>
-			<div class="panel-content">
+			<div class="panel-body">
 				<form:label path="name">Nazwa:</form:label>
 				<form:input path="name" />
 				<br />
@@ -51,11 +51,11 @@
 				<input type="file" name="photos[0]" class="display-inline-block" />
 			</div>
 		</div>
-		<div class="left-panel">
-			<div class="panel-header">
+		<div class="left-panel panel panel-primary">
+			<div class="panel-heading">
 				<h3>Miejsce</h3>
 			</div>
-			<div class="panel-content">
+			<div class="panel-body">
 				<form:label path="countryId">Państwo:</form:label >
 				<form:select path="countryId">
 					<form:option value="0">Wybierz państwo</form:option>
@@ -77,11 +77,11 @@
 				</form:select>
 			</div>
 		</div>
-		<div class="right-panel">
-			<div class="panel-header">
+		<div class="right-panel panel panel-primary">
+			<div class="panel-heading">
 				<h3>Składniki</h3>
 			</div>
-			<div class="panel-content">
+			<div class="panel-body">
 				<form:hidden path="touristEventComponentIds"/>
 				<label for="touristEventComponents">Nowy składnik imprezy:</label>
 				<select id="touristEventComponents"></select>
@@ -96,10 +96,10 @@
 				</table>
 			</div>
 		</div>
-		<div class="long-panel text-align-center">
+		<div class="long-panel text-align-center panel panel-primary">
 			<div class="display-inline-block">			
-				<input type="submit" value="Wyślij" />
-				<input type="button" value="Anuluj" onclick="window.location='${basepath}/lista-imprez-turystycznych'" />
+				<input type="submit" value="Wyślij" class="btn btn-sm btn-success" />
+				<input type="button" value="Anuluj" onclick="window.location='${basepath}/lista-imprez-turystycznych'" class="btn btn-sm btn-default" />
 			</div>
 		</div>
 	</form:form>
