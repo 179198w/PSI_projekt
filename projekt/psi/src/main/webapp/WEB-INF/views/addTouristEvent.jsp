@@ -31,7 +31,8 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="${basepath}/lista-imprez-turystycznych">Imprezy</a></li>
+					<li class="active"><a
+						href="${basepath}/lista-imprez-turystycznych">Imprezy</a></li>
 					<li><a href="${basepath}/lista-skladnikow">Składniki</a></li>
 					<li><a href="${basepath}/lista-katalogow">Katalogi</a></li>
 					<li><a href="${basepath}/lista-terminow">Terminy</a></li>
@@ -48,29 +49,50 @@
 		</div>
 	</div>
 	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data">
+		<form:form method="post" enctype="multipart/form-data"
+			class="form-horizontal">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
-					<form:label path="name">Nazwa:</form:label>
-					<form:input path="name" />
-					<br /> <br />
-					<form:label path="description">Opis:</form:label>
-					<form:textarea path="description" />
-					<br /> <br />
-					<form:label path="operator">Operator:</form:label>
-					<form:input path="operator" />
-					<br /> <br />
-					<form:label path="statue">Regulamin:</form:label>
-					<input type="file" name="statue" class="display-inline-block" /> <br />
-					<br />
-					<form:label path="peopleLimit">Liczba miejsc:</form:label>
-					<form:input path="peopleLimit" />
-					<br /> <br />
-					<form:label path="photos">Zdjęcia:</form:label>
-					<input type="file" name="photos[0]" class="display-inline-block" />
+					<div class="form-group">
+						<form:label path="name" class="col-md-4 control-label">Nazwa:</form:label>
+						<div class="col-md-4">
+							<form:input path="name" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="description" class="col-md-4 control-label">Opis:</form:label>
+
+						<div class="col-md-3">
+							<form:textarea path="description" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="operator" class="col-md-4 control-label">Operator:</form:label>
+						<div class="col-md-4">
+							<form:input path="operator" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="statue" class="col-md-4 control-label">Regulamin:</form:label>
+						<div class="col-md-4">
+							<input type="file" name="statue" class="input-file" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="peopleLimit" class="col-md-4 control-label">Liczba miejsc:</form:label>
+						<div class="col-md-4">
+							<form:input path="peopleLimit" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="photos" class="col-md-4 control-label">Zdjęcia:</form:label>
+						<div class="col-md-4">
+							<input type="file" name="photos[0]" class="input-file" />
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="left-panel panel panel-primary">
@@ -78,23 +100,37 @@
 					<h3>Miejsce</h3>
 				</div>
 				<div class="panel-body">
-					<form:label path="countryId">Państwo:</form:label>
-					<form:select path="countryId">
-						<form:option value="0">Wybierz państwo</form:option>
-						<form:options items="${countries}" itemLabel="name" itemValue="id" />
-					</form:select>
-					<br /> <br />
-					<form:label path="cityId">Miasto:</form:label>
-					<form:select path="cityId">
-						<form:option value="0">Wybierz miasto</form:option>
-						<form:options items="${cities}" itemLabel="name" itemValue="id" />
-					</form:select>
-					<br /> <br />
-					<form:label path="hotelId">Hotel:</form:label>
-					<form:select path="hotelId">
-						<form:option value="0">Wybierz hotel</form:option>
-						<form:options items="${hotels}" itemLabel="name" itemValue="id" />
-					</form:select>
+					<div class="form-group">
+						<form:label path="countryId" class="col-md-4 control-label">Państwo:</form:label>
+						<div class="col-md-8">
+							<form:select path="countryId" class="form-control">
+								<form:option value="0">Wybierz państwo</form:option>
+								<form:options items="${countries}" itemLabel="name"
+									itemValue="id" />
+							</form:select>
+
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="cityId" class="col-md-4 control-label">Miasto:</form:label>
+						<div class="col-md-8">
+							<form:select path="cityId" class="form-control">
+								<form:option value="0">Wybierz miasto</form:option>
+								<form:options items="${cities}" itemLabel="name" itemValue="id" />
+							</form:select>
+
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="hotelId" class="col-md-4 control-label">Hotel:</form:label>
+						<div class="col-md-8">
+							<form:select path="hotelId" class="form-control">
+								<form:option value="0">Wybierz hotel</form:option>
+								<form:options items="${hotels}" itemLabel="name" itemValue="id" />
+							</form:select>
+
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="right-panel panel panel-primary">
@@ -116,7 +152,7 @@
 				</div>
 			</div>
 			<div class="long-panel text-align-center panel panel-primary">
-				<div class="display-inline-block">
+				<div class="display-inline-block panel-body">
 					<input type="submit" value="Wyślij" class="btn btn-sm btn-success" />
 					<input type="button" value="Anuluj"
 						onclick="window.location='${basepath}/lista-imprez-turystycznych'"

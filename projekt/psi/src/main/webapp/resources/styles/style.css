@@ -20,11 +20,11 @@ html, body {
 
 .right-panel {
 	float: right;
-	width: 62%;
+	width: 63%;
 }
 
 .left-panel, .right-panel, .long-panel {
-	padding: 10px;
+	padding: 1px;
 	height: 100%;
 	overflow: hidden;	
 }
@@ -66,22 +66,7 @@ html, body {
 	text-align: center;
 }
 
-label { 
-	display: inline-block; 
+label.col-md-4 {
 	width: 100px;
-	margin-right: 10px; 
-	text-align: right; 
-}
-
-textarea {
-    resize: none;
-    border-style: inset;
-    border-width: 2px;
-    width: 600px;
-    height: 100px;
-}
-
-input[type=text], select {
-	width: 200px;
 }
 ​
