@@ -1,5 +1,5 @@
-html, body {
-    height:100%;
+html,body {
+	height: 100%;
 }
 
 .main-panel {
@@ -15,7 +15,6 @@ html, body {
 .left-panel {
 	float: left;
 	width: 33%;
-
 }
 
 .right-panel {
@@ -23,10 +22,10 @@ html, body {
 	width: 63%;
 }
 
-.left-panel, .right-panel, .long-panel {
+.left-panel,.right-panel,.long-panel {
 	padding: 1px;
 	height: 100%;
-	overflow: hidden;	
+	overflow: hidden;
 }
 
 .margin-auto {
@@ -40,7 +39,6 @@ html, body {
 .display-inline-block {
 	display: inline-block !important;
 }
-
 
 .margin-top-10 {
 	margin-top: 10px;
@@ -68,5 +66,14 @@ html, body {
 
 label.col-md-4 {
 	width: 100px;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+.fit-cell-to-content {
+	width: 1%;
+	white-space: nowrap;
 }
 ​

@@ -64,28 +64,33 @@
 				<h3>Wyniki wyszukiwania terminów</h3>
 			</div>
 			<div class="panel-body">
-				<table class="results-list">
-					<tr>
-						<th>Data od</th>
-						<th>Data do</th>
-						<th>Nazwa</th>
-						<th>Miasto</th>
-						<th>Operator</th>
-						<th>Akcje</th>
-					</tr>
-					<c:forEach var="period" items="${periods}">
+				<table class="table table-striped table-hover">
+					<thead>
 						<tr>
-							<td>${period.from}</td>
-							<td>${period.to}</td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td><input type="button" onclick="editPeriod(${period.id});"
-								value="edytuj" class="btn btn-xs btn-default" /> <input
-								type="button" onclick="removePeriod(${period.id});" value="usuń"
-								class="btn btn-xs btn-default" /></td>
+							<th>Data od</th>
+							<th>Data do</th>
+							<th>Nazwa</th>
+							<th>Miasto</th>
+							<th>Operator</th>
+							<th class="text-align-center">Akcje</th>
 						</tr>
-					</c:forEach>
+					</thead>
+					<tbody>
+						<c:forEach var="period" items="${periods}">
+							<tr>
+								<td>${period.from}</td>
+								<td>${period.to}</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td class="fit-cell-to-content"><input type="button"
+									onclick="editPeriod(${period.id});" value="edytuj"
+									class="btn btn-xs btn-default" /> <input type="button"
+									onclick="removePeriod(${period.id});" value="usuń"
+									class="btn btn-xs btn-default" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 			</div>
 		</div>

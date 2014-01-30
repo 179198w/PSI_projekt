@@ -86,23 +86,27 @@
 				<h3>Wyniki wyszukiwania katalogów</h3>
 			</div>
 			<div class="panel-body">
-				<table class="results-list">
-					<tr>
-						<th>Nazwa</th>
-						<th>Akcje</th>
-					</tr>
-					<c:forEach var="catalog" items="${catalogs}">
+				<table class="table table-striped table-hover">
+					<thead>
 						<tr>
-							<td>${catalog.name}</td>
-							<td><input type="button"
-								onclick="publishCatalog(${catalog.id});" value="publikuj"
-								class="btn btn-xs btn-default" /> <input type="button"
-								onclick="editCatalog(${catalog.id});" value="edytuj"
-								class="btn btn-xs btn-default" /> <input type="button"
-								onclick="removeCatalog(${catalog.id});" value="usuń"
-								class="btn btn-xs btn-default" /></td>
+							<th>Nazwa</th>
+							<th class="text-align-center">Akcje</th>
 						</tr>
-					</c:forEach>
+					</thead>
+					<tbody>
+						<c:forEach var="catalog" items="${catalogs}">
+							<tr>
+								<td>${catalog.name}</td>
+								<td class="fit-cell-to-content"><input type="button"
+									onclick="publishCatalog(${catalog.id});" value="publikuj"
+									class="btn btn-xs btn-default" /> <input type="button"
+									onclick="editCatalog(${catalog.id});" value="edytuj"
+									class="btn btn-xs btn-default" /> <input type="button"
+									onclick="removeCatalog(${catalog.id});" value="usuń"
+									class="btn btn-xs btn-default" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 			</div>
 		</div>

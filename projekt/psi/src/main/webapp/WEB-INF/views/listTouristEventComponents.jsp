@@ -86,28 +86,32 @@
 				<h3>Wyniki wyszukiwania składników</h3>
 			</div>
 			<div class="panel-body">
-				<table class="results-list">
-					<tr>
-						<th>Typ</th>
-						<th>Nazwa</th>
-						<th>Akcje</th>
-					</tr>
-					<c:forEach var="touristEventComponent"
-						items="${touristEventComponents}">
+				<table class="table table-striped table-hover">
+					<thead>
 						<tr>
-							<td>${touristEventComponent.type}</td>
-							<td>${touristEventComponent.name}</td>
-							<td><input type="button"
-								onclick="publishTouristEventComponent(${touristEventComponent.id});"
-								value="publikuj" class="btn btn-xs btn-default" /> <input
-								type="button"
-								onclick="editTouristEventComponent(${touristEventComponent.id});"
-								value="edytuj" class="btn btn-xs btn-default" /> <input
-								type="button"
-								onclick="removeTouristEventComponent(${touristEventComponent.id});"
-								value="usuń" class="btn btn-xs btn-default" /></td>
+							<th>Typ</th>
+							<th>Nazwa</th>
+							<th class="text-align-center">Akcje</th>
 						</tr>
-					</c:forEach>
+					</thead>
+					<tbody>
+						<c:forEach var="touristEventComponent"
+							items="${touristEventComponents}">
+							<tr>
+								<td>${touristEventComponent.type}</td>
+								<td>${touristEventComponent.name}</td>
+								<td class="fit-cell-to-content"><input type="button"
+									onclick="publishTouristEventComponent(${touristEventComponent.id});"
+									value="publikuj" class="btn btn-xs btn-default" /> <input
+									type="button"
+									onclick="editTouristEventComponent(${touristEventComponent.id});"
+									value="edytuj" class="btn btn-xs btn-default" /> <input
+									type="button"
+									onclick="removeTouristEventComponent(${touristEventComponent.id});"
+									value="usuń" class="btn btn-xs btn-default" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 			</div>
 		</div>

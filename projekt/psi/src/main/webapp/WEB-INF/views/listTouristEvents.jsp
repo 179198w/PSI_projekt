@@ -54,7 +54,8 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="${basepath}/lista-imprez-turystycznych">Imprezy</a></li>
+					<li class="active"><a
+						href="${basepath}/lista-imprez-turystycznych">Imprezy</a></li>
 					<li><a href="${basepath}/lista-skladnikow">Składniki</a></li>
 					<li><a href="${basepath}/lista-katalogow">Katalogi</a></li>
 					<li><a href="${basepath}/lista-terminow">Terminy</a></li>
@@ -86,30 +87,34 @@
 				<h3>Wyniki wyszukiwania imprez</h3>
 			</div>
 			<div class="panel-body">
-				<table class="results-list">
-					<tr>
-						<th>Nazwa</th>
-						<th>Katalog</th>
-						<th>Miasto</th>
-						<th>Operator</th>
-						<th>Akcje</th>
-					</tr>
-					<c:forEach var="touristEvent" items="${touristEvents}">
+				<table class="table table-striped table-hover">
+					<thead>
 						<tr>
-							<td>${touristEvent.name}</td>
-							<td>${touristEvent.catalogs.isEmpty() ? "" : touristEvent.catalogs[0].name}
-							</td>
-							<td>${touristEvent.hotel.city.name}</td>
-							<td>${touristEvent.operator.name}</td>
-							<td><input type="button"
-								onclick="publishTouristEvent(${touristEvent.id});"
-								value="publikuj" class="btn btn-xs btn-default" /> <input
-								type="button" onclick="editTouristEvent(${touristEvent.id});"
-								value="edytuj" class="btn btn-xs btn-default" /> <input
-								type="button" onclick="removeTouristEvent(${touristEvent.id});"
-								value="usuń" class="btn btn-xs btn-default" /></td>
+							<th>Nazwa</th>
+							<th>Katalog</th>
+							<th>Miasto</th>
+							<th>Operator</th>
+							<th class="text-align-center">Akcje</th>
 						</tr>
-					</c:forEach>
+					</thead>
+					<tbody>
+						<c:forEach var="touristEvent" items="${touristEvents}">
+							<tr>
+								<td>${touristEvent.name}</td>
+								<td>${touristEvent.catalogs.isEmpty() ? "" : touristEvent.catalogs[0].name}
+								</td>
+								<td>${touristEvent.hotel.city.name}</td>
+								<td>${touristEvent.operator.name}</td>
+								<td class="fit-cell-to-content"><input type="button"
+									onclick="publishTouristEvent(${touristEvent.id});"
+									value="publikuj" class="btn btn-xs btn-default" /> <input
+									type="button" onclick="editTouristEvent(${touristEvent.id});"
+									value="edytuj" class="btn btn-xs btn-default" /> <input
+									type="button" onclick="removeTouristEvent(${touristEvent.id});"
+									value="usuń" class="btn btn-xs btn-default" /></td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 			</div>
 		</div>
