@@ -65,7 +65,7 @@
 					<div class="form-group">
 						<form:label path="description" class="col-md-4 control-label">Opis:</form:label>
 
-						<div class="col-md-3">
+						<div class="col-md-4">
 							<form:textarea path="description" class="form-control" />
 						</div>
 					</div>
@@ -128,7 +128,6 @@
 								<form:option value="0">Wybierz hotel</form:option>
 								<form:options items="${hotels}" itemLabel="name" itemValue="id" />
 							</form:select>
-
 						</div>
 					</div>
 				</div>

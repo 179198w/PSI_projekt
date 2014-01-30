@@ -48,23 +48,34 @@
 		</div>
 	</div>
 	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data">
+		<form:form method="post" enctype="multipart/form-data" class="form-horizontal">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
-					<form:label path="name">Nazwa:</form:label>
-					<form:input path="name" />
-					<br /> <br />
-					<form:label path="description">Opis:</form:label>
-					<form:textarea path="description" />
-					<br /> <br />
-					<form:label path="type">Typ:</form:label>
-					<form:select path="type">
-						<form:option value="">Wybierz typ</form:option>
-						<form:options items="${types}" />
-					</form:select>
+					<div class="form-group">
+						<form:label path="name" class="col-md-4 control-label">Nazwa:</form:label>
+						<div class="col-md-4">
+							<form:input path="name" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="description" class="col-md-4 control-label">Opis:</form:label>
+
+						<div class="col-md-4">
+							<form:textarea path="description" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="type" class="col-md-4 control-label">Typ:</form:label>
+						<div class="col-md-3">
+							<form:select path="type" class="form-control">
+								<form:option value="0">Wybierz typ</form:option>
+								<form:options items="${types}" />
+							</form:select>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="long-panel text-align-center panel panel-primary">

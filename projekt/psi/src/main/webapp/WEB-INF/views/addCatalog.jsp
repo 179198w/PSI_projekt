@@ -59,14 +59,18 @@
 		</div>
 	</div>
 	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data">
+		<form:form method="post" enctype="multipart/form-data" class="form-horizontal">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
-					<form:label path="name">Nazwa:</form:label>
-					<form:input path="name" />
+					<div class="form-group">
+						<form:label path="name" class="col-md-4 control-label">Nazwa:</form:label>
+						<div class="col-md-4">
+							<form:input path="name" class="form-control input-md" />
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="long-panel panel panel-primary">

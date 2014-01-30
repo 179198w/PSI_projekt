@@ -60,32 +60,51 @@
 	</div>
 
 	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data">
+		<form:form method="post" enctype="multipart/form-data"
+			class="form-horizontal">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
-					<form:label path="from">Data od:</form:label>
-					<form:input path="from" />
-					<br /> <br />
-					<form:label path="to">Data od:</form:label>
-					<form:input path="to" />
-					<br /> <br />
-					<form:label path="repeatPeriod">Powtórz termin:</form:label>
-					<form:checkbox path="repeatPeriod" />
-					<br /> <br />
-					<form:label path="repeatCount">Liczba powtórzeń:</form:label>
-					<form:input path="repeatCount" />
-					<br /> <br />
-					<form:label path="periodSpace">Odstęp terminów:</form:label>
-					<form:input path="periodSpace" />
-					<form:select path="periodSpaceType">
-						<form:option value="days">dni</form:option>
-						<form:option value="weeks">tygodni</form:option>
-						<form:option value="months">miesięcy</form:option>
-					</form:select>
-					<br /> <br />
+					<div class="form-group">
+						<form:label path="from" class="col-md-4 control-label">Data od:</form:label>
+						<div class="col-md-3">
+							<form:input path="from" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="to" class="col-md-4 control-label">Data do:</form:label>
+						<div class="col-md-3">
+							<form:input path="to" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="repeatPeriod" class="col-md-4 control-label">Powtórz termin:</form:label>
+						<div class="col-md-3">
+							<form:input path="repeatPeriod" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="repeatCount" class="col-md-4 control-label">Liczba powtórzeń:</form:label>
+						<div class="col-md-3">
+							<form:input path="repeatCount" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="periodSpace" class="col-md-4 control-label">Odstęp terminów:</form:label>
+						<div class="col-md-3">
+							<form:input path="periodSpace"
+								class="form-control input-md" />
+						</div>
+						<div class="col-md-2">
+							<form:select path="periodSpaceType" class="form-control">
+								<form:option value="days">dni</form:option>
+								<form:option value="weeks">tygodni</form:option>
+								<form:option value="months">miesięcy</form:option>
+							</form:select>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="long-panel panel panel-primary">
