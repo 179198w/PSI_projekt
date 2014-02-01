@@ -43,7 +43,7 @@ public class Hotel {
 	@Column(name = "number_of_stars")
 	private Integer numerOfStars;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "city_id")
 	private City city;
 

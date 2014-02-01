@@ -36,7 +36,7 @@ public class City {
 	@OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
 	private List<Hotel> hotels;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "country_id")
 	private Country country;
 	
