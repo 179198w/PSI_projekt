@@ -23,25 +23,32 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
-		function editHotel(cityId) {
-			alert(cityId);
-		}
-		function removeHotel(cityId) {
-			doPost('${basepath}/usun-miasto', {cityId: cityId});
-		}
-		
-		function doPost(url, params) {
-            var $form = $('<form method="POST">').attr('action', url);
-            $.each(params, function(name, value) {
-                $('<input type="hidden">')
-                    .attr('name', name)
-                    .attr('value', value)
-                    .appendTo($form);
-            });
-            $form.appendTo('body');
-            $form.submit();
-        }
-	</script>
+	function editCity(cityId) {
+		alert(cityId);
+	}
+	function removeCity(cityId) {
+		doPost('${basepath}/usun-miasto', {
+			cityId : cityId
+		});
+	}
+	
+	function search(search) {
+		var search=document.getElementById('searchInput').value;
+		doPost('${basepath}/szukaj-miasto', {
+			search : search
+		});
+	}
+
+	function doPost(url, params) {
+		var $form = $('<form method="POST">').attr('action', url);
+		$.each(params, function(name, value) {
+			$('<input type="hidden">').attr('name', name).attr('value', value)
+					.appendTo($form);
+		});
+		$form.appendTo('body');
+		$form.submit();
+	}
+</script>
 </head>
 <body>
 	<div class="navbar navbar-default">
@@ -56,11 +63,13 @@
 					<li><a href="${basepath}/lista-katalogow">Katalogi</a></li>
 					<li><a href="${basepath}/lista-terminow">Terminy</a></li>
 					<li><a href="${basepath}/lista-cen">Cennik</a></li>
-					<li class="dropdown active"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Słowniki <b class="caret"></b></a>
+					<li class="dropdown active"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown">Słowniki <b
+							class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="${basepath}/lista-hoteli">Słownik hoteli</a></li>
-							<li class="active"><a href="${basepath}/lista-miast">Słownik miast</a></li>
+							<li class="active"><a href="${basepath}/lista-miast">Słownik
+									miast</a></li>
 							<li><a href="${basepath}/lista-panstw">Słownik państw</a></li>
 						</ul></li>
 				</ul>
@@ -77,6 +86,24 @@
 					onclick="window.location='${basepath}/dodaj-miasto'"
 					class="margin-auto margin-top-10 display-block btn btn-lg btn-default" />
 			</div>
+			<div class="panel-heading">
+				<h3>Filtrowanie wyników</h3>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="col-md-5 control-label">Szukane słowo:</label>
+					<div class="col-md-7">
+						<input type="text" id="searchInput" class="form-control input-md" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-7">
+						<input type="button" onclick="search();" value="Szukaj"
+							class="margin-auto margin-top-10 display-block btn btn-lg btn-default" />
+					</div>
+				</div>
+			</div>
+
 		</div>
 		<div class="right-panel panel panel-primary">
 			<div class="panel-heading">
@@ -99,7 +126,7 @@
 								<td class="fit-cell-to-content"><input type="button"
 									onclick="editCatalog(${city.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
-									onclick="removeCatalog(${city.id});" value="usuń"
+									onclick="removeCity(${city.id});" value="usuń"
 									class="btn btn-xs btn-default" /></td>
 							</tr>
 						</c:forEach>

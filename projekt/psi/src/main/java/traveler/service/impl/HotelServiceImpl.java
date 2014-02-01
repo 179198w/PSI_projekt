@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import traveler.controller.command.HotelCommand;
+import traveler.model.City;
 import traveler.model.Hotel;
 import traveler.repository.CityRepository;
 import traveler.repository.HotelRepository;
@@ -24,14 +25,20 @@ public class HotelServiceImpl implements HotelService {
 
 	@Inject
 	private CityRepository cityRepository;
-	
+
 	@Inject
 	private MapperFacadeFactoryBean mapperFacade;
-	
+
 	@Override
-	@Cacheable(cacheName="hotels")
+	@Cacheable(cacheName = "hotels")
 	public List<Hotel> listHotels() {
 		return hotelRepository.getAll();
+	}
+
+	@Override
+	@Cacheable(cacheName = "hotels")
+	public List<Hotel> listHotels(String condition) {
+		return hotelRepository.getAllByPartString("name", condition);
 	}
 
 	@Override
@@ -41,5 +48,11 @@ public class HotelServiceImpl implements HotelService {
 		hotel.setCity(cityRepository.get(hotelCommand.getCityId()));
 		hotelRepository.save(hotel);
 	}
-	
+
+	@Override
+	@TriggersRemove(cacheName = "hotels", removeAll = true)
+	public void removeHotel(Long hotelId) {
+		hotelRepository.delete(hotelRepository.get(hotelId));
+	}
+
 }

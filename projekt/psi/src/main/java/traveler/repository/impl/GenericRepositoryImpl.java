@@ -61,6 +61,13 @@ public abstract class GenericRepositoryImpl<E, I extends Serializable> implement
 				.list();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<E> getAllByPartString(String propertyName,  String value) {
+		return (List<E>) session().createCriteria(getEntityClass())
+				.add(Restrictions.like(propertyName, '%'+value+'%'))
+				.list();
+	}
+	
 	public void delete(E entity) {
 		session().delete(entity);
 	}

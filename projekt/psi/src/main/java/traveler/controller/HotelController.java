@@ -37,8 +37,8 @@ public class HotelController {
 	@RequestMapping(value = "/dodaj-hotel", method = RequestMethod.GET)
 	public String addHotelForm(Model model) {
 		model.addAttribute("hotelCommand", new HotelCommand());
-		model.addAttribute("countries", cityService.listCities());
-		model.addAttribute("cities", countryService.listCountries());
+		model.addAttribute("countries", countryService.listCountries());
+		model.addAttribute("cities", cityService.listCities());
 		return "addHotel";
 	}
 
@@ -50,6 +50,22 @@ public class HotelController {
 		}
 		hotelService.addHotel(hotelCommand);
 		return "redirect:/lista-hoteli";
+	}
+	
+	@RequestMapping(value = "/usun-hotel", method = RequestMethod.POST)
+	public String removeCountry(Model model, Long hotelId) throws Exception {
+		hotelService.removeHotel(hotelId);
+		return "redirect:/lista-hoteli";
+	}
+	
+	@RequestMapping(value = "/szukaj-hotel", method = RequestMethod.POST)
+	public String searchHotels(Model model, String search) {
+		if(!search.isEmpty()){
+			model.addAttribute("hotels", hotelService.listHotels(search));
+		}else{
+			model.addAttribute("hotels", hotelService.listHotels());
+		}
+		return "listHotels";
 	}
 
 }

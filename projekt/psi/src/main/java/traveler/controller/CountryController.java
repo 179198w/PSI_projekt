@@ -47,4 +47,14 @@ public class CountryController {
 	}
 	
 	
+	@RequestMapping(value = "/szukaj-panstwo", method = RequestMethod.POST)
+	public String searchCountry(Model model, String search) {
+		if(!search.isEmpty()){
+			model.addAttribute("countries", countryService.listCountries(search));
+		}else{
+			model.addAttribute("countries", countryService.listCountries());
+		}
+		return "listCountries";
+	}
+	
 }

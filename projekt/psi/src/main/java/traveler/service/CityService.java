@@ -8,6 +8,8 @@ import traveler.model.City;
 public interface CityService {
 
 	List<City> listCities();
+	
+	List<City> listCities(String condition);
 
 	void addCountry(CityCommand cityCommand);
 	

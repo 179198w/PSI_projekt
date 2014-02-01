@@ -33,6 +33,12 @@ public class CityServiceImpl implements CityService {
 	public List<City> listCities() {
 		return cityRepository.getAll();
 	}
+	
+	@Override
+	@Cacheable(cacheName="cities")
+	public List<City> listCities(String condition){
+		return cityRepository.getAllByPartString("name", condition);
+	}
 
 	@Override
 	@TriggersRemove(cacheName = "cities", removeAll = true)
@@ -42,8 +48,11 @@ public class CityServiceImpl implements CityService {
 		cityRepository.save(city);
 	}
 	
+	@Override
+	@TriggersRemove(cacheName = "cities", removeAll = true)
 	public void removeCity(Long cityId){
-		
+		City city=cityRepository.get(cityId);
+		cityRepository.delete(city);
 	}
 	
 }

@@ -30,6 +30,13 @@
 			doPost('${basepath}/usun-panstwo', {countryId: countryId});
 		}
 		
+		function search(search) {
+			var search=document.getElementById('searchInput').value;
+			doPost('${basepath}/szukaj-panstwo', {
+				search : search
+			});
+		}
+		
 		function doPost(url, params) {
             var $form = $('<form method="POST">').attr('action', url);
             $.each(params, function(name, value) {
@@ -76,6 +83,23 @@
 				<input type="button" value="Stwórz"
 					onclick="window.location='${basepath}/dodaj-panstwo'"
 					class="margin-auto margin-top-10 display-block btn btn-lg btn-default" />
+			</div>
+			<div class="panel-heading">
+				<h3>Filtrowanie wyników</h3>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="col-md-5 control-label">Szukane słowo:</label>
+					<div class="col-md-7">
+						<input type="text" id="searchInput" class="form-control input-md" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-7">
+						<input type="button" onclick="search();" value="Szukaj"
+							class="margin-auto margin-top-10 display-block btn btn-lg btn-default" />
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="right-panel panel panel-primary">

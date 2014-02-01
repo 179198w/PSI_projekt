@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import traveler.controller.command.CountryCommand;
+import traveler.model.City;
 import traveler.model.Country;
 import traveler.repository.CountryRepository;
 import traveler.service.CountryService;
@@ -28,6 +29,12 @@ public class CountryServiceImpl implements CountryService {
 	@Cacheable(cacheName = "countries")
 	public List<Country> listCountries() {
 		return countryRepository.getAll();
+	}
+	
+	@Override
+	@Cacheable(cacheName = "countries")
+	public List<Country> listCountries(String condition){
+		return countryRepository.getAllByPartString("name", condition);
 	}
 
 	@Override

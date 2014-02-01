@@ -46,9 +46,19 @@ public class CityController {
 	}
 	
 	@RequestMapping(value = "/usun-miasto", method = RequestMethod.POST)
-	public String removeCountry(Model model, Long countryId) throws Exception {
-		cityService.removeCity(countryId);
+	public String removeCountry(Model model, Long cityId) throws Exception {
+		cityService.removeCity(cityId);
 		return "redirect:/lista-miast";
+	}
+	
+	@RequestMapping(value = "/szukaj-miasto", method = RequestMethod.POST)
+	public String searchCities(Model model, String search) {
+		if(!search.isEmpty()){
+			model.addAttribute("cities", cityService.listCities(search));
+		}else{
+			model.addAttribute("cities", cityService.listCities());
+		}
+		return "listCities";
 	}
 	
 	

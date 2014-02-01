@@ -30,6 +30,14 @@
 			doPost('${basepath}/usun-hotel', {hotelId: hotelId});
 		}
 		
+		function search(search) {
+			var search=document.getElementById('searchInput').value;
+			doPost('${basepath}/szukaj-hotel', {
+				search : search
+			});
+		}
+	
+		
 		function doPost(url, params) {
             var $form = $('<form method="POST">').attr('action', url);
             $.each(params, function(name, value) {
@@ -77,6 +85,23 @@
 					onclick="window.location='${basepath}/dodaj-hotel'"
 					class="margin-auto margin-top-10 display-block btn btn-lg btn-default" />
 			</div>
+			<div class="panel-heading">
+				<h3>Filtrowanie wyników</h3>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label class="col-md-5 control-label">Szukane słowo:</label>
+					<div class="col-md-7">
+						<input type="text" id="searchInput" class="form-control input-md" />
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-7">
+						<input type="button" onclick="search();" value="Szukaj"
+							class="margin-auto margin-top-10 display-block btn btn-lg btn-default" />
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="right-panel panel panel-primary">
 			<div class="panel-heading">
@@ -99,9 +124,9 @@
 								<td>${hotel.city.name}</td>
 								<td>${hotel.city.country.name}</td>
 								<td class="fit-cell-to-content"><input type="button"
-									onclick="editCatalog(${hotel.id});" value="edytuj"
+									onclick="editHotel(${hotel.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
-									onclick="removeCatalog(${hotel.id});" value="usuń"
+									onclick="removeHotel(${hotel.id});" value="usuń"
 									class="btn btn-xs btn-default" /></td>
 							</tr>
 						</c:forEach>
