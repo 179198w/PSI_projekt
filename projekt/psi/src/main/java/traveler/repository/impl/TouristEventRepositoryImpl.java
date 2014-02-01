@@ -1,5 +1,7 @@
 package traveler.repository.impl;
 
+import static com.google.common.base.Strings.isNullOrEmpty;
+
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -28,7 +30,7 @@ public class TouristEventRepositoryImpl extends GenericRepositoryImpl<TouristEve
 		criteria.createAlias("hotel.city", "hotelCity", JoinType.LEFT_OUTER_JOIN);
 		criteria.createAlias("operator", "operator", JoinType.LEFT_OUTER_JOIN);
 		
-		if (touristEventFilterCommand.getName() != null) {
+		if (!isNullOrEmpty(touristEventFilterCommand.getName())) {
 			criteria.add(Restrictions.ilike("name", touristEventFilterCommand.getName(), MatchMode.ANYWHERE));
 		}
 		

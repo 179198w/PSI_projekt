@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import traveler.controller.command.TouristEventComponentCommand;
+import traveler.controller.command.TouristEventComponentFilterCommand;
 import traveler.model.TouristEventComponentType;
 import traveler.service.TouristEventComponentService;
 
@@ -20,8 +21,8 @@ public class TouristEventComponentController {
 	private TouristEventComponentService touristEventComponentService;
 	
 	@RequestMapping("/lista-skladnikow")
-	public String listTouristEventComponents(Model model) {
-		model.addAttribute("touristEventComponents", touristEventComponentService.listTouristEventComponent());
+	public String listTouristEventComponents(Model model, TouristEventComponentFilterCommand filterCommand) {
+		model.addAttribute("touristEventComponents", touristEventComponentService.listTouristEventComponent(filterCommand));
 		return "listTouristEventComponents";
 	}
 	
@@ -38,7 +39,7 @@ public class TouristEventComponentController {
 			return "addTouristEventComponent";
 		}
 		touristEventComponentService.addTouristEventComponent(touristEventComponentCommand);
-		return listTouristEventComponents(model);
+		return "redirect:/lista-skladnikow";
 	}
 	
 }

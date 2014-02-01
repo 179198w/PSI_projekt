@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,7 +65,7 @@ public abstract class GenericRepositoryImpl<E, I extends Serializable> implement
 	@SuppressWarnings("unchecked")
 	public List<E> getAllByPartString(String propertyName,  String value) {
 		return (List<E>) session().createCriteria(getEntityClass())
-				.add(Restrictions.like(propertyName, '%'+value+'%'))
+				.add(Restrictions.ilike(propertyName, value, MatchMode.ANYWHERE))
 				.list();
 	}
 	

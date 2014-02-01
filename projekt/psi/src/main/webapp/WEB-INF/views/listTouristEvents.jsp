@@ -119,7 +119,7 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="margin-auto display-block btn btn-default">Filtruj</button>
+						<input type="submit" class="margin-auto display-block btn btn-default" value="Filtruj" />
 					</div>
 				</form:form>
 			</div>
