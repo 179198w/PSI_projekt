@@ -94,6 +94,30 @@
 				</table>
 			</div>
 		</div>
+		<div class="left-panel panel panel-primary">
+			<div class="panel-heading">
+				<h3>Filtrowanie wyników</h3>
+			</div>
+			<div class="panel-body">
+				<form:form method="post" enctype="multipart/form-data" commandName="periodFilterCommand" class="form-horizontal">
+					<div class="form-group">
+						<form:label path="from" class="col-md-4 control-label">Data od:</form:label>
+						<div class="col-md-8">
+							<form:input path="from" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<form:label path="to" class="col-md-4 control-label">Data do:</form:label>
+						<div class="col-md-8">
+							<form:input path="to" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="margin-auto display-block btn btn-default" value="Filtruj" />
+					</div>
+				</form:form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

@@ -110,6 +110,24 @@
 				</table>
 			</div>
 		</div>
+		<div class="left-panel panel panel-primary">
+			<div class="panel-heading">
+				<h3>Filtrowanie wyników</h3>
+			</div>
+			<div class="panel-body">
+				<form:form method="post" enctype="multipart/form-data" commandName="catalogFilterCommand" class="form-horizontal">
+					<div class="form-group">
+						<form:label path="name" class="col-md-4 control-label">Nazwa:</form:label>
+						<div class="col-md-8">
+							<form:input path="name" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="margin-auto display-block btn btn-default" value="Filtruj" />
+					</div>
+				</form:form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>

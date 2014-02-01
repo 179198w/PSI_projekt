@@ -9,8 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import traveler.controller.command.CityCommand;
 import traveler.controller.command.PeriodCommand;
+import traveler.controller.command.PeriodFilterCommand;
 import traveler.service.PeriodService;
 import traveler.service.TouristEventService;
 
@@ -19,29 +19,30 @@ public class PeriodController {
 
 	@Inject
 	private PeriodService periodService;
-	
+
 	@Inject
 	private TouristEventService touristEventService;
-	
+
 	@RequestMapping("/lista-terminow")
-	public String listPeriods(Model model) {
-		model.addAttribute("periods", periodService.listPeriods());
+	public String listPeriods(Model model, PeriodFilterCommand filterCommand) {
+		model.addAttribute("periods", periodService.listPeriods(filterCommand));
 		return "listPeriods";
 	}
+
 	@RequestMapping(value = "/dodaj-termin", method = RequestMethod.GET)
 	public String addPeriodForm(Model model) {
 		model.addAttribute("periodCommand", new PeriodCommand());
 		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
 		return "addPeriod";
 	}
-	
+
 	@RequestMapping(value = "/dodaj-termin", method = RequestMethod.POST)
-	public String addPeriod(Model model,@Valid PeriodCommand periodCommand, BindingResult result) {
-		if(result.hasErrors()){
+	public String addPeriod(Model model, @Valid PeriodCommand periodCommand, BindingResult result) {
+		if (result.hasErrors()) {
 			return "addPeriod";
 		}
 		periodService.addPeriod(periodCommand);
-		return listPeriods(model);
+		return "redirect:/lista-terminow";
 	}
-	
+
 }

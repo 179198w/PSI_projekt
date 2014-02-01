@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import traveler.controller.command.CatalogCommand;
+import traveler.controller.command.CatalogFilterCommand;
 import traveler.service.CatalogService;
 import traveler.service.TouristEventService;
 
@@ -23,8 +24,8 @@ public class CatalogController {
 	private TouristEventService touristEventService;
 	
 	@RequestMapping("/lista-katalogow")
-	public String listCatalogs(Model model) {
-		model.addAttribute("catalogs", catalogService.listCatalogs());
+	public String listCatalogs(Model model, CatalogFilterCommand filterCommand) {
+		model.addAttribute("catalogs", catalogService.listCatalogs(filterCommand));
 		return "listCatalogs";
 	}
 	

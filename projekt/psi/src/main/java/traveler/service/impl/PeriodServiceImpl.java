@@ -8,6 +8,7 @@ import org.joda.time.LocalDate;
 import org.springframework.stereotype.Service;
 
 import traveler.controller.command.PeriodCommand;
+import traveler.controller.command.PeriodFilterCommand;
 import traveler.model.Period;
 import traveler.model.TouristEvent;
 import traveler.repository.PeriodRepository;
@@ -54,6 +55,11 @@ public class PeriodServiceImpl implements PeriodService {
 			return date.plusMonths(space * times);
 		}
 		return date;
+	}
+
+	@Override
+	public List<Period> listPeriods(PeriodFilterCommand filterCommand) {
+		return periodRepository.getFiltered(filterCommand);
 	}
 	
 }

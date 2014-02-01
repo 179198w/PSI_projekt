@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import traveler.controller.command.CatalogCommand;
+import traveler.controller.command.CatalogFilterCommand;
 import traveler.model.Catalog;
 import traveler.model.TouristEvent;
 import traveler.repository.CatalogRepository;
@@ -43,6 +44,11 @@ public class CatalogServiceImpl implements CatalogService {
 		}
 		catalog.setTouristEvents(touristEvents);
 		catalogRepository.save(catalog);
+	}
+
+	@Override
+	public List<Catalog> listCatalogs(CatalogFilterCommand filterCommand) {
+		return catalogRepository.listFiltered(filterCommand);
 	}
 	
 }
