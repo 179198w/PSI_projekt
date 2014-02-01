@@ -42,4 +42,8 @@ public class CityServiceImpl implements CityService {
 		cityRepository.save(city);
 	}
 	
+	public void removeCity(Long cityId){
+		
+	}
+	
 }

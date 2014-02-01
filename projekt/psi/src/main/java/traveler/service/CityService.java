@@ -10,5 +10,7 @@ public interface CityService {
 	List<City> listCities();
 
 	void addCountry(CityCommand cityCommand);
+	
+	void removeCity(Long cityId);
 
 }

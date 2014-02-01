@@ -15,6 +15,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SelectBeforeUpdate;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @DynamicInsert
@@ -29,6 +30,7 @@ public class Country {
 	@GenericGenerator(name = "increment", strategy = "increment") // TODO: change to sequence
 	private Long id;
 
+	@NotEmpty
 	private String name;
 	
 	@OneToMany(mappedBy = "country", fetch = FetchType.LAZY)

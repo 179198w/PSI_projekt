@@ -1,12 +1,15 @@
 package traveler.controller;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import traveler.controller.command.CityCommand;
 import traveler.controller.command.CountryCommand;
 import traveler.service.CountryService;
 
@@ -24,14 +27,24 @@ public class CountryController {
 	
 	@RequestMapping(value = "/dodaj-panstwo", method = RequestMethod.GET)
 	public String addCountryForm(Model model) {
-		model.addAttribute("command", new CountryCommand());
+		model.addAttribute("countryCommand", new CountryCommand());
 		return "addCountry";
 	}
 	
 	@RequestMapping(value = "/dodaj-panstwo", method = RequestMethod.POST)
-	public String addCountry(Model model, CountryCommand countryCommand) {
+	public String addCountry(Model model,@Valid CountryCommand countryCommand, BindingResult result) {
+		if (result.hasErrors()) {
+			return "addCountry";
+		}
 		countryService.addCountry(countryCommand);
 		return listCountries(model);
 	}
+	
+	@RequestMapping(value = "/usun-panstwo", method = RequestMethod.POST)
+	public String removeCountry(Model model, Long countryId) throws Exception {
+		countryService.removeCountry(countryId);
+		return "redirect:/lista-panstw";
+	}
+	
 	
 }

@@ -36,32 +36,39 @@
 					<li><a href="${basepath}/lista-katalogow">Katalogi</a></li>
 					<li><a href="${basepath}/lista-terminow">Terminy</a></li>
 					<li><a href="${basepath}/lista-cen">Cennik</a></li>
-					<li class="dropdown active"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Słowniki <b class="caret"></b></a>
+					<li class="dropdown active"><a href="#"
+						class="dropdown-toggle" data-toggle="dropdown">Słowniki <b
+							class="caret"></b></a>
 						<ul class="dropdown-menu active">
 							<li><a href="${basepath}/lista-hoteli">Słownik hoteli</a></li>
 							<li><a href="${basepath}/lista-miast">Słownik miast</a></li>
-							<li class="active"><a href="${basepath}/lista-panstw">Słownik państw</a></li>
+							<li class="active"><a href="${basepath}/lista-panstw">Słownik
+									państw</a></li>
 						</ul></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data" class="form-horizontal">
+		<form:form method="post" enctype="multipart/form-data"
+			class="form-horizontal" commandName="countryCommand">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
-					<div class="form-group">
-						<form:label path="name" class="col-md-4 control-label">Nazwa:</form:label>
-						<div class="col-md-4">
-							<form:input path="name" class="form-control input-md" />
+					<spring:bind path="name">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:label path="name" cssClass="col-md-5 control-label">Nazwa:</form:label>
+							<div class="col-md-4">
+								<form:input path="name" cssClass="form-control input-md" />
+								<form:errors path="name" cssClass="help-block" />
+							</div>
 						</div>
-					</div>
+					</spring:bind>
 				</div>
 			</div>
+
 			<div class="long-panel text-align-center panel panel-primary">
 				<div class="display-inline-block panel-body">
 					<input type="submit" value="Wyślij" class="btn btn-sm btn-success" />

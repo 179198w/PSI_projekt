@@ -19,6 +19,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SelectBeforeUpdate;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @DynamicInsert
@@ -30,24 +31,27 @@ public class Hotel {
 
 	@Id
 	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment") // TODO: change to sequence
+	@GenericGenerator(name = "increment", strategy = "increment")
+	// TODO: change to sequence
 	private Long id;
 
+	@NotEmpty
 	private String name;
 
+	@NotEmpty
 	private String address;
 
-	@Type(type="text")
+	@Type(type = "text")
 	private String description;
 
 	@Column(name = "number_of_stars")
 	private Integer numerOfStars;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "city_id")
 	private City city;
 
 	@OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
 	private List<TouristEvent> touristEvents;
-	
+
 }

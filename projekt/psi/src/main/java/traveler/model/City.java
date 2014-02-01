@@ -17,6 +17,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SelectBeforeUpdate;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @DynamicInsert
@@ -28,16 +29,18 @@ public class City {
 
 	@Id
 	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment") // TODO: change to sequence
+	@GenericGenerator(name = "increment", strategy = "increment")
+	// TODO: change to sequence
 	private Long id;
 
+	@NotEmpty
 	private String name;
-	
+
 	@OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
 	private List<Hotel> hotels;
-	
-	@ManyToOne(fetch = FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "country_id")
 	private Country country;
-	
+
 }

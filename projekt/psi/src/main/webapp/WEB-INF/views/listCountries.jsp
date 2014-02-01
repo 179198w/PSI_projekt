@@ -95,9 +95,9 @@
 							<tr>
 								<td>${country.name}</td>
 								<td class="fit-cell-to-content"><input type="button"
-									onclick="editCatalog(${country.id});" value="edytuj"
+									onclick="editCountry(${country.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
-									onclick="removeCatalog(${country.id});" value="usuń"
+									onclick="removeCountry(${country.id});" value="usuń"
 									class="btn btn-xs btn-default" /></td>
 							</tr>
 						</c:forEach>

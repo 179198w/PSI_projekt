@@ -10,5 +10,7 @@ public interface CountryService {
 	List<Country> listCountries();
 
 	void addCountry(CountryCommand countryCommand);
+	
+	void removeCountry(Long countryId);
 
 }

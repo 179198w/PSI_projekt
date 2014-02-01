@@ -51,47 +51,68 @@
 	</div>
 	<div class="main-panel">
 		<form:form method="post" enctype="multipart/form-data"
-			class="form-horizontal">
+			class="form-horizontal" commandName="hotelCommand">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
+					<spring:bind path="name">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:label path="name" cssClass="col-md-5 control-label">Nazwa:</form:label>
+							<div class="col-md-4">
+								<form:input path="name" cssClass="form-control input-md" />
+								<form:errors path="name" cssClass="help-block" />
+							</div>
+						</div>
+					</spring:bind>
+					<spring:bind path="address">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:label path="address" cssClass="col-md-5 control-label">Adres:</form:label>
+							<div class="col-md-4">
+								<form:input path="address" cssClass="form-control input-md" />
+								<form:errors path="address" cssClass="help-block" />
+							</div>
+						</div>
+					</spring:bind>
 					<div class="form-group">
-						<form:label path="name" class="col-md-4 control-label">Nazwa:</form:label>
-						<div class="col-md-4">
-							<form:input path="name" class="form-control input-md" />
+						<form:label path="numerOfStars" cssClass="col-md-5 control-label">Ilość gwiazdek:</form:label>
+						<div class="col-md-1">
+							<form:input path="numerOfStars" cssClass="form-control input-md" />
 						</div>
 					</div>
-					<div class="form-group">
-						<form:label path="countryId" class="col-md-4 control-label">Państwo:</form:label>
-						<div class="col-md-4">
-							<form:select path="countryId" class="form-control">
-								<form:option value="0">Wybierz państwo</form:option>
-								<form:options items="${countries}" itemLabel="name"
-									itemValue="id" />
-							</form:select>
-
+					<spring:bind path="countryId">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:label path="countryId" cssClass="col-md-5 control-label">Państwo:</form:label>
+							<div class="col-md-4">
+								<form:select path="countryId" class="form-control">
+									<form:option value="0">Wybierz państwo</form:option>
+									<form:options items="${countries}" itemLabel="name"
+										itemValue="id" />
+								</form:select>
+								<form:errors path="countryId" cssClass="help-block" />
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<form:label path="cityId" class="col-md-4 control-label">Miasto:</form:label>
-						<div class="col-md-4">
-							<form:select path="cityId" class="form-control">
-								<form:option value="0">Wybierz miasto</form:option>
-								<form:options items="${cities}" itemLabel="name"
-									itemValue="id" />
-							</form:select>
-
+					</spring:bind>
+					<spring:bind path="countryId">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:label path="cityId" cssClass="col-md-5 control-label">Miasto:</form:label>
+							<div class="col-md-4">
+								<form:select path="cityId" class="form-control">
+									<form:option value="0">Wybierz miasto</form:option>
+									<form:options items="${cities}" itemLabel="name" itemValue="id" />
+								</form:select>
+								<form:errors path="cityId" cssClass="help-block" />
+							</div>
 						</div>
-					</div>
+					</spring:bind>
 				</div>
 			</div>
 			<div class="long-panel text-align-center panel panel-primary">
 				<div class="display-inline-block panel-body">
 					<input type="submit" value="Wyślij" class="btn btn-sm btn-success" />
 					<input type="button" value="Anuluj"
-						onclick="window.location='${basepath}/lista-miast'"
+						onclick="window.location='${basepath}/lista-hoteli'"
 						class="btn btn-sm btn-default" />
 				</div>
 			</div>
