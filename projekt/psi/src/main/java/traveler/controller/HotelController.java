@@ -9,9 +9,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import traveler.controller.command.CityCommand;
-import traveler.controller.command.CountryCommand;
-import traveler.controller.command.HotelCommand;
+import traveler.command.CityCommand;
+import traveler.command.CountryCommand;
+import traveler.command.HotelCommand;
 import traveler.service.CityService;
 import traveler.service.CountryService;
 import traveler.service.HotelService;

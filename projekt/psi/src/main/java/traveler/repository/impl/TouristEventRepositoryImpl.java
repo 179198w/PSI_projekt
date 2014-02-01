@@ -10,7 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.sql.JoinType;
 import org.springframework.stereotype.Repository;
 
-import traveler.controller.command.TouristEventFilterCommand;
+import traveler.command.TouristEventFilterCommand;
 import traveler.model.TouristEvent;
 import traveler.repository.TouristEventRepository;
 

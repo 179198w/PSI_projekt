@@ -6,8 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import traveler.controller.command.TouristEventComponentCommand;
-import traveler.controller.command.TouristEventComponentFilterCommand;
+import traveler.command.TouristEventComponentCommand;
+import traveler.command.TouristEventComponentFilterCommand;
 import traveler.model.TouristEventComponent;
 import traveler.repository.TouristEventComponentRepository;
 import traveler.service.TouristEventComponentService;

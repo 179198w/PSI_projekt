@@ -2,7 +2,7 @@ package traveler.service;
 
 import java.util.List;
 
-import traveler.controller.command.CountryCommand;
+import traveler.command.CountryCommand;
 import traveler.model.City;
 import traveler.model.Country;
 

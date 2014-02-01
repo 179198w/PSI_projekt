@@ -9,8 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import traveler.controller.command.TouristEventComponentCommand;
-import traveler.controller.command.TouristEventComponentFilterCommand;
+import traveler.command.TouristEventComponentCommand;
+import traveler.command.TouristEventComponentFilterCommand;
 import traveler.model.TouristEventComponentType;
 import traveler.service.TouristEventComponentService;
 

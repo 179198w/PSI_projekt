@@ -2,7 +2,7 @@ package traveler.service;
 
 import java.util.List;
 
-import traveler.controller.command.HotelCommand;
+import traveler.command.HotelCommand;
 import traveler.model.Hotel;
 
 public interface HotelService {

@@ -9,7 +9,7 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import traveler.controller.command.TouristEventComponentFilterCommand;
+import traveler.command.TouristEventComponentFilterCommand;
 import traveler.model.TouristEventComponent;
 import traveler.repository.TouristEventComponentRepository;
 

@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import traveler.controller.command.TouristEventCommand;
-import traveler.controller.command.TouristEventFilterCommand;
+import traveler.command.TouristEventCommand;
+import traveler.command.TouristEventFilterCommand;
 import traveler.model.Hotel;
 import traveler.model.Operator;
 import traveler.model.TouristEvent;

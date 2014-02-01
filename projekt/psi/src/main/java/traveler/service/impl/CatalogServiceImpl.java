@@ -8,8 +8,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import traveler.controller.command.CatalogCommand;
-import traveler.controller.command.CatalogFilterCommand;
+import traveler.command.CatalogCommand;
+import traveler.command.CatalogFilterCommand;
 import traveler.model.Catalog;
 import traveler.model.TouristEvent;
 import traveler.repository.CatalogRepository;

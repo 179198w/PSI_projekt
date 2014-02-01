@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import traveler.controller.command.TouristEventCommand;
-import traveler.controller.command.TouristEventFilterCommand;
+import traveler.command.TouristEventCommand;
+import traveler.command.TouristEventFilterCommand;
 import traveler.service.CityService;
 import traveler.service.CountryService;
 import traveler.service.HotelService;

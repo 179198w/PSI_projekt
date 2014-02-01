@@ -6,7 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import traveler.controller.command.PeriodFilterCommand;
+import traveler.command.PeriodFilterCommand;
 import traveler.model.Period;
 import traveler.repository.PeriodRepository;
 

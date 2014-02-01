@@ -2,8 +2,8 @@ package traveler.service;
 
 import java.util.List;
 
-import traveler.controller.command.PeriodCommand;
-import traveler.controller.command.PeriodFilterCommand;
+import traveler.command.PeriodCommand;
+import traveler.command.PeriodFilterCommand;
 import traveler.model.Period;
 
 public interface PeriodService {

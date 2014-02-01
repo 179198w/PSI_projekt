@@ -9,7 +9,7 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import traveler.controller.command.CatalogFilterCommand;
+import traveler.command.CatalogFilterCommand;
 import traveler.model.Catalog;
 import traveler.repository.CatalogRepository;
 

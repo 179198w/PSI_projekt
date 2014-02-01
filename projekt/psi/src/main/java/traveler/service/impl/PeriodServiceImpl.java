@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.joda.time.LocalDate;
 import org.springframework.stereotype.Service;
 
-import traveler.controller.command.PeriodCommand;
-import traveler.controller.command.PeriodFilterCommand;
+import traveler.command.PeriodCommand;
+import traveler.command.PeriodFilterCommand;
 import traveler.model.Period;
 import traveler.model.TouristEvent;
 import traveler.repository.PeriodRepository;

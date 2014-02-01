@@ -2,8 +2,8 @@ package traveler.service;
 
 import java.util.List;
 
-import traveler.controller.command.TouristEventCommand;
-import traveler.controller.command.TouristEventFilterCommand;
+import traveler.command.TouristEventCommand;
+import traveler.command.TouristEventFilterCommand;
 import traveler.model.TouristEvent;
 
 public interface TouristEventService {

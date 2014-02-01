@@ -6,7 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import traveler.controller.command.HotelCommand;
+import traveler.command.HotelCommand;
 import traveler.model.City;
 import traveler.model.Hotel;
 import traveler.repository.CityRepository;
