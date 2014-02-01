@@ -73,7 +73,7 @@
 	<div class="main-panel">
 		<div class="left-panel panel panel-primary">
 			<div class="panel-heading">
-				<h3>Nowa katalog</h3>
+				<h3>Nowy katalog</h3>
 			</div>
 			<div class="panel-body">
 				<input type="button" value="Stwórz"

@@ -84,7 +84,7 @@
 		</div>
 		<div class="right-panel panel panel-primary">
 			<div class="panel-heading">
-				<h3>Wyniki wyszukiwania miasta</h3>
+				<h3>Wyniki wyszukiwania miast</h3>
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped table-hover">

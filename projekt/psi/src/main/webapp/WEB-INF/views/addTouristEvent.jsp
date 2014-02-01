@@ -174,7 +174,7 @@
 				<div class="panel-body">
 					<div id="touristEventComponents"></div>
 					<div class="form-group">
-						<form:label path="hotelId" class="col-md-4 control-label width-200">Nowy składnik imprezy:</form:label>
+						<label class="col-md-4 control-label width-200" for="touristEventComponent">Nowy składnik imprezy:</label>
 						<div class="col-md-7">
 							<select id="touristEventComponent" class="form-control float-left width-70pc">
 								<option value="0">Wybierz składnik</option>

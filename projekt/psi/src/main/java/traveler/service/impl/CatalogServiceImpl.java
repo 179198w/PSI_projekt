@@ -39,7 +39,7 @@ public class CatalogServiceImpl implements CatalogService {
 		Catalog catalog = mapperFacade.getObject().map(catalogCommand, Catalog.class);
 		
 		List<TouristEvent> touristEvents = newArrayList();
-		for (Long touristEventId :catalogCommand.getTouristEvents()) {
+		for (Long touristEventId : catalogCommand.getTouristEventIds()) {
 			touristEvents.add(touristEventRepository.get(touristEventId));
 		}
 		catalog.setTouristEvents(touristEvents);

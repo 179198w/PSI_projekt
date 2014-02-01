@@ -12,6 +12,6 @@ public class CatalogCommand {
 	@NotEmpty
 	private String name;
 	
-	private List<Long> touristEvents;
+	private List<Long> touristEventIds;
 	
 }
