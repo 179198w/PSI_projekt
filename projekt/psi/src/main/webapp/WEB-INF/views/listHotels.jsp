@@ -87,6 +87,8 @@
 					<thead>
 						<tr>
 							<th>Nazwa</th>
+							<th>Miasto</th>
+							<th>Państwo</th>
 							<th class="text-align-center">Akcje</th>
 						</tr>
 					</thead>
@@ -94,6 +96,8 @@
 						<c:forEach var="hotel" items="${hotels}">
 							<tr>
 								<td>${hotel.name}</td>
+								<td>${hotel.city.name}</td>
+								<td>${hotel.city.country.name}</td>
 								<td class="fit-cell-to-content"><input type="button"
 									onclick="editCatalog(${hotel.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
