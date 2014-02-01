@@ -28,6 +28,6 @@ public class PeriodCommand {
 	
 	private String periodSpaceType;
 	
-	private List<Long> touristEvents;
+	private List<Long> touristEventIds;
 	
 }

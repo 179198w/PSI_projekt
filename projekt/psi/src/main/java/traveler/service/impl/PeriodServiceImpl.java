@@ -33,20 +33,24 @@ public class PeriodServiceImpl implements PeriodService {
 	public void addPeriod(PeriodCommand periodCommand) {
 		int repeatCount = periodCommand.getRepeatPeriod() ? periodCommand.getRepeatCount() : 1; 
 		
-		for (Long touristEventId : periodCommand.getTouristEvents()) {
+		for (Long touristEventId : periodCommand.getTouristEventIds()) {
 			TouristEvent touristEvent = touristEventRepository.get(touristEventId);
 			
 			for (int repetition = 0; repetition < repeatCount; repetition++) {
 				Period period = new Period();
-				period.setFrom(calculateDate(periodCommand.getFrom(), periodCommand.getPeriodSpaceType(), periodCommand.getPeriodSpace(), repetition));
-				period.setTo(calculateDate(periodCommand.getTo(), periodCommand.getPeriodSpaceType(), periodCommand.getPeriodSpace(), repetition));
+				
+				LocalDate from = periodCommand.getRepeatPeriod() ? calculateDate(periodCommand.getFrom(), periodCommand.getPeriodSpaceType(), periodCommand.getPeriodSpace(), repetition) : periodCommand.getFrom();
+				LocalDate to = periodCommand.getRepeatPeriod() ? calculateDate(periodCommand.getTo(), periodCommand.getPeriodSpaceType(), periodCommand.getPeriodSpace(), repetition) : periodCommand.getTo();
+
+				period.setFrom(from);
+				period.setTo(to);
 				period.setTouristEvent(touristEvent);
 				periodRepository.save(period);
 			}
 		}
 	}
 	
-	private LocalDate calculateDate(LocalDate date, String type, int space, int times) {
+	private LocalDate calculateDate(LocalDate date, String type, Integer space, Integer times) {
 		if ("days".equals(type)) {
 			return date.plusDays(space * times);
 		} else if ("weeks".equals(type)) {

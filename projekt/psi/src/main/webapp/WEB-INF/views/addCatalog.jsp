@@ -101,7 +101,7 @@
 						<label class="col-md-4 control-label width-200" for="touristEvent">Nowa impreza w katalogu:</label>
 						<div class="col-md-7">
 							<select id="touristEvent" class="form-control float-left width-70pc">
-								<option value="0">Wybierz składnik</option>
+								<option value="0">Wybierz imprezę</option>
 								<c:forEach items="${touristEvents}" var="touristEvent">
 									<option value="${touristEvent.id}">${touristEvent.name}</option>
 								</c:forEach>

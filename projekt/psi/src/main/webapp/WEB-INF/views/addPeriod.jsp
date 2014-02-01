@@ -23,15 +23,37 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
-	function addTouristEvent() {
-		var touristEvent = $('#touristEvent');
-		var form = $('#command');
-		var touristEventCount = $(':input[name^="touristEvents"]').length;
-
-		$('<input type="hidden">').attr('name',
-				'touristEvents[' + touristEventCount + ']').attr('value',
-				touristEvent.val()).appendTo(form);
-	}
+	var touristEvents = [];
+	
+	jQuery(document).ready(function($) {
+		
+		$('#addTouristEventButton').click(function() {
+			var touristEvent = $('#touristEvent option:selected');
+			if (touristEvent.val() != 0 && $.inArray(touristEvent.val(), touristEvents) == -1) {
+				touristEvents.push(touristEvent.val());
+				var touristEventTable = $('#touristEventTable');
+				touristEventTable
+					.append('<tr><td>' + touristEvent.text() + '</td><td><input type="button" value="usuń" class="btn btn-xs btn-default removeTouristEventButton" touristEventId="' + touristEvent.val() + '" /></td></tr>');
+			}
+		});
+		
+		$(document).on('click', '.removeTouristEventButton', function() {
+			var touristEventId = $(this).attr('touristEventId');
+			touristEvents.splice($.inArray(touristEventId, touristEvents), 1);
+			$(this).closest('tr').remove();
+		});
+		
+		$('input[type=\'submit\']').click(function() {
+			var hiddenInputContainer = $('#touristEvents');
+			for (var i = 0; i < touristEvents.length; i++) {
+				$('<input type="hidden">')
+				.attr('name', 'touristEventIds[' + i + ']')
+				.attr('value', touristEvents[i])
+				.appendTo(hiddenInputContainer);
+			}
+		});
+		
+	});
 </script>
 </head>
 <body>
@@ -117,18 +139,28 @@
 					<h3>Imprezy w terminie</h3>
 				</div>
 				<div class="panel-body">
-					<label>Nowa impreza w terminie:</label> <select id="touristEvent">
-						<option>Wybierz imprezę turystyczną</option>
-						<c:forEach items="${touristEvents}" var="touristEvent">
-							<option value="${touristEvent.id}">${touristEvent.name}</option>
-						</c:forEach>
-					</select> <input type="button" value="Dodaj do listy"
-						onclick="addTouristEvent()" /> <br /> <br />
-					<table>
-						<tr>
-							<th>Nazwa</th>
-							<th>Akcje</th>
-						</tr>
+					<div id="touristEvents"></div>
+					<div class="form-group">
+						<label class="col-md-4 control-label width-200" for="touristEvent">Nowa impreza w terminie:</label>
+						<div class="col-md-7">
+							<select id="touristEvent" class="form-control float-left width-70pc">
+								<option value="0">Wybierz imprezę</option>
+								<c:forEach items="${touristEvents}" var="touristEvent">
+									<option value="${touristEvent.id}">${touristEvent.name}</option>
+								</c:forEach>
+							</select> <input id="addTouristEventButton" type="button" class="btn btn-default margin-left-10" value="Dodaj" />
+						</div>
+					</div>
+
+					<table id="touristEventTable" class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Nazwa</th>
+								<th class="fit-cell-to-content text-align-center">Akcje</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
 					</table>
 				</div>
 			</div>
