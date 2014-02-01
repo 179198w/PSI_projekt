@@ -27,7 +27,10 @@
 			alert(catalogId);
 		}
 		function removeHotel(hotelId) {
+			var c=confirm("Czy na pewno chcesz usunąć ten hotel?");
+			if(c==true){
 			doPost('${basepath}/usun-hotel', {hotelId: hotelId});
+			}
 		}
 		
 		function search(search) {

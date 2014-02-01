@@ -27,7 +27,10 @@
 			alert(countryId);
 		}
 		function removeCountry(countryId) {
+			var c=confirm("Czy na pewno chcesz usunąć to państwo?");
+			if(c==true){
 			doPost('${basepath}/usun-panstwo', {countryId: countryId});
+			}
 		}
 		
 		function search(search) {

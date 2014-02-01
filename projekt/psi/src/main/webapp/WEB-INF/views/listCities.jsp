@@ -23,15 +23,19 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
+
 	function editCity(cityId) {
 		doPost('${basepath}/edytuj-miasto', {
 			cityId : cityId
 		});
 	}
 	function removeCity(cityId) {
+		var c=confirm("Czy na pewno chcesz usunąć to miasto?");
+		if(c==true){
 		doPost('${basepath}/usun-miasto', {
 			cityId : cityId
 		});
+		}
 	}
 	
 	function search(search) {
@@ -127,7 +131,7 @@
 								<td>${city.country.name}</td>
 								<td class="fit-cell-to-content"><input type="button"
 									onclick="editCity(${city.id});" value="edytuj"
-									class="btn btn-xs btn-default" /> <input type="button"
+									class="btn btn-xs btn-default" /> <input type="button" on
 									onclick="removeCity(${city.id});" value="usuń"
 									class="btn btn-xs btn-default" /></td>
 							</tr>
