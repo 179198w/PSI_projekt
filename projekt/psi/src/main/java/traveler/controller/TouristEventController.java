@@ -30,7 +30,7 @@ public class TouristEventController {
 
 	@Inject
 	private HotelService hotelService;
-
+	
 	@RequestMapping("/lista-imprez-turystycznych")
 	public String listTouristEvents(Model model, TouristEventFilterCommand touristEventFilterCommand) {
 		model.addAttribute("touristEvents", touristEventService.listTouristEventsWithRelatedData(touristEventFilterCommand));
@@ -43,6 +43,7 @@ public class TouristEventController {
 		model.addAttribute("countries", countryService.listCountries());
 		model.addAttribute("cities", cityService.listCities());
 		model.addAttribute("hotels", hotelService.listHotels());
+		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
 		return "addTouristEvent";
 	}
 

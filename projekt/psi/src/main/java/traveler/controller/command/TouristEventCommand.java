@@ -27,6 +27,6 @@ public class TouristEventCommand {
 	
 	private Long hotelId;
 	
-	private List<String> touristEventComponentIds;
+	private List<Long> touristEventComponentIds;
 	
 }

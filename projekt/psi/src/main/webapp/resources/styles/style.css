@@ -76,4 +76,19 @@ label.col-md-4 {
 	width: 1%;
 	white-space: nowrap;
 }
-​
+
+.float-left {
+	float: left;
+}
+
+.width-70pc {
+	width: 70%;
+}
+
+.margin-left-10 {
+	margin-left: 10px;
+}
+
+.width-200 {
+	width: 200px !important;
+}

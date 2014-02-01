@@ -21,11 +21,9 @@
 		var photos = $('#photos');
 		var photosCount = $(':input[name^="photos"]').length;
 
-		$('<input type="file">')
-			.attr('name', 'photos[' + photosCount + ']')
-			.addClass('input-file')
-			.addClass('margin-top-10')
-			.appendTo(photos);
+		$('<input type="file">').attr('name', 'photos[' + photosCount + ']')
+				.addClass('input-file').addClass('margin-top-10').appendTo(
+						photos);
 	}
 </script>
 </head>
@@ -95,7 +93,7 @@
 						<div class="col-md-4">
 							<div id="photos">
 								<input type="file" name="photos[0]" class="input-file" />
-							</div> 
+							</div>
 							<input type="button" value="Dodaj więcej zdjęć" class="btn btn-xs btn-default margin-top-10" onclick="addOneMorePhoto();" />
 						</div>
 					</div>
@@ -142,14 +140,29 @@
 					<h3>Składniki</h3>
 				</div>
 				<div class="panel-body">
-					<form:hidden path="touristEventComponentIds" />
-					<label for="touristEventComponents">Nowy składnik imprezy:</label> <select id="touristEventComponents"></select> <input type="button" value="Dodaj" /> <label for="touristEventComponentList">Lista:</label>
-					<table class="results-list">
-						<tr>
-							<th>Typ</th>
-							<th>Nazwa</th>
-							<th>Akcje</th>
-						</tr>
+					<div class="form-group">
+						<form:label path="hotelId" class="col-md-4 control-label width-200">Nowy składnik imprezy:</form:label>
+						<div class="col-md-7">
+							<select class="form-control float-left width-70pc">
+								<option value="0">Wybierz składnik</option>
+								<c:forEach items="${touristEvents}" var="touristEvent">
+									<option value="${touristEvent.id}">${touristEvent.name}</option>
+								</c:forEach>
+							</select> <input type="button" class="btn btn-default margin-left-10" value="Dodaj" />
+						</div>
+					</div>
+
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Typ</th>
+								<th>Nazwa</th>
+								<th>Akcje</th>
+							</tr>
+						</thead>
+						<tbody>
+						
+						</tbody>
 					</table>
 				</div>
 			</div>
