@@ -10,6 +10,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import traveler.controller.command.TouristEventCommand;
@@ -17,8 +18,10 @@ import traveler.controller.command.TouristEventFilterCommand;
 import traveler.model.Hotel;
 import traveler.model.Operator;
 import traveler.model.TouristEvent;
+import traveler.model.TouristEventComponent;
 import traveler.repository.HotelRepository;
 import traveler.repository.OperatorRepository;
+import traveler.repository.TouristEventComponentRepository;
 import traveler.repository.TouristEventRepository;
 import traveler.service.TouristEventService;
 import traveler.utils.MapperFacadeFactoryBean;
@@ -41,6 +44,9 @@ public class TouristEventServiceImpl implements TouristEventService {
 
 	@Inject
 	private HotelRepository hotelRepository;
+	
+	@Inject
+	private TouristEventComponentRepository touristEventComponentRepository;
 
 	@Override
 	public List<TouristEvent> listTouristEventsWithRelatedData(TouristEventFilterCommand touristEventFilterCommand) {
@@ -53,6 +59,7 @@ public class TouristEventServiceImpl implements TouristEventService {
 	}
 
 	@Override
+	@Transactional
 	public void addTouristEvent(TouristEventCommand touristEventCommand, String rootPath) {
 		TouristEvent touristEvent = mapperFacade.getObject().map(touristEventCommand, TouristEvent.class);
 
@@ -95,7 +102,15 @@ public class TouristEventServiceImpl implements TouristEventService {
 			}
 		}
 		touristEvent.setPhotoUrls(photosUrls);
-
+		
+		List<TouristEventComponent> touristEventComponents = newArrayList();
+		for (Long touristEventComponentId : touristEventCommand.getTouristEventComponentIds()) {
+			TouristEventComponent touristEventComponent = touristEventComponentRepository.get(touristEventComponentId);
+			touristEventComponent.getTouristEvents().add(touristEvent);
+			touristEventComponents.add(touristEventComponent);
+		}
+		touristEvent.setTouristEventComponents(touristEventComponents);
+		
 		touristEventRepository.save(touristEvent);
 	}
 

@@ -14,6 +14,7 @@ import traveler.controller.command.TouristEventFilterCommand;
 import traveler.service.CityService;
 import traveler.service.CountryService;
 import traveler.service.HotelService;
+import traveler.service.TouristEventComponentService;
 import traveler.service.TouristEventService;
 
 @Controller
@@ -31,6 +32,9 @@ public class TouristEventController {
 	@Inject
 	private HotelService hotelService;
 	
+	@Inject
+	private TouristEventComponentService touristEventComponentService;
+	
 	@RequestMapping("/lista-imprez-turystycznych")
 	public String listTouristEvents(Model model, TouristEventFilterCommand touristEventFilterCommand) {
 		model.addAttribute("touristEvents", touristEventService.listTouristEventsWithRelatedData(touristEventFilterCommand));
@@ -43,7 +47,7 @@ public class TouristEventController {
 		model.addAttribute("countries", countryService.listCountries());
 		model.addAttribute("cities", cityService.listCities());
 		model.addAttribute("hotels", hotelService.listHotels());
-		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
+		model.addAttribute("touristEventComponents", touristEventComponentService.listTouristEventComponent());
 		return "addTouristEvent";
 	}
 
