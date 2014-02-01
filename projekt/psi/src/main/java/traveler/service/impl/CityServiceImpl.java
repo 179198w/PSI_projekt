@@ -21,38 +21,49 @@ public class CityServiceImpl implements CityService {
 
 	@Inject
 	private CityRepository cityRepository;
-	
+
 	@Inject
 	private CountryRepository countryRepository;
 
 	@Inject
 	private MapperFacadeFactoryBean mapperFacade;
-	
+
 	@Override
-	@Cacheable(cacheName="cities")
+	@Cacheable(cacheName = "cities")
 	public List<City> listCities() {
 		return cityRepository.getAll();
 	}
 	
+	public CityCommand getCity(Long id){
+		City city=cityRepository.get(id);
+		CityCommand command=new CityCommand();
+		mapperFacade.getObject().map(city, command);
+		return command;
+	}
+
 	@Override
-	@Cacheable(cacheName="cities")
-	public List<City> listCities(String condition){
+	@Cacheable(cacheName = "cities")
+	public List<City> listCities(String condition) {
 		return cityRepository.getAllByPartString("name", condition);
 	}
 
 	@Override
 	@TriggersRemove(cacheName = "cities", removeAll = true)
-	public void addCountry(CityCommand cityCommand) {
+	public void addCity(CityCommand cityCommand) {
 		City city = mapperFacade.getObject().map(cityCommand, City.class);
 		city.setCountry(countryRepository.get(cityCommand.getCountryId()));
-		cityRepository.save(city);
+		if (city.getId() != null) {
+			cityRepository.update(city);
+		} else {
+			cityRepository.save(city);
+		}
 	}
-	
+
 	@Override
 	@TriggersRemove(cacheName = "cities", removeAll = true)
-	public void removeCity(Long cityId){
-		City city=cityRepository.get(cityId);
+	public void removeCity(Long cityId) {
+		City city = cityRepository.get(cityId);
 		cityRepository.delete(city);
 	}
-	
+
 }

@@ -11,7 +11,9 @@ public interface CityService {
 	
 	List<City> listCities(String condition);
 
-	void addCountry(CityCommand cityCommand);
+	void addCity(CityCommand cityCommand);
+	
+	CityCommand getCity(Long id);
 	
 	void removeCity(Long cityId);
 

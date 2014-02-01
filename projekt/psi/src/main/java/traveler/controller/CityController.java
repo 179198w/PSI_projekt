@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import traveler.controller.command.CatalogCommand;
 import traveler.controller.command.CityCommand;
+import traveler.model.City;
 import traveler.service.CityService;
 import traveler.service.CountryService;
 
@@ -41,8 +42,16 @@ public class CityController {
 		if (result.hasErrors()) {
 			return "addCity";
 		}
-		cityService.addCountry(cityCommand);
+		cityService.addCity(cityCommand);
 		return listCities(model);
+	}
+	
+	@RequestMapping(value = "/edytuj-miasto", method = RequestMethod.POST)
+	public String addCity(Model model, Long cityId) {
+		CityCommand city=cityService.getCity(cityId);
+		model.addAttribute("cityCommand", city);
+		model.addAttribute("countries", countryService.listCountries());
+		return "addCity";
 	}
 	
 	@RequestMapping(value = "/usun-miasto", method = RequestMethod.POST)

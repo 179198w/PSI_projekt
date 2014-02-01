@@ -48,18 +48,22 @@
 		</div>
 	</div>
 	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data" class="form-horizontal">
+		<form:form method="post" enctype="multipart/form-data"
+			class="form-horizontal" commandName="touristEventComponentCommand">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
-					<div class="form-group">
-						<form:label path="name" class="col-md-4 control-label">Nazwa:</form:label>
-						<div class="col-md-4">
-							<form:input path="name" class="form-control input-md" />
+					<spring:bind path="name">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:label path="name" cssClass="col-md-4 control-label">Nazwa:</form:label>
+							<div class="col-md-4">
+								<form:input path="name" cssClass="form-control input-md" />
+								<form:errors path="name" cssClass="help-block" />
+							</div>
 						</div>
-					</div>
+					</spring:bind>
 					<div class="form-group">
 						<form:label path="description" class="col-md-4 control-label">Opis:</form:label>
 
@@ -67,15 +71,18 @@
 							<form:textarea path="description" class="form-control" />
 						</div>
 					</div>
-					<div class="form-group">
-						<form:label path="type" class="col-md-4 control-label">Typ:</form:label>
-						<div class="col-md-3">
-							<form:select path="type" class="form-control">
-								<form:option value="0">Wybierz typ</form:option>
-								<form:options items="${types}" />
-							</form:select>
+					<spring:bind path="type">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:label path="type" class="col-md-4 control-label">Typ:</form:label>
+							<div class="col-md-3">
+								<form:select path="type" class="form-control">
+									<form:option value="${null}">Wybierz typ</form:option>
+									<form:options items="${types}" />
+								</form:select>
+								<form:errors path="type" cssClass="help-block" />
+							</div>
 						</div>
-					</div>
+					</spring:bind>
 				</div>
 			</div>
 			<div class="long-panel text-align-center panel panel-primary">

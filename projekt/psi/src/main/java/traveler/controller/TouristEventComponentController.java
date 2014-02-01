@@ -1,9 +1,11 @@
 package traveler.controller;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,13 +27,16 @@ public class TouristEventComponentController {
 	
 	@RequestMapping(value = "/dodaj-skladnik", method = RequestMethod.GET)
 	public String addTouristEventComponentForm(Model model) {
-		model.addAttribute("command", new TouristEventComponentCommand());
+		model.addAttribute("touristEventComponentCommand", new TouristEventComponentCommand());
 		model.addAttribute("types", TouristEventComponentType.values());
 		return "addTouristEventComponent";
 	}
 	
 	@RequestMapping(value = "/dodaj-skladnik", method = RequestMethod.POST)
-	public String addTouristEventComponent(Model model, TouristEventComponentCommand touristEventComponentCommand) {
+	public String addTouristEventComponent(Model model, @Valid TouristEventComponentCommand touristEventComponentCommand, BindingResult result) {
+		if(result.hasErrors()){
+			return "addTouristEventComponent";
+		}
 		touristEventComponentService.addTouristEventComponent(touristEventComponentCommand);
 		return listTouristEventComponents(model);
 	}

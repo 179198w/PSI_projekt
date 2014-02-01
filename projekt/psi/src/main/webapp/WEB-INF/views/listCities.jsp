@@ -24,7 +24,9 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
 	function editCity(cityId) {
-		alert(cityId);
+		doPost('${basepath}/edytuj-miasto', {
+			cityId : cityId
+		});
 	}
 	function removeCity(cityId) {
 		doPost('${basepath}/usun-miasto', {
@@ -124,7 +126,7 @@
 								<td>${city.name}</td>
 								<td>${city.country.name}</td>
 								<td class="fit-cell-to-content"><input type="button"
-									onclick="editCatalog(${city.id});" value="edytuj"
+									onclick="editCity(${city.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
 									onclick="removeCity(${city.id});" value="usuń"
 									class="btn btn-xs btn-default" /></td>

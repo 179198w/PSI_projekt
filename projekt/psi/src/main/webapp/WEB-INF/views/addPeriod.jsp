@@ -61,28 +61,34 @@
 
 	<div class="main-panel">
 		<form:form method="post" enctype="multipart/form-data"
-			class="form-horizontal">
+			class="form-horizontal" commandName="periodCommand">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
-					<div class="form-group">
-						<form:label path="from" class="col-md-4 control-label">Data od:</form:label>
-						<div class="col-md-3">
-							<form:input path="from" class="form-control input-md" />
+					<spring:bind path="from">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:label path="from" cssClass="col-md-4 control-label">Data od:</form:label>
+							<div class="col-md-4">
+								<form:input path="from" cssClass="form-control input-md" />
+								<form:errors path="from" cssClass="help-block" />
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<form:label path="to" class="col-md-4 control-label">Data do:</form:label>
-						<div class="col-md-3">
-							<form:input path="to" class="form-control input-md" />
+					</spring:bind>
+					<spring:bind path="to">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<form:label path="to" cssClass="col-md-4 control-label">Data do:</form:label>
+							<div class="col-md-4">
+								<form:input path="to" cssClass="form-control input-md" />
+								<form:errors path="to" cssClass="help-block" />
+							</div>
 						</div>
-					</div>
+					</spring:bind>
 					<div class="form-group">
 						<form:label path="repeatPeriod" class="col-md-4 control-label">Powtórz termin:</form:label>
 						<div class="col-md-3">
-							<form:input path="repeatPeriod" class="form-control input-md" />
+							<form:checkbox path="repeatPeriod"/>
 						</div>
 					</div>
 					<div class="form-group">
@@ -94,8 +100,7 @@
 					<div class="form-group">
 						<form:label path="periodSpace" class="col-md-4 control-label">Odstęp terminów:</form:label>
 						<div class="col-md-3">
-							<form:input path="periodSpace"
-								class="form-control input-md" />
+							<form:input path="periodSpace" class="form-control input-md" />
 						</div>
 						<div class="col-md-2">
 							<form:select path="periodSpaceType" class="form-control">
