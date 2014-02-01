@@ -1,9 +1,11 @@
 package traveler.controller;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,15 +30,18 @@ public class CatalogController {
 	
 	@RequestMapping(value = "/dodaj-katalog", method = RequestMethod.GET)
 	public String addCatalogForm(Model model) {
-		model.addAttribute("command", new CatalogCommand());
+		model.addAttribute("catalogCommand", new CatalogCommand());
 		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
 		return "addCatalog";
 	}
 	
 	@RequestMapping(value = "/dodaj-katalog", method = RequestMethod.POST)
-	public String addCatalog(Model model, CatalogCommand catalogCommand) {
+	public String addCatalog(@Valid CatalogCommand catalogCommand, BindingResult result) {
+		if (result.hasErrors()) {
+			return "addCatalog";
+		}
 		catalogService.addCatalog(catalogCommand);
-		return listCatalogs(model);
+		return "redirect:/lista-katalogow";
 	}
 	
 }
