@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import traveler.controller.command.TouristEventCommand;
+import traveler.controller.command.TouristEventFilterCommand;
 import traveler.service.CityService;
 import traveler.service.CountryService;
 import traveler.service.HotelService;
@@ -16,25 +18,25 @@ import traveler.service.TouristEventService;
 
 @Controller
 public class TouristEventController {
-	
+
 	@Inject
 	private TouristEventService touristEventService;
-	
+
 	@Inject
 	private CountryService countryService;
-	
+
 	@Inject
 	private CityService cityService;
-	
+
 	@Inject
 	private HotelService hotelService;
-	
+
 	@RequestMapping("/lista-imprez-turystycznych")
-	public String listTouristEvents(Model model) {
-		model.addAttribute("touristEvents", touristEventService.listTouristEventsWithRelatedData());
+	public String listTouristEvents(Model model, TouristEventFilterCommand touristEventFilterCommand) {
+		model.addAttribute("touristEvents", touristEventService.listTouristEventsWithRelatedData(touristEventFilterCommand));
 		return "listTouristEvents";
 	}
-	
+
 	@RequestMapping(value = "/dodaj-impreze-turystyczna", method = RequestMethod.GET)
 	public String addTouristEventForm(Model model) {
 		model.addAttribute("command", new TouristEventCommand());
@@ -43,23 +45,29 @@ public class TouristEventController {
 		model.addAttribute("hotels", hotelService.listHotels());
 		return "addTouristEvent";
 	}
-	
+
 	@RequestMapping(value = "/dodaj-impreze-turystyczna", method = RequestMethod.POST)
 	public String addTouristEvent(HttpServletRequest request, Model model, TouristEventCommand touristEventCommand) throws Exception {
 		touristEventService.addTouristEvent(touristEventCommand, request.getSession().getServletContext().getRealPath("/"));
-		return listTouristEvents(model);
+		return "redirect:/lista-imprez-turystycznych";
 	}
-	
+
 	@RequestMapping(value = "/usun-impreze-turystyczna", method = RequestMethod.POST)
 	public String removeTouristEvent(Model model, Long touristEventId) throws Exception {
 		touristEventService.removeTouristEvent(touristEventId);
-		return listTouristEvents(model);
+		return "redirect:/lista-imprez-turystycznych";
 	}
-	
+
 	@RequestMapping(value = "/edytuj-impreze-turystyczna", method = RequestMethod.POST)
 	public String editTouristEvent(Model model, Long touristEventId) throws Exception {
-		
+
 		return "editTouristEvent";
 	}
 	
+	@RequestMapping(value = "/publikuj-lub-ukryj-impreze-turystyczna", method = RequestMethod.POST)
+	public String publishOrHideTouristEvent(@RequestParam("touristEventId") Long touristEventId) throws Exception {
+		touristEventService.publishOrHideTouristEvent(touristEventId);
+		return "redirect:/lista-imprez-turystycznych";
+	}
+
 }

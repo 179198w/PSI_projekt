@@ -1,5 +1,6 @@
 package traveler.service.impl;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static traveler.utils.FileUtils.md5DigestOfFile;
 import static traveler.utils.FileUtils.saveFile;
 
@@ -11,7 +12,10 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.common.collect.Lists;
+
 import traveler.controller.command.TouristEventCommand;
+import traveler.controller.command.TouristEventFilterCommand;
 import traveler.model.Hotel;
 import traveler.model.Operator;
 import traveler.model.TouristEvent;
@@ -30,21 +34,21 @@ public class TouristEventServiceImpl implements TouristEventService {
 
 	@Inject
 	private TouristEventRepository touristEventRepository;
-	
+
 	@Inject
 	private MapperFacadeFactoryBean mapperFacade;
-	
+
 	@Inject
 	private OperatorRepository operatorRepository;
-	
+
 	@Inject
 	private HotelRepository hotelRepository;
-	
+
 	@Override
-	public List<TouristEvent> listTouristEventsWithRelatedData() {
-		return touristEventRepository.getAllWithOuterJoin("catalogs", "hotel", "hotel.city", "operator");
+	public List<TouristEvent> listTouristEventsWithRelatedData(TouristEventFilterCommand touristEventFilterCommand) {
+		return touristEventRepository.getAllWithRelatedData(touristEventFilterCommand);
 	}
-	
+
 	@Override
 	public List<TouristEvent> listTouristEvents() {
 		return touristEventRepository.getAll();
@@ -53,7 +57,7 @@ public class TouristEventServiceImpl implements TouristEventService {
 	@Override
 	public void addTouristEvent(TouristEventCommand touristEventCommand, String rootPath) {
 		TouristEvent touristEvent = mapperFacade.getObject().map(touristEventCommand, TouristEvent.class);
-		
+
 		if (touristEventCommand.getOperator() != null) {
 			Operator operator = operatorRepository.getBy("name", touristEventCommand.getOperator());
 			if (operator == null) {
@@ -63,12 +67,12 @@ public class TouristEventServiceImpl implements TouristEventService {
 			}
 			touristEvent.setOperator(operator);
 		}
-		
+
 		if (touristEventCommand.getHotelId() != null) {
 			Hotel hotel = hotelRepository.get(touristEventCommand.getHotelId());
 			touristEvent.setHotel(hotel);
 		}
-		
+
 		MultipartFile statue = touristEventCommand.getStatue();
 		if (!statue.isEmpty()) {
 			try {
@@ -79,7 +83,21 @@ public class TouristEventServiceImpl implements TouristEventService {
 				throw new RuntimeException(e);
 			}
 		}
-		
+
+		List<String> photosUrls = newArrayList();
+		for (MultipartFile photo : touristEventCommand.getPhotos()) {
+			if (!photo.isEmpty()) {
+				try {
+					String filename = md5DigestOfFile(photo);
+					saveFile(photo, rootPath + RELATIVE_FILE_PATH + filename);
+					photosUrls.add(RELATIVE_FILE_URL + filename);
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}
+		}
+		touristEvent.setPhotoUrls(photosUrls);
+
 		touristEventRepository.save(touristEvent);
 	}
 
@@ -88,5 +106,12 @@ public class TouristEventServiceImpl implements TouristEventService {
 		TouristEvent touristEvent = touristEventRepository.get(touristEventId);
 		touristEventRepository.delete(touristEvent);
 	}
-	
+
+	@Override
+	public void publishOrHideTouristEvent(Long touristEventId) {
+		TouristEvent touristEvent = touristEventRepository.get(touristEventId);
+		touristEvent.setVisible(!touristEvent.getVisible());
+		touristEventRepository.update(touristEvent);
+	}
+
 }

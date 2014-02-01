@@ -23,14 +23,18 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
-		function publishTouristEvent(touristEventId) {
-			alert(touristEventId);
+		function publishOrHideTouristEvent(touristEventId) {
+			doPost('${basepath}/publikuj-lub-ukryj-impreze-turystyczna', {touristEventId: touristEventId});
 		}
+		
 		function editTouristEvent(touristEventId) {
 			alert(touristEventId);
 		}
+		
 		function removeTouristEvent(touristEventId) {
-			doPost('${basepath}/usun-impreze-turystyczna', {touristEventId: touristEventId});
+			if (confirm('Czy jesteś pewien, że chcesz usunąć tą imprezę turystyczną?')) {
+				doPost('${basepath}/usun-impreze-turystyczna', {touristEventId: touristEventId});
+			}
 		}
 		
 		function doPost(url, params) {
@@ -82,6 +86,7 @@
 					class="margin-auto margin-top-10 display-block display-block btn btn-lg btn-default" />
 			</div>
 		</div>
+
 		<div class="right-panel panel panel-primary">
 			<div class="panel-heading">
 				<h3>Wyniki wyszukiwania imprez</h3>
@@ -91,7 +96,6 @@
 					<thead>
 						<tr>
 							<th>Nazwa</th>
-							<th>Katalog</th>
 							<th>Miasto</th>
 							<th>Operator</th>
 							<th class="text-align-center">Akcje</th>
@@ -101,13 +105,11 @@
 						<c:forEach var="touristEvent" items="${touristEvents}">
 							<tr>
 								<td>${touristEvent.name}</td>
-								<td>${touristEvent.catalogs.isEmpty() ? "" : touristEvent.catalogs[0].name}
-								</td>
 								<td>${touristEvent.hotel.city.name}</td>
 								<td>${touristEvent.operator.name}</td>
 								<td class="fit-cell-to-content"><input type="button"
-									onclick="publishTouristEvent(${touristEvent.id});"
-									value="publikuj" class="btn btn-xs btn-default" /> <input
+									onclick="publishOrHideTouristEvent(${touristEvent.id});"
+									value="${touristEvent.visible ? "ukryj" : "publikuj"}" class="btn btn-xs btn-default" /> <input
 									type="button" onclick="editTouristEvent(${touristEvent.id});"
 									value="edytuj" class="btn btn-xs btn-default" /> <input
 									type="button" onclick="removeTouristEvent(${touristEvent.id});"
@@ -116,6 +118,25 @@
 						</c:forEach>
 					</tbody>
 				</table>
+			</div>
+		</div>
+		<div class="left-panel panel panel-primary">
+			<div class="panel-heading">
+				<h3>Filtrowanie wyników</h3>
+			</div>
+			<div class="panel-body">
+				<form:form method="post" enctype="multipart/form-data" commandName="touristEventFilterCommand"
+					class="form-horizontal">
+					<div class="form-group">
+						<form:label path="name" class="col-md-4 control-label">Nazwa:</form:label>
+						<div class="col-md-8">
+							<form:input path="name" class="form-control input-md" />
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="margin-auto display-block btn btn-default">Filtruj</button>
+					</div>
+				</form:form>
 			</div>
 		</div>
 	</div>

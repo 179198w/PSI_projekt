@@ -51,7 +51,7 @@ public class TouristEvent {
 
 	@ElementCollection(fetch = FetchType.LAZY)
 	@CollectionTable(name = "photos", joinColumns = @JoinColumn(name = "id"))
-	@Column(name = "photo_urls")
+	@Column(name = "photo_url")
 	private List<String> photoUrls;
 	
 	@ManyToMany(mappedBy = "touristEvents", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -74,13 +74,13 @@ public class TouristEvent {
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate activeTo;
 	
-	@OneToMany(mappedBy = "touristEvent", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "touristEvent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Period> periods;
 	
 	@ManyToMany(mappedBy = "touristEvents", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<TouristEventComponent> touristEventComponents;
 	
-	@OneToMany(mappedBy = "touristEvent", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "touristEvent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Reservation> reservations;
 	
 }

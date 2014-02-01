@@ -1,27 +1,33 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-<c:set var="basepath" scope="request"
-	value="<%=request.getContextPath()%>" />
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<c:set var="basepath" scope="request" value="<%=request.getContextPath()%>" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lista imprez turystycznych</title>
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${basepath}/styles/style.css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script
-	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script>
+	function addOneMorePhoto() {
+		var photos = $('#photos');
+		var photosCount = $(':input[name^="photos"]').length;
+
+		$('<input type="file">')
+			.attr('name', 'photos[' + photosCount + ']')
+			.addClass('input-file')
+			.addClass('margin-top-10')
+			.appendTo(photos);
+	}
+</script>
 </head>
 <body>
 	<div class="navbar navbar-default">
@@ -31,14 +37,12 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a
-						href="${basepath}/lista-imprez-turystycznych">Imprezy</a></li>
+					<li class="active"><a href="${basepath}/lista-imprez-turystycznych">Imprezy</a></li>
 					<li><a href="${basepath}/lista-skladnikow">Składniki</a></li>
 					<li><a href="${basepath}/lista-katalogow">Katalogi</a></li>
 					<li><a href="${basepath}/lista-terminow">Terminy</a></li>
 					<li><a href="${basepath}/lista-cen">Cennik</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Słowniki <b class="caret"></b></a>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Słowniki <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="${basepath}/lista-hoteli">Słownik hoteli</a></li>
 							<li><a href="${basepath}/lista-miast">Słownik miast</a></li>
@@ -49,8 +53,7 @@
 		</div>
 	</div>
 	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data"
-			class="form-horizontal">
+		<form:form method="post" enctype="multipart/form-data" class="form-horizontal">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
@@ -90,7 +93,10 @@
 					<div class="form-group">
 						<form:label path="photos" class="col-md-4 control-label">Zdjęcia:</form:label>
 						<div class="col-md-4">
-							<input type="file" name="photos[0]" class="input-file" />
+							<div id="photos">
+								<input type="file" name="photos[0]" class="input-file" />
+							</div> 
+							<input type="button" value="Dodaj więcej zdjęć" class="btn btn-xs btn-default margin-top-10" onclick="addOneMorePhoto();" />
 						</div>
 					</div>
 				</div>
@@ -105,8 +111,7 @@
 						<div class="col-md-8">
 							<form:select path="countryId" class="form-control">
 								<form:option value="0">Wybierz państwo</form:option>
-								<form:options items="${countries}" itemLabel="name"
-									itemValue="id" />
+								<form:options items="${countries}" itemLabel="name" itemValue="id" />
 							</form:select>
 
 						</div>
@@ -138,9 +143,7 @@
 				</div>
 				<div class="panel-body">
 					<form:hidden path="touristEventComponentIds" />
-					<label for="touristEventComponents">Nowy składnik imprezy:</label>
-					<select id="touristEventComponents"></select> <input type="button"
-						value="Dodaj" /> <label for="touristEventComponentList">Lista:</label>
+					<label for="touristEventComponents">Nowy składnik imprezy:</label> <select id="touristEventComponents"></select> <input type="button" value="Dodaj" /> <label for="touristEventComponentList">Lista:</label>
 					<table class="results-list">
 						<tr>
 							<th>Typ</th>
@@ -152,9 +155,7 @@
 			</div>
 			<div class="long-panel text-align-center panel panel-primary">
 				<div class="display-inline-block panel-body">
-					<input type="submit" value="Wyślij" class="btn btn-sm btn-success" />
-					<input type="button" value="Anuluj"
-						onclick="window.location='${basepath}/lista-imprez-turystycznych'"
+					<input type="submit" value="Wyślij" class="btn btn-sm btn-success" /> <input type="button" value="Anuluj" onclick="window.location='${basepath}/lista-imprez-turystycznych'"
 						class="btn btn-sm btn-default" />
 				</div>
 			</div>
