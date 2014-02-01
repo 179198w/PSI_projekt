@@ -80,13 +80,14 @@
 		</div>
 		<div class="right-panel panel panel-primary">
 			<div class="panel-heading">
-				<h3>Wyniki wyszukiwania miast</h3>
+				<h3>Wyniki wyszukiwania miasta</h3>
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th>Nazwa</th>
+							<th>Państwo</th>
 							<th class="text-align-center">Akcje</th>
 						</tr>
 					</thead>
@@ -94,6 +95,7 @@
 						<c:forEach var="city" items="${cities}">
 							<tr>
 								<td>${city.name}</td>
+								<td>${city.country.name}</td>
 								<td class="fit-cell-to-content"><input type="button"
 									onclick="editCatalog(${city.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
