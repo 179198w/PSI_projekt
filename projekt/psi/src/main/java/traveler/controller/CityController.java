@@ -8,14 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import traveler.controller.command.CityCommand;
-import traveler.controller.command.CountryCommand;
 import traveler.service.CityService;
+import traveler.service.CountryService;
 
 @Controller
 public class CityController {
 
 	@Inject
 	private CityService cityService;
+	
+	@Inject
+	private CountryService countryService;
 	
 	@RequestMapping("/lista-miast")
 	public String listCities(Model model) {
@@ -25,8 +28,9 @@ public class CityController {
 	
 	@RequestMapping(value = "/dodaj-miasto", method = RequestMethod.GET)
 	public String addCityForm(Model model) {
-		model.addAttribute("command", new CountryCommand());
-		return "addCountry";
+		model.addAttribute("command", new CityCommand());
+		model.addAttribute("countries", countryService.listCountries());
+		return "addCity";
 	}
 	
 	@RequestMapping(value = "/dodaj-miasto", method = RequestMethod.POST)
