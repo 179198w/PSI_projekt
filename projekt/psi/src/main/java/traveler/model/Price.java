@@ -49,6 +49,6 @@ public class Price {
 	private TouristEventComponent touristEventComponent;
 	
 	@ManyToMany(mappedBy = "prices", fetch = FetchType.LAZY)
-	private List<Reservation> prices;
+	private List<Reservation> reservations;
 	
 }

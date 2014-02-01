@@ -36,7 +36,7 @@
 					<li><a href="${basepath}/lista-skladnikow">Składniki</a></li>
 					<li><a href="${basepath}/lista-katalogow">Katalogi</a></li>
 					<li><a href="${basepath}/lista-terminow">Terminy</a></li>
-					<li><a href="${basepath}/lista-cennikow">Cenniki</a></li>
+					<li><a href="${basepath}/lista-cen">Cennik</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">Słowniki <b class="caret"></b></a>
 						<ul class="dropdown-menu">
