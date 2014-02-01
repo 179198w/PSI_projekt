@@ -21,9 +21,23 @@
 		var photos = $('#photos');
 		var photosCount = $(':input[name^="photos"]').length;
 
-		$('<input type="file">').attr('name', 'photos[' + photosCount + ']')
-				.addClass('input-file').addClass('margin-top-10').appendTo(
-						photos);
+		$('<input type="file">')
+			.attr('name', 'photos[' + photosCount + ']')
+			.addClass('input-file')
+			.addClass('margin-top-10').appendTo(photos);
+	}
+	
+	function addTouristEventComponent() {
+		var touristEventComponents = $('#touristEventComponents');
+		var touristEventComponent = $('#touristEventComponent option:selected');
+		var touristEventComponentTable = $('#touristEventComponentTable');
+		var touristEventComponentCount = $(':input[name^="touristEventComponentIds"]').length;
+
+		touristEventComponentTable.append('<tr><td>' + touristEventComponent.attr('type') + '</td><td>' + touristEventComponent.attr('name') + '</td><td><input type="button" value="usuń" class="btn btn-xs btn-default" /></td></tr>');
+		$('<input type="hidden">')
+			.attr('name', 'touristEventComponentIds[' + touristEventComponentCount + ']')
+			.attr('value', touristEventComponent.val())
+			.appendTo(touristEventComponents);
 	}
 </script>
 </head>
@@ -140,28 +154,29 @@
 					<h3>Składniki</h3>
 				</div>
 				<div class="panel-body">
+					<div id="touristEventComponents">
+					</div>
 					<div class="form-group">
 						<form:label path="hotelId" class="col-md-4 control-label width-200">Nowy składnik imprezy:</form:label>
 						<div class="col-md-7">
-							<select class="form-control float-left width-70pc">
+							<select id="touristEventComponent" class="form-control float-left width-70pc">
 								<option value="0">Wybierz składnik</option>
-								<c:forEach items="${touristEvents}" var="touristEvent">
-									<option value="${touristEvent.id}">${touristEvent.name}</option>
+								<c:forEach items="${touristEventComponents}" var="touristEventComponent">
+									<option value="${touristEventComponent.id}" type="${touristEventComponent.type}" name="${touristEventComponent.name}">${touristEventComponent.type} - ${touristEventComponent.name}</option>
 								</c:forEach>
-							</select> <input type="button" class="btn btn-default margin-left-10" value="Dodaj" />
+							</select> <input type="button" class="btn btn-default margin-left-10" value="Dodaj" onclick="addTouristEventComponent();" />
 						</div>
 					</div>
 
-					<table class="table table-striped table-hover">
+					<table id="touristEventComponentTable" class="table table-striped table-hover">
 						<thead>
 							<tr>
 								<th>Typ</th>
 								<th>Nazwa</th>
-								<th>Akcje</th>
+								<th class="fit-cell-to-content text-align-center">Akcje</th>
 							</tr>
 						</thead>
 						<tbody>
-						
 						</tbody>
 					</table>
 				</div>
