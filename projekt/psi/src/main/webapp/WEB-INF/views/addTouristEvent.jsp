@@ -179,7 +179,7 @@
 							<select id="touristEventComponent" class="form-control float-left width-70pc">
 								<option value="0">Wybierz składnik</option>
 								<c:forEach items="${touristEventComponents}" var="touristEventComponent">
-									<option value="${touristEventComponent.id}" type="${touristEventComponent.type}" name="${touristEventComponent.name}">${touristEventComponent.type}- ${touristEventComponent.name}</option>
+									<option value="${touristEventComponent.id}" type="${touristEventComponent.type.name}" name="${touristEventComponent.name}">${touristEventComponent.type.name}- ${touristEventComponent.name}</option>
 								</c:forEach>
 							</select> <input id="addTouristEventComponentButton" type="button" class="btn btn-default margin-left-10" value="Dodaj" />
 						</div>

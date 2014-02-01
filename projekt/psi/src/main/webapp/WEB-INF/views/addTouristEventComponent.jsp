@@ -69,7 +69,7 @@
 							<div class="col-md-3">
 								<form:select path="type" class="form-control">
 									<form:option value="${null}">Wybierz typ</form:option>
-									<form:options items="${types}" />
+									<form:options items="${types}" itemLabel="name"/>
 								</form:select>
 								<form:errors path="type" cssClass="help-block" />
 							</div>

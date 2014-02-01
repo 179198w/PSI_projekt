@@ -98,7 +98,7 @@
 						<c:forEach var="touristEventComponent"
 							items="${touristEventComponents}">
 							<tr>
-								<td>${touristEventComponent.type}</td>
+								<td>${touristEventComponent.type.name}</td>
 								<td>${touristEventComponent.name}</td>
 								<td class="fit-cell-to-content"><input type="button"
 									onclick="publishTouristEventComponent(${touristEventComponent.id});"
