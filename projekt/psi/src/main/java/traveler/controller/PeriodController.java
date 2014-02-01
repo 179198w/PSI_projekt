@@ -30,8 +30,7 @@ public class PeriodController {
 	}
 
 	@RequestMapping(value = "/dodaj-termin", method = RequestMethod.GET)
-	public String addPeriodForm(Model model) {
-		model.addAttribute("periodCommand", new PeriodCommand());
+	public String addPeriodForm(Model model, PeriodCommand periodCommand) {
 		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
 		return "addPeriod";
 	}
@@ -39,7 +38,7 @@ public class PeriodController {
 	@RequestMapping(value = "/dodaj-termin", method = RequestMethod.POST)
 	public String addPeriod(Model model, @Valid PeriodCommand periodCommand, BindingResult result) {
 		if (result.hasErrors()) {
-			return "addPeriod";
+			return addPeriodForm(model, periodCommand);
 		}
 		periodService.addPeriod(periodCommand);
 		return "redirect:/lista-terminow";

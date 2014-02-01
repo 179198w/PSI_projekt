@@ -30,16 +30,15 @@ public class CatalogController {
 	}
 	
 	@RequestMapping(value = "/dodaj-katalog", method = RequestMethod.GET)
-	public String addCatalogForm(Model model) {
-		model.addAttribute("catalogCommand", new CatalogCommand());
+	public String addCatalogForm(Model model, CatalogCommand catalogCommand) {
 		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
 		return "addCatalog";
 	}
 	
 	@RequestMapping(value = "/dodaj-katalog", method = RequestMethod.POST)
-	public String addCatalog(@Valid CatalogCommand catalogCommand, BindingResult result) {
+	public String addCatalog(Model model, @Valid CatalogCommand catalogCommand, BindingResult result) {
 		if (result.hasErrors()) {
-			return "addCatalog";
+			return addCatalogForm(model, catalogCommand);
 		}
 		catalogService.addCatalog(catalogCommand);
 		return "redirect:/lista-katalogow";
