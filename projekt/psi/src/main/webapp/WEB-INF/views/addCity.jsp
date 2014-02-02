@@ -72,8 +72,7 @@
 							<div class="col-md-4">
 								<form:select path="countryId" class="form-control">
 									<form:option value="0">Wybierz państwo</form:option>
-									<form:options items="${countries}" itemLabel="name"
-										itemValue="id" />
+									<form:options items="${countries}" itemLabel="name" itemValue="id" />
 								</form:select>
 								<form:errors path="countryId" cssClass="help-block" />
 							</div>

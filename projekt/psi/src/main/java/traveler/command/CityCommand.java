@@ -12,9 +12,9 @@ public class CityCommand {
 
 	@NotEmpty
 	private String name;
-	
+
 	@NotNull
-	@Min(value=1)
+	@Min(value = 1)
 	private Long countryId;
-	
+
 }

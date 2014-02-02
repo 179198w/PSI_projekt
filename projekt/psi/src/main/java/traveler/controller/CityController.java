@@ -9,9 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import traveler.command.CatalogCommand;
 import traveler.command.CityCommand;
-import traveler.model.City;
 import traveler.service.CityService;
 import traveler.service.CountryService;
 
@@ -32,19 +30,17 @@ public class CityController {
 
 	@RequestMapping(value = "/dodaj-miasto", method = RequestMethod.GET)
 	public String addCityForm(Model model, CityCommand cityCommand) {
-		model.addAttribute("cityCommand", cityCommand);
 		model.addAttribute("countries", countryService.listCountries());
 		return "addCity";
 	}
 
 	@RequestMapping(value = "/dodaj-miasto", method = RequestMethod.POST)
-	public String addCity(Model model, @Valid CityCommand cityCommand,
-			BindingResult result) {
+	public String addCity(Model model, @Valid CityCommand cityCommand, BindingResult result) {
 		if (result.hasErrors()) {
 			return addCityForm(model, cityCommand);
 		}
 		cityService.addCity(cityCommand);
-		return listCities(model);
+		return "redirect:/lista-miast";
 	}
 
 	@RequestMapping(value = "/edytuj-miasto", method = RequestMethod.POST)
