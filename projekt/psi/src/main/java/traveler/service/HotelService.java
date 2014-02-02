@@ -17,4 +17,10 @@ public interface HotelService {
 
 	List<Hotel> listHotels(Long cityId);
 
+	HotelCommand getHotelCommand(Long hotelId);
+
+	void updateHotel(HotelCommand hotelCommand);
+
+	Hotel getHotel(Long hotelId);
+
 }

@@ -59,4 +59,26 @@ public class HotelServiceImpl implements HotelService {
 		return hotelRepository.getAllBy("city.id", cityId);
 	}
 
+	@Override
+	public HotelCommand getHotelCommand(Long hotelId) {
+		Hotel hotel = getHotel(hotelId);
+		HotelCommand hotelCommand = mapperFacade.getObject().map(hotel, HotelCommand.class);
+		hotelCommand.setCityId(hotel.getCity().getId());
+		hotelCommand.setCountryId(hotel.getCity().getCountry().getId());
+		return hotelCommand;
+	}
+
+	@Override
+	public Hotel getHotel(Long hotelId) {
+		return hotelRepository.get(hotelId);
+	}
+
+	@Override
+	@TriggersRemove(cacheName = "hotels", removeAll = true)
+	public void updateHotel(HotelCommand hotelCommand) {
+		Hotel hotel = mapperFacade.getObject().map(hotelCommand, Hotel.class);
+		hotel.setCity(cityRepository.get(hotelCommand.getCityId()));
+		hotelRepository.update(hotel);
+	}
+
 }

@@ -10,6 +10,8 @@ import lombok.Data;
 @Data
 public class HotelCommand {
 
+	private Long id;
+	
 	@NotEmpty
 	private String name;
 	

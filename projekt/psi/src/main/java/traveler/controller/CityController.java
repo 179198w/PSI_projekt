@@ -58,7 +58,7 @@ public class CityController {
 	}
 	
 	@RequestMapping(value = "/edytuj-miasto", method = RequestMethod.POST)
-	public String editCountry(Model model, @Valid CityCommand cityCommand, BindingResult result) {
+	public String editCity(Model model, @Valid CityCommand cityCommand, BindingResult result) {
 		if (result.hasErrors()) {
 			return addCityForm(model, cityCommand);
 		}

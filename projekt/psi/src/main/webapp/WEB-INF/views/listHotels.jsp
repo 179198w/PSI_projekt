@@ -18,7 +18,9 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
 		function editHotel(hotelId) {
-			alert(catalogId);
+			doPost('${basepath}/edytuj-hotel', {
+				hotelId : hotelId
+			});
 		}
 		function removeHotel(hotelId) {
 			var c=confirm("Czy na pewno chcesz usunąć ten hotel?");
