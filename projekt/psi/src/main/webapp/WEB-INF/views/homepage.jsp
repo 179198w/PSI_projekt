@@ -57,9 +57,9 @@
 		<form:form method="post" enctype="multipart/form-data"
 			class="form-horizontal">
 			<div class="long-panel panel panel-primary">
-				<div class="form-group">
-					<form:label path="query" class="col-md-4 control-label">Szukane słowo:</form:label>
-					<div class="col-md-10">
+				<div class="form-group margin-top-15">
+					<form:label path="query" class="col-md-4 control-label width-200">Szukane słowo:</form:label>
+					<div class="col-md-8">
 						<form:input path="query" class="form-control input-md" />
 					</div>
 				</div>
