@@ -70,6 +70,14 @@
 					$('#cityId').html(data);
 			 	});
 		});
+		
+		$('#cityId').change(function() {
+			var cityId = $('#cityId option:selected').val();
+			$.post('${basepath}/ajax/lista-hoteli', { cityId: cityId })
+				.done(function(data) {
+					$('#hotelId').html(data);
+			 	});
+		});
 
 	});
 </script>

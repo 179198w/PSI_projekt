@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import traveler.command.HotelCommand;
-import traveler.model.City;
 import traveler.model.Hotel;
 import traveler.repository.CityRepository;
 import traveler.repository.HotelRepository;
@@ -53,6 +52,11 @@ public class HotelServiceImpl implements HotelService {
 	@TriggersRemove(cacheName = "hotels", removeAll = true)
 	public void removeHotel(Long hotelId) {
 		hotelRepository.delete(hotelRepository.get(hotelId));
+	}
+
+	@Override
+	public List<Hotel> listHotels(Long cityId) {
+		return hotelRepository.getAllBy("city.id", cityId);
 	}
 
 }

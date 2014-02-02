@@ -15,4 +15,6 @@ public interface HotelService {
 	
 	void removeHotel(Long hotelId);
 
+	List<Hotel> listHotels(Long cityId);
+
 }
