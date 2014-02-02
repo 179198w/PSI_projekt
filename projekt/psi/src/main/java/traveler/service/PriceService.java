@@ -3,6 +3,7 @@ package traveler.service;
 import java.util.List;
 
 import traveler.command.PriceCommand;
+import traveler.command.PriceEditCommand;
 import traveler.model.Price;
 
 public interface PriceService {
@@ -12,5 +13,9 @@ public interface PriceService {
 	List<Price> listPricesWithRelatedData();
 
 	void addPrice(PriceCommand priceCommand);
+
+	PriceEditCommand getPriceEditCommand(Long priceId);
+
+	void updatePrice(PriceEditCommand priceEditCommand);
 
 }
