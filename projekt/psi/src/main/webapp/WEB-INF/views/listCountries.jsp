@@ -18,8 +18,11 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
 		function editCountry(countryId) {
-			alert(countryId);
+			doPost('${basepath}/edytuj-panstwo', {
+				countryId : countryId
+			});
 		}
+		
 		function removeCountry(countryId) {
 			var c=confirm("Czy na pewno chcesz usunąć to państwo?");
 			if(c==true){
@@ -95,8 +98,10 @@
 						<c:forEach var="country" items="${countries}">
 							<tr>
 								<td>${country.name}</td>
-								<td class="fit-cell-to-content"><input type="button" onclick="editCountry(${country.id});" value="edytuj" class="btn btn-xs btn-default" /> <input type="button"
-									onclick="removeCountry(${country.id});" value="usuń" class="btn btn-xs btn-default" /></td>
+								<td class="fit-cell-to-content">
+									<input type="button" onclick="editCountry(${country.id});" value="edytuj" class="btn btn-xs btn-default" />
+									<input type="button" onclick="removeCountry(${country.id});" value="usuń" class="btn btn-xs btn-default" />
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

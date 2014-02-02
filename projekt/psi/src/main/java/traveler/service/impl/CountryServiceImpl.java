@@ -49,4 +49,22 @@ public class CountryServiceImpl implements CountryService {
 		countryRepository.delete(countryRepository.get(countryId));
 	}
 
+	@Override
+	public Country getCountry(Long countryId) {
+		return countryRepository.get(countryId);
+	}
+
+	@Override
+	public CountryCommand getCountryCommand(Long countryId) {
+		return mapperFacade.getObject().map(getCountry(countryId), CountryCommand.class);
+	}
+
+	@Override
+	@TriggersRemove(cacheName = "countries", removeAll = true)
+	public void updateCountry(CountryCommand countryCommand) {
+		Country country = countryRepository.get(countryCommand.getId());
+		mapperFacade.getObject().map(countryCommand, country);
+		countryRepository.update(country);
+	}
+
 }

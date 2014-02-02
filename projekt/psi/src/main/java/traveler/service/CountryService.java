@@ -3,7 +3,6 @@ package traveler.service;
 import java.util.List;
 
 import traveler.command.CountryCommand;
-import traveler.model.City;
 import traveler.model.Country;
 
 public interface CountryService {
@@ -15,5 +14,11 @@ public interface CountryService {
 	void addCountry(CountryCommand countryCommand);
 	
 	void removeCountry(Long countryId);
+
+	Country getCountry(Long countryId);
+
+	CountryCommand getCountryCommand(Long countryId);
+
+	void updateCountry(CountryCommand countryCommand);
 
 }

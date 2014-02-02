@@ -50,13 +50,13 @@
 		</div>
 	</div>
 	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data"
-			class="form-horizontal" commandName="countryCommand">
+		<form:form method="post" enctype="multipart/form-data" class="form-horizontal" commandName="countryCommand">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
+					<form:hidden path="id"/>
 					<spring:bind path="name">
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<form:label path="name" cssClass="col-md-5 control-label">Nazwa:</form:label>
