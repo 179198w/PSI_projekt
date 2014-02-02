@@ -10,8 +10,6 @@ import lombok.Data;
 @Data
 public class CityCommand {
 
-	private Long id;
-	
 	@NotEmpty
 	private String name;
 	

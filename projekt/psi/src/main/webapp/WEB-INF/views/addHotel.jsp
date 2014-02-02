@@ -94,7 +94,7 @@
 							</div>
 						</div>
 					</spring:bind>
-					<spring:bind path="countryId">
+					<spring:bind path="cityId">
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<form:label path="cityId" cssClass="col-md-5 control-label">Miasto:</form:label>
 							<div class="col-md-4">
