@@ -22,6 +22,17 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script>
+	jQuery(document).ready(function($) {
+		$('#countryId').change(function() {
+			var countryId = $('#countryId option:selected').val();
+			$.post('${basepath}/ajax/lista-miast', { countryId: countryId })
+				.done(function(data) {
+					$('#cityId').html(data);
+			 	});
+		});
+	});
+</script>
 </head>
 <body>
 	<div class="navbar navbar-default">
