@@ -10,8 +10,8 @@ import traveler.command.QueryCommand;
 public class HomepageController {
 
 	@RequestMapping("/")
-	public String homepage(Model model) {
-		model.addAttribute("command", new QueryCommand());
+	public String homepage(Model model, QueryCommand queryCommand) {
+		model.addAttribute("queryCommand", queryCommand);
 		return "homepage";
 	}
 	

@@ -63,16 +63,18 @@
 			</div>
 		</div>
 	</div>
-	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data"
-			class="form-horizontal">
-			<div class="long-panel panel panel-primary">
-				<div class="form-group margin-top-15">
-					<form:label path="query" class="col-md-4 control-label width-200">Szukane słowo:</form:label>
-					<div class="col-md-8">
-						<form:input path="query" class="form-control input-md" />
+	<div class="main-panel" style="height: 100%;">
+		<form:form method="post" enctype="multipart/form-data" class="form-inline" role="form" commandName="queryCommand">
+			<div class="long-panel panel panel-primary padding-10" style="margin-top: 200px;">
+				<div style="margin: auto; width: 700px;">
+					<div class="form-group float-left" style="width:623px;">
+						<form:label path="query" class="sr-only">Szukane słowo:</form:label>
+						<div class="width-100pc">
+						<form:input path="query" class="form-control input-md" placeholder="szukane słowo" />
+						</div>
 					</div>
-				</div>
+  					<button type="submit" class="btn btn-default margin-left-10">Szukaj</button>
+			</div>	
 			</div>
 		</form:form>
 	</div>
