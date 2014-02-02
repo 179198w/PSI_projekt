@@ -30,20 +30,26 @@
 				<a class="navbar-brand" href="${basepath}">Traveler</a>
 			</div>
 			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="${basepath}/lista-imprez-turystycznych">Imprezy</a></li>
-					<li><a href="${basepath}/lista-skladnikow">Składniki</a></li>
-					<li><a href="${basepath}/lista-katalogow">Katalogi</a></li>
-					<li><a href="${basepath}/lista-terminow">Terminy</a></li>
-					<li><a href="${basepath}/lista-cen">Cennik</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Słowniki <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="${basepath}/lista-hoteli">Słownik hoteli</a></li>
-							<li><a href="${basepath}/lista-miast">Słownik miast</a></li>
-							<li><a href="${basepath}/lista-panstw">Słownik państw</a></li>
-						</ul></li>
-				</ul>
+				<sec:authorize access="hasRole('ROLE_USER')">
+					<ul class="nav navbar-nav">
+						<li><a href="${basepath}/lista-imprez-turystycznych">Imprezy</a></li>
+						<li><a href="${basepath}/lista-skladnikow">Składniki</a></li>
+						<li><a href="${basepath}/lista-katalogow">Katalogi</a></li>
+						<li><a href="${basepath}/lista-terminow">Terminy</a></li>
+						<li><a href="${basepath}/lista-cen">Cennik</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown">Słowniki <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="${basepath}/lista-hoteli">Słownik hoteli</a></li>
+								<li><a href="${basepath}/lista-miast">Słownik miast</a></li>
+								<li><a href="${basepath}/lista-panstw">Słownik państw</a></li>
+							</ul></li>
+					</ul>
+					<p class="navbar-text navbar-right">Witaj <sec:authentication property="principal.username"/>, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a></p>
+				</sec:authorize>
+				<sec:authorize access="isAnonymous()">
+					<p class="navbar-text navbar-right"><a href="${basepath}/spring_security_login">Zaloguj się</a></p>
+				</sec:authorize>
 			</div>
 		</div>
 	</div>

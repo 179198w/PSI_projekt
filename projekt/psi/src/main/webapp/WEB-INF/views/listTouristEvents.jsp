@@ -64,6 +64,7 @@
 							<li><a href="${basepath}/lista-panstw">Słownik państw</a></li>
 						</ul></li>
 				</ul>
+				<p class="navbar-text navbar-right">Witaj <sec:authentication property="principal.username"/>, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a></p>
 			</div>
 		</div>
 	</div>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 
+<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:context="http://www.springframework.org/schema/context" 
-	xmlns:sec="http://www.springframework.org/schema/security" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security" 
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="
      	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
@@ -10,4 +10,24 @@
     	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd 
       	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
+	<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/lista-*" access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/dodaj-*" access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/edytuj-*" access="hasRole('ROLE_USER')" />
+		<security:intercept-url pattern="/usun-*" access="hasRole('ROLE_USER')" />
+	</security:http>
+
+	<bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+    	<constructor-arg value="12"/>
+	</bean>
+
+	<security:authentication-manager>
+        <security:authentication-provider>
+            <security:password-encoder ref="bCryptPasswordEncoder" />
+            <security:user-service>
+            	<!-- name="user" password="user"  -->
+                <security:user name="user" password="$2a$12$iDKtaFDnLPuRNWANU7GdJ.NW/J5zzozFBwhENDJKkxDMweJaNa5Ga" authorities="ROLE_USER"/>  
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
 </beans>
