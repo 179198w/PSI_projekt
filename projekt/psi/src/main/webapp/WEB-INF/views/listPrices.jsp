@@ -80,7 +80,7 @@
 							<tr>
 								<td>${price.period.from}</td>
 								<td>${price.period.to}</td>
-								<td>${price.type}</td>
+								<td>${price.type.name}</td>
 								<td>${price.touristEventComponent.name}</td>
 								<td>${price.adultValue}</td>
 								<td>${price.childValue}</td>
