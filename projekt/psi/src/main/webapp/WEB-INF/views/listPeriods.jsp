@@ -77,6 +77,9 @@ function removePeriod(periodId) {
 		</div>
 	</div>
 	<div class="main-panel">
+		<ol class="breadcrumb">
+	  		<li class="active">Terminy</li>
+		</ol>
 		<div class="left-panel panel panel-primary">
 			<div class="panel-heading">
 				<h3>Nowy termin</h3>

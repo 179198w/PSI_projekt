@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dodaj miasto</title>
+<title>${cityCommand.id == null ? "Nowe miasto" : "Edycja miasta"}</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -51,6 +51,11 @@
 		</div>
 	</div>
 	<div class="main-panel">
+		<ol class="breadcrumb">
+			<li>Słowniki</li>
+	  		<li><a href="${basepath}/lista-miast">Słownik miast</a></li>
+	  		<li class="active">${cityCommand.id == null ? "Nowe miasto" : "Edycja miasta"}</li>
+		</ol>
 		<form:form method="post" enctype="multipart/form-data"
 			class="form-horizontal" commandName="cityCommand">
 			<div class="long-panel panel panel-primary">

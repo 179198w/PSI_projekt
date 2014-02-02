@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dodaj państwo</title>
+<title>${countryCommand.id == null ? "Nowe państwo" : "Edycja państwa"}</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -51,6 +51,11 @@
 		</div>
 	</div>
 	<div class="main-panel">
+	<ol class="breadcrumb">
+			<li>Słowniki</li>
+	  		<li><a href="${basepath}/lista-panstw">Słownik państw</a></li>
+	  		<li class="active">${countryCommand.id == null ? "Nowe państwo" : "Edycja państwa"}</li>
+		</ol>
 		<form:form method="post" enctype="multipart/form-data" class="form-horizontal" commandName="countryCommand">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">

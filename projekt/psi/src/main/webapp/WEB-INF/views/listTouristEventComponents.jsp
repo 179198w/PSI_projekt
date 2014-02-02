@@ -72,6 +72,9 @@
 		</div>
 	</div>
 	<div class="main-panel">
+	<ol class="breadcrumb">
+	  		<li class="active">Składniki</li>
+		</ol>
 		<div class="left-panel panel panel-primary">
 			<div class="panel-heading">
 				<h3>Nowy składnik</h3>

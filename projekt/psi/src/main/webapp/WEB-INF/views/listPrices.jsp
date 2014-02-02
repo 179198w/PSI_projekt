@@ -81,6 +81,9 @@ function removePrice(priceId) {
 		</div>
 	</div>
 	<div class="main-panel">
+	<ol class="breadcrumb">
+	  		<li class="active">Cennik</li>
+		</ol>
 		<div class="left-panel panel panel-primary">
 			<div class="panel-heading">
 				<h3>Nowa cena</h3>

@@ -48,21 +48,33 @@
 					<p class="navbar-text navbar-right">Witaj <sec:authentication property="principal.username"/>, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a></p>
 				</sec:authorize>
 				<sec:authorize access="isAnonymous()">
-					<p class="navbar-text navbar-right"><a href="${basepath}/spring_security_login">Zaloguj się</a></p>
+					<form class="form-inline navbar-right" style="margin-top: 7px;" role="form" name="f" action="/traveler-0.0.1/j_spring_security_check" method="POST">
+					  <div class="form-group">
+					    <label class="sr-only" for="j_username">Email address</label>
+					    <input type="text" class="form-control" id="j_username" name="j_username" placeholder="użytkownik" />
+					  </div>
+					  <div class="form-group">
+					    <label class="sr-only" for="j_password">Password</label>
+					    <input type="password" class="form-control" id="j_password" name="j_password" placeholder="hasło" />
+					  </div>
+					  <button type="submit" class="btn btn-default">Zaloguj się</button>
+					</form>
 				</sec:authorize>
 			</div>
 		</div>
 	</div>
-	<div class="main-panel">
-		<form:form method="post" enctype="multipart/form-data"
-			class="form-horizontal">
-			<div class="long-panel panel panel-primary">
-				<div class="form-group">
-					<form:label path="query" class="col-md-4 control-label">Szukane słowo:</form:label>
-					<div class="col-md-10">
-						<form:input path="query" class="form-control input-md" />
+	<div class="main-panel" style="height: 100%;">
+		<form:form method="post" enctype="multipart/form-data" class="form-inline" role="form" commandName="queryCommand">
+			<div class="long-panel panel panel-primary padding-10" style="margin-top: 200px;">
+				<div style="margin: auto; width: 700px;">
+					<div class="form-group float-left" style="width:623px;">
+						<form:label path="query" class="sr-only">Szukane słowo:</form:label>
+						<div class="width-100pc">
+						<form:input path="query" class="form-control input-md" placeholder="szukane słowo" />
+						</div>
 					</div>
-				</div>
+  					<button type="submit" class="btn btn-default margin-left-10">Szukaj</button>
+			</div>	
 			</div>
 		</form:form>
 	</div>

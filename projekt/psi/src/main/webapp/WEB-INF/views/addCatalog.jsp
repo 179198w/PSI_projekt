@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dodaj katalog</title>
+<title>${catalogCommand.id == null ? "Nowy katalog" : "Edycja katalogu"}</title>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${basepath}/styles/style.css">
@@ -79,6 +79,10 @@
 		</div>
 	</div>
 	<div class="main-panel">
+		<ol class="breadcrumb">
+	  		<li><a href="${basepath}/lista-katalogow">Katalogi</a></li>
+	  		<li class="active">${catalogCommand.id == null ? "Nowy katalog" : "Edycja katalogu"}</li>
+		</ol>
 		<form:form method="post" enctype="multipart/form-data" class="form-horizontal" commandName="catalogCommand">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">

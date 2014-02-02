@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dodaj hotel</title>
+<title>${hotelCommand.id == null ? "Nowy hotel" : "Edycja hotelu"}</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -62,6 +62,11 @@
 		</div>
 	</div>
 	<div class="main-panel">
+	<ol class="breadcrumb">
+			<li>Słowniki</li>
+	  		<li><a href="${basepath}/lista-hoteli">Słownik hoteli</a></li>
+	  		<li class="active">${hotelCommand.id == null ? "Nowy hotel" : "Edycja hotelu"}</li>
+		</ol>
 		<form:form method="post" enctype="multipart/form-data"
 			class="form-horizontal" commandName="hotelCommand">
 			<div class="long-panel panel panel-primary">
