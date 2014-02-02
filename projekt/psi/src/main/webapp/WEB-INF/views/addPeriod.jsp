@@ -93,7 +93,7 @@
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<form:label path="from" cssClass="col-md-4 control-label">Data od:</form:label>
 							<div class="col-md-4">
-								<form:input path="from" cssClass="form-control input-md" />
+								<form:input path="from" cssClass="form-control input-md" placeholder="dd-MM-yyyy"/>
 								<form:errors path="from" cssClass="help-block" />
 							</div>
 						</div>
@@ -102,7 +102,7 @@
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<form:label path="to" cssClass="col-md-4 control-label">Data do:</form:label>
 							<div class="col-md-4">
-								<form:input path="to" cssClass="form-control input-md" />
+								<form:input path="to" cssClass="form-control input-md" placeholder="dd-MM-yyyy"/>
 								<form:errors path="to" cssClass="help-block" />
 							</div>
 						</div>

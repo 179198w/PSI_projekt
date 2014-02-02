@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -27,6 +28,7 @@ import org.joda.time.LocalDate;
 @SelectBeforeUpdate
 @Table(name = "periods")
 @Data
+@ToString(exclude = {"prices"})
 public class Period {
 	
 	@Id

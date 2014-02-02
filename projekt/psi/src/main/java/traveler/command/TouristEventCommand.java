@@ -46,7 +46,7 @@ public class TouristEventCommand {
 	private Long hotelId;
 	
 	@NotNull
-	@Size(min=3)
+	@Size(min=3,max=30)
 	private List<Long> touristEventComponentIds;
 	
 }

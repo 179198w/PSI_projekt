@@ -12,6 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -25,6 +26,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @SelectBeforeUpdate
 @Table(name = "catalogs")
 @Data
+@ToString(exclude = {"touristEvents"})
 public class Catalog {
 
 	@Id

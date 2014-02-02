@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -23,6 +24,7 @@ import org.hibernate.annotations.Type;
 @SelectBeforeUpdate
 @Table(name = "operators")
 @Data
+@ToString(exclude = {"touristEvents"})
 public class Operator {
 	
 	@Id
