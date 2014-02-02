@@ -33,12 +33,18 @@ public class CityServiceImpl implements CityService {
 	public List<City> listCities() {
 		return cityRepository.getAll();
 	}
-	
-	public CityCommand getCity(Long id){
-		City city=cityRepository.get(id);
-		CityCommand command=new CityCommand();
-		mapperFacade.getObject().map(city, command);
-		return command;
+
+	@Override
+	public CityCommand getCityCommand(Long cityId) {
+		City city = getCity(cityId);
+		CityCommand cityCommand = mapperFacade.getObject().map(city, CityCommand.class);
+		cityCommand.setCountryId(city.getCountry().getId());
+		return cityCommand;
+	}
+
+	@Override
+	public City getCity(Long cityId) {
+		return cityRepository.get(cityId);
 	}
 
 	@Override
@@ -52,23 +58,27 @@ public class CityServiceImpl implements CityService {
 	public void addCity(CityCommand cityCommand) {
 		City city = mapperFacade.getObject().map(cityCommand, City.class);
 		city.setCountry(countryRepository.get(cityCommand.getCountryId()));
-		if (city.getId() != null) {
-			cityRepository.update(city);
-		} else {
-			cityRepository.save(city);
-		}
+		cityRepository.save(city);
 	}
 
 	@Override
 	@TriggersRemove(cacheName = "cities", removeAll = true)
 	public void removeCity(Long cityId) {
-		City city = cityRepository.get(cityId);
+		City city = getCity(cityId);
 		cityRepository.delete(city);
 	}
 
 	@Override
 	public List<City> listCities(Long countryId) {
 		return cityRepository.getAllBy("country.id", countryId);
+	}
+
+	@Override
+	@TriggersRemove(cacheName = "cities", removeAll = true)
+	public void updateCity(CityCommand cityCommand) {
+		City city = mapperFacade.getObject().map(cityCommand, City.class);
+		city.setCountry(countryRepository.get(cityCommand.getCountryId()));
+		cityRepository.update(city);
 	}
 
 }

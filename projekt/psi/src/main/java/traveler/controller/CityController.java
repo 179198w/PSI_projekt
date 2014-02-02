@@ -37,6 +37,7 @@ public class CityController {
 
 	@RequestMapping(value = "/dodaj-miasto", method = RequestMethod.GET)
 	public String addCityForm(Model model, CityCommand cityCommand) {
+		model.addAttribute("cityCommand", cityCommand);
 		model.addAttribute("countries", countryService.listCountries());
 		return "addCity";
 	}
@@ -50,12 +51,19 @@ public class CityController {
 		return "redirect:/lista-miast";
 	}
 
+	@RequestMapping(value = "/edytuj-miasto", method = RequestMethod.POST, params = { "cityId" })
+	public String editCityForm(Model model, @RequestParam("cityId") Long cityId) {
+		CityCommand cityCommand = cityService.getCityCommand(cityId);
+		return addCityForm(model, cityCommand);
+	}
+	
 	@RequestMapping(value = "/edytuj-miasto", method = RequestMethod.POST)
-	public String addCity(Model model, Long cityId) {
-		CityCommand city = cityService.getCity(cityId);
-		model.addAttribute("cityCommand", city);
-		model.addAttribute("countries", countryService.listCountries());
-		return "addCity";
+	public String editCountry(Model model, @Valid CityCommand cityCommand, BindingResult result) {
+		if (result.hasErrors()) {
+			return addCityForm(model, cityCommand);
+		}
+		cityService.updateCity(cityCommand);
+		return "redirect:/lista-miast";
 	}
 
 	@RequestMapping(value = "/usun-miasto", method = RequestMethod.POST)

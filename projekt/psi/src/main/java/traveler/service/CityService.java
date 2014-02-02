@@ -13,10 +13,14 @@ public interface CityService {
 
 	void addCity(CityCommand cityCommand);
 	
-	CityCommand getCity(Long id);
+	CityCommand getCityCommand(Long id);
 	
 	void removeCity(Long cityId);
 
 	List<City> listCities(Long countryId);
+
+	City getCity(Long cityId);
+
+	void updateCity(CityCommand cityCommand);
 
 }
