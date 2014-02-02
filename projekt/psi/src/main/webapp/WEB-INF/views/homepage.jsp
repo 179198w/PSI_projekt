@@ -48,7 +48,17 @@
 					<p class="navbar-text navbar-right">Witaj <sec:authentication property="principal.username"/>, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a></p>
 				</sec:authorize>
 				<sec:authorize access="isAnonymous()">
-					<p class="navbar-text navbar-right"><a href="${basepath}/spring_security_login">Zaloguj się</a></p>
+					<form class="form-inline navbar-right" style="margin-top: 7px;" role="form" name="f" action="/traveler-0.0.1/j_spring_security_check" method="POST">
+					  <div class="form-group">
+					    <label class="sr-only" for="j_username">Email address</label>
+					    <input type="text" class="form-control" id="j_username" name="j_username" placeholder="użytkownik" />
+					  </div>
+					  <div class="form-group">
+					    <label class="sr-only" for="j_password">Password</label>
+					    <input type="password" class="form-control" id="j_password" name="j_password" placeholder="hasło" />
+					  </div>
+					  <button type="submit" class="btn btn-default">Zaloguj się</button>
+					</form>
 				</sec:authorize>
 			</div>
 		</div>
