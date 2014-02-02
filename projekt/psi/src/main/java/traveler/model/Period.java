@@ -43,7 +43,6 @@ public class Period {
 	@Column(name = "active_to")
 	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 	private LocalDate to;
-	
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "tourist_event_id")

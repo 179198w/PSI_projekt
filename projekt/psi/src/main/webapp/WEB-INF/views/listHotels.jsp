@@ -48,7 +48,7 @@
             $form.appendTo('body');
             $form.submit();
         }
-	</script>
+</script>
 </head>
 <body>
 	<div class="navbar navbar-default">

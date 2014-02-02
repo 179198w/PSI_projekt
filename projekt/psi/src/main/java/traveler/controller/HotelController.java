@@ -73,13 +73,13 @@ public class HotelController {
 	}
 
 	@RequestMapping(value = "/edytuj-hotel", method = RequestMethod.POST, params = { "hotelId" })
-	public String editCityForm(Model model, @RequestParam("hotelId") Long hotelId) {
+	public String editHotelForm(Model model, @RequestParam("hotelId") Long hotelId) {
 		HotelCommand hotelCommand = hotelService.getHotelCommand(hotelId);
 		return addHotelForm(model, hotelCommand);
 	}
 	
 	@RequestMapping(value = "/edytuj-hotel", method = RequestMethod.POST)
-	public String editCity(Model model, @Valid HotelCommand hotelCommand, BindingResult result) {
+	public String editHotel(Model model, @Valid HotelCommand hotelCommand, BindingResult result) {
 		if (result.hasErrors()) {
 			return addHotelForm(model, hotelCommand);
 		}

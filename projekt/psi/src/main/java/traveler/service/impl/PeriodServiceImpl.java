@@ -6,8 +6,10 @@ import javax.inject.Inject;
 
 import org.joda.time.LocalDate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import traveler.command.PeriodCommand;
+import traveler.command.PeriodEditCommand;
 import traveler.command.PeriodFilterCommand;
 import traveler.model.Period;
 import traveler.model.TouristEvent;
@@ -23,7 +25,7 @@ public class PeriodServiceImpl implements PeriodService {
 
 	@Inject
 	private TouristEventRepository touristEventRepository;
-	
+
 	@Override
 	public List<Period> listPeriods() {
 		return periodRepository.getAll();
@@ -64,6 +66,33 @@ public class PeriodServiceImpl implements PeriodService {
 	@Override
 	public List<Period> listPeriods(PeriodFilterCommand filterCommand) {
 		return periodRepository.getFiltered(filterCommand);
+	}
+
+	@Override
+	@Transactional
+	public PeriodEditCommand getPeriodEditCommand(Long periodId) {
+		Period period = getPeriod(periodId);
+		PeriodEditCommand periodEditCommand = new PeriodEditCommand();
+		periodEditCommand.setId(period.getId());
+		periodEditCommand.setFrom(period.getFrom());
+		periodEditCommand.setTo(period.getTo());
+		periodEditCommand.setTouristEventId(period.getTouristEvent().getId());
+		return periodEditCommand;
+	}
+
+	@Override
+	public Period getPeriod(Long periodId) {
+		return periodRepository.get(periodId);
+	}
+
+	@Override
+	public void updatePeriod(PeriodEditCommand periodEditCommand) {
+		Period period = new Period();
+		period.setId(periodEditCommand.getId());
+		period.setTo(periodEditCommand.getTo());
+		period.setFrom(periodEditCommand.getFrom());
+		period.setTouristEvent(touristEventRepository.get(periodEditCommand.getTouristEventId()));
+		periodRepository.update(period);
 	}
 	
 }

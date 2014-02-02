@@ -3,6 +3,7 @@ package traveler.service;
 import java.util.List;
 
 import traveler.command.PeriodCommand;
+import traveler.command.PeriodEditCommand;
 import traveler.command.PeriodFilterCommand;
 import traveler.model.Period;
 
@@ -13,5 +14,11 @@ public interface PeriodService {
 	void addPeriod(PeriodCommand periodCommand);
 
 	List<Period> listPeriods(PeriodFilterCommand filterCommand);
+
+	PeriodEditCommand getPeriodEditCommand(Long periodId);
+
+	void updatePeriod(PeriodEditCommand periodEditCommand);
+
+	Period getPeriod(Long periodId);
 
 }

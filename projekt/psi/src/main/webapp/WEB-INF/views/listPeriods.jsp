@@ -22,7 +22,25 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
+<script>
+	function editPeriod(periodId) {
+		doPost('${basepath}/edytuj-termin', {
+			periodId : periodId
+		});
+	}	
+	
+	function doPost(url, params) {
+	    var $form = $('<form method="POST">').attr('action', url);
+	    $.each(params, function(name, value) {
+	        $('<input type="hidden">')
+	            .attr('name', name)
+	            .attr('value', value)
+	            .appendTo($form);
+	    });
+	    $form.appendTo('body');
+	    $form.submit();
+	}
+</script>
 </head>
 <body>
 	<div class="navbar navbar-default">

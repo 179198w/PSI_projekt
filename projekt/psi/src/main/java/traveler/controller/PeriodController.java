@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import traveler.command.PeriodCommand;
+import traveler.command.PeriodEditCommand;
 import traveler.command.PeriodFilterCommand;
 import traveler.service.PeriodService;
 import traveler.service.TouristEventService;
@@ -41,6 +43,24 @@ public class PeriodController {
 			return addPeriodForm(model, periodCommand);
 		}
 		periodService.addPeriod(periodCommand);
+		return "redirect:/lista-terminow";
+	}
+	
+	@RequestMapping(value = "/edytuj-termin", method = RequestMethod.POST, params = { "periodId" })
+	public String editPeriodForm(Model model, @RequestParam("periodId") Long periodId) {
+		PeriodEditCommand periodEditCommand = periodService.getPeriodEditCommand(periodId);
+		model.addAttribute("periodEditCommand", periodEditCommand);
+		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
+		return "editPeriod";
+	}
+	
+	@RequestMapping(value = "/edytuj-termin", method = RequestMethod.POST)
+	public String editPeriod(Model model, @Valid PeriodEditCommand periodEditCommand, BindingResult result) {
+		if (result.hasErrors()) {
+			model.addAttribute("touristEvents", touristEventService.listTouristEvents());
+			return "editPeriod";
+		}
+		periodService.updatePeriod(periodEditCommand);
 		return "redirect:/lista-terminow";
 	}
 
