@@ -23,7 +23,11 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
-	var touristEvents = [];
+	var touristEvents = [
+		<c:forEach items="${periodCommand.touristEventIds}" var="touristEventId">
+		'${touristEventId}',
+		</c:forEach>
+	];
 	
 	jQuery(document).ready(function($) {
 		
@@ -160,6 +164,16 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach items="${periodCommand.touristEventIds}" var="touristEventId">
+							<tr>
+								<c:forEach items="${touristEvents}" var="touristEvent">
+									<c:if test="${touristEventId == touristEvent.id}">
+										<td>${touristEvent.name}</td>
+									</c:if>
+								</c:forEach>
+								<td><input type="button" value="usuń" class="btn btn-xs btn-default removeTouristEventButton" touristEventId="${touristEventId}" /></td>
+							</tr>
+						</c:forEach>						
 						</tbody>
 					</table>
 				</div>
