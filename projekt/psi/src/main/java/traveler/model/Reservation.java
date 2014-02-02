@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -30,6 +31,7 @@ import org.joda.time.DateTime;
 @SelectBeforeUpdate
 @Table(name = "reservations")
 @Data
+@ToString(exclude = {"prices","customers"})
 public class Reservation {
 
 	@Id

@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -26,6 +27,7 @@ import org.hibernate.annotations.SelectBeforeUpdate;
 @SelectBeforeUpdate
 @Table(name = "prices")
 @Data
+@ToString(exclude = {"reservations"})
 public class Price {
 
 	@Id

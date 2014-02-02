@@ -35,8 +35,8 @@ public class HotelController {
 	}
 
 	@RequestMapping(value = "/dodaj-hotel", method = RequestMethod.GET)
-	public String addHotelForm(Model model) {
-		model.addAttribute("hotelCommand", new HotelCommand());
+	public String addHotelForm(Model model, HotelCommand hotelCommand) {
+		model.addAttribute("hotelCommand", hotelCommand);
 		model.addAttribute("countries", countryService.listCountries());
 		model.addAttribute("cities", cityService.listCities());
 		return "addHotel";
@@ -46,7 +46,7 @@ public class HotelController {
 	public String addCity(Model model, @Valid HotelCommand hotelCommand,
 			BindingResult result) {
 		if (result.hasErrors()) {
-			return "addHotel";
+			return addHotelForm(model, hotelCommand);
 		}
 		hotelService.addHotel(hotelCommand);
 		return "redirect:/lista-hoteli";

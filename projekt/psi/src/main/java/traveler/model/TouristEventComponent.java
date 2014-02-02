@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -26,6 +27,7 @@ import org.hibernate.annotations.SelectBeforeUpdate;
 @DynamicUpdate
 @SelectBeforeUpdate
 @Table(name = "tourist_event_components")
+@ToString(exclude = {"touristEvents","prices"})
 @Data
 public class TouristEventComponent {
 
