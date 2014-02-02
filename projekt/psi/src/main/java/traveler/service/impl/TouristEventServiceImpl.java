@@ -1,6 +1,7 @@
 package traveler.service.impl;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static org.apache.commons.io.FilenameUtils.getExtension;
 import static traveler.utils.FileUtils.md5DigestOfFile;
 import static traveler.utils.FileUtils.saveFile;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -83,7 +85,7 @@ public class TouristEventServiceImpl implements TouristEventService {
 		MultipartFile statue = touristEventCommand.getStatue();
 		if (!statue.isEmpty()) {
 			try {
-				String filename = md5DigestOfFile(statue);
+				String filename = md5DigestOfFile(statue) + "." + getExtension(statue.getOriginalFilename());
 				saveFile(statue, rootPath + RELATIVE_FILE_PATH + filename);
 				touristEvent.setStatueUrl(RELATIVE_FILE_URL + filename);
 			} catch (IOException e) {
@@ -95,7 +97,7 @@ public class TouristEventServiceImpl implements TouristEventService {
 		for (MultipartFile photo : touristEventCommand.getPhotos()) {
 			if (!photo.isEmpty()) {
 				try {
-					String filename = md5DigestOfFile(photo);
+					String filename = md5DigestOfFile(photo) + "." + getExtension(photo.getOriginalFilename());;
 					saveFile(photo, rootPath + RELATIVE_FILE_PATH + filename);
 					photosUrls.add(RELATIVE_FILE_URL + filename);
 				} catch (IOException e) {
@@ -108,7 +110,6 @@ public class TouristEventServiceImpl implements TouristEventService {
 		List<TouristEventComponent> touristEventComponents = newArrayList();
 		for (Long touristEventComponentId : touristEventCommand.getTouristEventComponentIds()) {
 			TouristEventComponent touristEventComponent = touristEventComponentRepository.get(touristEventComponentId);
-			//touristEventComponent.getTouristEvents().add(touristEvent);
 			touristEventComponents.add(touristEventComponent);
 		}
 		touristEvent.setTouristEventComponents(touristEventComponents);

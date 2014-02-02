@@ -32,8 +32,12 @@ public class TouristEventCommand {
 	@NotNull
 	private MultipartFile statue;
 	
+	private String statueUrl;
+	
 	@NotNull
 	private List<MultipartFile> photos;
+	
+	private List<String> photoUrls;
 	
 	@Min(value=1)
 	@NotNull

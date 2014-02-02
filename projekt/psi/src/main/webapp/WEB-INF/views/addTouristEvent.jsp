@@ -152,6 +152,9 @@
 							<form:label path="statue" class="col-md-4 control-label">Regulamin:</form:label>
 							<div class="col-md-4">
 								<input type="file" name="statue" class="input-file" />
+								<c:if test="${touristEventCommand.statueUrl != null}">
+									<p class="help-block">Aktualny <a href="${basepath}/${touristEventCommand.statueUrl}">regulamin</a>.</p>
+								</c:if>
 								<form:errors path="statue" cssClass="help-block" />
 							</div>
 						</div>
