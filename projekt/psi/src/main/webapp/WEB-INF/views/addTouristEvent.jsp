@@ -26,7 +26,7 @@
 	
 	var touristEventComponents = [
 		<c:forEach items="${touristEventCommand.touristEventComponentIds}" var="touristEventComponentId">
-			${touristEventComponentId},
+			'${touristEventComponentId}',
 		</c:forEach>	
 	];
 
