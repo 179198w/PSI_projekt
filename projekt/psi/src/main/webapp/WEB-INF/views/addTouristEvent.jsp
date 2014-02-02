@@ -29,6 +29,12 @@
 			'${touristEventComponentId}',
 		</c:forEach>	
 	];
+	
+	var photoUrls = [
+	    <c:forEach items="${touristEventCommand.photoUrls}" var="photoUrl">
+	    	'${photoUrl}',
+		</c:forEach>	
+	];
 
 	function addOneMorePhoto() {
 		var photos = $('#photos');
@@ -59,11 +65,20 @@
 			touristEventComponents.splice($.inArray(touristEventComponentId, touristEventComponents), 1);
 			$(this).closest('tr').remove();
 		});
+		
+		$(document).on('click', '.photo-remove-button', function() {
+			var photoUrl = $(this).attr('photoUrl');
+			photoUrls.splice($.inArray(photoUrl, photoUrls), 1);
+			$(this).closest('div').remove();
+		});
 
 		$('input[type=\'submit\']').click(function() {
-			var hiddenInputContainer = $('#touristEventComponents');
+			var hiddenInputContainer = $('#hiddenInputContainer');
 			for (var i = 0; i < touristEventComponents.length; i++) {
 				$('<input type="hidden">').attr('name', 'touristEventComponentIds[' + i + ']').attr('value', touristEventComponents[i]).appendTo(hiddenInputContainer);
+			}
+			for (var i = 0; i < photoUrls.length; i++) {
+				$('<input type="hidden">').attr('name', 'photoUrls[' + i + ']').attr('value', photoUrls[i]).appendTo(hiddenInputContainer);
 			}
 		});
 		
@@ -120,6 +135,8 @@
 				</div>
 				<div class="panel-body">
 					<form:hidden path="id" />
+					<form:hidden path="statueUrl" />
+					<div id="hiddenInputContainer"></div>
 					<spring:bind path="name">
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<form:label path="name" cssClass="col-md-4 control-label">Nazwa:</form:label>
@@ -180,6 +197,15 @@
 									onclick="addOneMorePhoto();" />
 								<form:errors path="photos" cssClass="help-block" />
 							</div>
+								<div class="margin-left-115 padding-top-10 width-100-pc overflow-hidden">
+									<c:forEach items="${touristEventCommand.photoUrls}" var="photoUrl">
+										<div class="margin-right-10 float-left">
+											<img style="height: 100px;" src="${basepath}/${photoUrl}" />
+											<button type="button" class="photo-remove-button btn btn-default btn-xs glyphicon glyphicon-remove" photoUrl="${photoUrl}">
+											</button>
+										</div>
+									</c:forEach>
+								</div>
 						</div>
 					</spring:bind>
 				</div>
@@ -233,7 +259,6 @@
 					<h3>Składniki</h3>
 				</div>
 				<div class="panel-body">
-					<div id="touristEventComponents"></div>
 					<spring:bind path="touristEventComponentIds">
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<label class="col-md-4 control-label width-200"

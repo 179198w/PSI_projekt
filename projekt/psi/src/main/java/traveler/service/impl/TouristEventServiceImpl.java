@@ -10,7 +10,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -27,6 +26,8 @@ import traveler.repository.TouristEventComponentRepository;
 import traveler.repository.TouristEventRepository;
 import traveler.service.TouristEventService;
 import traveler.utils.MapperFacadeFactoryBean;
+
+import com.google.common.collect.Lists;
 
 @Service
 public class TouristEventServiceImpl implements TouristEventService {
@@ -93,7 +94,7 @@ public class TouristEventServiceImpl implements TouristEventService {
 			}
 		}
 
-		List<String> photosUrls = newArrayList();
+		List<String> photosUrls = touristEvent.getPhotoUrls() != null ? touristEvent.getPhotoUrls() : Lists.<String>newArrayList();
 		for (MultipartFile photo : touristEventCommand.getPhotos()) {
 			if (!photo.isEmpty()) {
 				try {
@@ -131,7 +132,8 @@ public class TouristEventServiceImpl implements TouristEventService {
 	@Override
 	@Transactional
 	public void updateTouristEventCommand(TouristEventCommand touristEventCommand, String rootPath) {
-		TouristEvent touristEvent = mapperFacade.getObject().map(touristEventCommand, TouristEvent.class);
+		TouristEvent touristEvent = touristEventRepository.get(touristEventCommand.getId());
+		mapperFacade.getObject().map(touristEventCommand, touristEvent);
 
 		fillTouristEvent(touristEventCommand, rootPath, touristEvent);
 

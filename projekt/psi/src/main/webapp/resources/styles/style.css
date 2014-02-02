@@ -91,4 +91,26 @@ label.col-md-4 {
 
 .width-200 {
 	width: 200px !important;
-}s
+}
+
+.overflow-hidden {
+	overflow: hidden;
+}
+
+.padding-top-10 {
+	padding-top: 10px;
+}
+
+.margin-right-10 {
+	margin-right: 10px;
+}
+
+.margin-left-115 {
+	margin-left: 115px;
+}
+
+.photo-remove-button {
+	position: relative;
+	top: -45px;
+	left: -25px;
+}
