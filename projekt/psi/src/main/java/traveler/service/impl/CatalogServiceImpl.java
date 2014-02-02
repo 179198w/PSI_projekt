@@ -7,6 +7,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import traveler.command.CatalogCommand;
 import traveler.command.CatalogFilterCommand;
@@ -49,6 +50,31 @@ public class CatalogServiceImpl implements CatalogService {
 	@Override
 	public List<Catalog> listCatalogs(CatalogFilterCommand filterCommand) {
 		return catalogRepository.listFiltered(filterCommand);
+	}
+
+	@Override
+	@Transactional
+	public CatalogCommand getCatalogCommand(Long catalogId) {
+		Catalog catalog = catalogRepository.get(catalogId);
+		CatalogCommand catalogCommand = mapperFacade.getObject().map(catalog, CatalogCommand.class);
+		List<Long> touristEventIds = newArrayList();
+		for (TouristEvent touristEvent : catalog.getTouristEvents()) {
+			touristEventIds.add(touristEvent.getId());
+		}
+		catalogCommand.setTouristEventIds(touristEventIds);
+		return catalogCommand;
+	}
+
+	@Override
+	public void updateCatalog(CatalogCommand catalogCommand) {
+		Catalog catalog = mapperFacade.getObject().map(catalogCommand, Catalog.class);
+		
+		List<TouristEvent> touristEvents = newArrayList();
+		for (Long touristEventId : catalogCommand.getTouristEventIds()) {
+			touristEvents.add(touristEventRepository.get(touristEventId));
+		}
+		catalog.setTouristEvents(touristEvents);
+		catalogRepository.update(catalog);
 	}
 	
 }

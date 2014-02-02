@@ -17,12 +17,12 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
-
 	function editCity(cityId) {
 		doPost('${basepath}/edytuj-miasto', {
 			cityId : cityId
 		});
 	}
+	
 	function removeCity(cityId) {
 		var c=confirm("Czy na pewno chcesz usunąć to miasto?");
 		if(c==true){

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import traveler.command.CatalogCommand;
 import traveler.command.CatalogFilterCommand;
@@ -31,6 +32,7 @@ public class CatalogController {
 	
 	@RequestMapping(value = "/dodaj-katalog", method = RequestMethod.GET)
 	public String addCatalogForm(Model model, CatalogCommand catalogCommand) {
+		model.addAttribute("catalogCommand", catalogCommand);
 		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
 		return "addCatalog";
 	}
@@ -41,6 +43,21 @@ public class CatalogController {
 			return addCatalogForm(model, catalogCommand);
 		}
 		catalogService.addCatalog(catalogCommand);
+		return "redirect:/lista-katalogow";
+	}
+	
+	@RequestMapping(value = "/edytuj-katalog", method = RequestMethod.POST, params = { "catalogId" })
+	public String editCatalogForm(Model model, @RequestParam("catalogId") Long catalogId) {
+		CatalogCommand catalogCommand = catalogService.getCatalogCommand(catalogId);
+		return addCatalogForm(model, catalogCommand);
+	}
+	
+	@RequestMapping(value = "/edytuj-katalog", method = RequestMethod.POST)
+	public String editCatalog(Model model, @Valid CatalogCommand catalogCommand, BindingResult result) {
+		if (result.hasErrors()) {
+			return addCatalogForm(model, catalogCommand);
+		}
+		catalogService.updateCatalog(catalogCommand);
 		return "redirect:/lista-katalogow";
 	}
 	

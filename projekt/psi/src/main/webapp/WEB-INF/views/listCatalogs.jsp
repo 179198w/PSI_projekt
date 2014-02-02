@@ -23,11 +23,10 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
-		function publishCatalog(catalogId) {
-			alert(catalogId);
-		}
 		function editCatalog(catalogId) {
-			alert(catalogId);
+			doPost('${basepath}/edytuj-katalog', {
+				catalogId : catalogId
+			});
 		}
 		function removeCatalog(catalogId) {
 			doPost('${basepath}/usun-katalog', {catalogId: catalogId});
@@ -98,8 +97,6 @@
 							<tr>
 								<td>${catalog.name}</td>
 								<td class="fit-cell-to-content"><input type="button"
-									onclick="publishCatalog(${catalog.id});" value="publikuj"
-									class="btn btn-xs btn-default" /> <input type="button"
 									onclick="editCatalog(${catalog.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
 									onclick="removeCatalog(${catalog.id});" value="usuń"

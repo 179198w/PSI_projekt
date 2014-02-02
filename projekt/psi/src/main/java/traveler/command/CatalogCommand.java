@@ -9,6 +9,8 @@ import lombok.Data;
 @Data
 public class CatalogCommand {
 	
+	private Long id;
+	
 	@NotEmpty
 	private String name;
 	

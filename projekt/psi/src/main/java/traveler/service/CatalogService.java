@@ -15,4 +15,8 @@ public interface CatalogService {
 
 	List<Catalog> listCatalogs(CatalogFilterCommand filterCommand);
 
+	CatalogCommand getCatalogCommand(Long catalogId);
+
+	void updateCatalog(CatalogCommand catalogCommand);
+
 }
