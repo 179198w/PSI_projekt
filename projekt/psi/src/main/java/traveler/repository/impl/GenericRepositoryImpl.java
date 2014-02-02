@@ -41,10 +41,15 @@ public abstract class GenericRepositoryImpl<E, I extends Serializable> implement
 	public E get(I id) {
 		return (E) session().get(getEntityClass(), id);
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public List<E> getAll() {
 		return (List<E>) session().createCriteria(getEntityClass()).list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<E> getAllByQuery(String where) {
+		return (List<E>) session().createQuery(where).list();
 	}
 
 

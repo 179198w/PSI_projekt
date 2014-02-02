@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import traveler.command.TouristEventComponentCommand;
 import traveler.command.TouristEventComponentFilterCommand;
+import traveler.model.TouristEvent;
 import traveler.model.TouristEventComponent;
 import traveler.repository.TouristEventComponentRepository;
+import traveler.repository.TouristEventRepository;
 import traveler.service.TouristEventComponentService;
 import traveler.utils.MapperFacadeFactoryBean;
 
@@ -18,7 +20,10 @@ public class TouristEventComponentServiceImpl implements TouristEventComponentSe
 
 	@Inject
 	private TouristEventComponentRepository touristEventComponentRepository;
-
+	
+	@Inject
+	private TouristEventRepository touristEventRepository;
+	
 	@Inject
 	private MapperFacadeFactoryBean mapperFacade;
 	
@@ -57,6 +62,19 @@ public class TouristEventComponentServiceImpl implements TouristEventComponentSe
 	@Override
 	public List<TouristEventComponent> listTouristEventComponent(Long touristEventId) {
 		return touristEventComponentRepository.getAllByTouristEvent(touristEventId);
+	}
+	
+	public void removeComponent(Long compId){
+		TouristEventComponent comp=touristEventComponentRepository.get(compId);
+		List<TouristEvent> touristEvents=touristEventRepository.getAllByQuery("select t from TouristEvent t join t.touristEventComponents comp where comp.id="+comp.getId());
+		for(TouristEvent t:touristEvents){
+			List<TouristEventComponent> components=touristEventComponentRepository.getAllByQuery("select t from TouristEventComponent t join t.touristEvents comp where comp.id="+t.getId());
+			t.setTouristEventComponents(components);
+			t.getTouristEventComponents().remove(comp);
+			touristEventRepository.update(t);
+		}
+		comp.setTouristEvents(null);
+		touristEventComponentRepository.delete(comp);
 	}
 	
 }

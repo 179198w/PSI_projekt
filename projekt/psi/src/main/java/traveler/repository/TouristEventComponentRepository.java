@@ -10,5 +10,6 @@ public interface TouristEventComponentRepository extends GenericRepository<Touri
 	List<TouristEventComponent> getFiltered(TouristEventComponentFilterCommand filterCommand);
 
 	List<TouristEventComponent> getAllByTouristEvent(Long touristEventId);
+	
 
 }

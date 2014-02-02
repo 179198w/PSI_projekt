@@ -84,7 +84,7 @@ public class TouristEvent {
 	private List<Period> periods;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinTable(name = "tourist_event_tourist_event_component", joinColumns = { @JoinColumn(name = "tourist_event_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "tourist_event_component_id", nullable = false, updatable = false) })
+	@JoinTable(name = "tourist_event_tourist_event_component", joinColumns = { @JoinColumn(name = "tourist_event_id", nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "tourist_event_component_id", nullable = false) })
 	private List<TouristEventComponent> touristEventComponents;
 
 	@OneToMany(mappedBy = "touristEvent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

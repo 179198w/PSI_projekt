@@ -30,7 +30,12 @@
 		}
 		
 		function removeTouristEventComponent(touristEventComponentId) {
-			alert(touristEventComponentId);
+			var c=confirm("Czy na pewno chcesz usunąć ten składnik?");
+			if(c==true){
+			doPost('${basepath}/usun-skladnik', {
+				touristEventComponentId : touristEventComponentId
+			});
+			}
 		}
 		
 		function doPost(url, params) {
@@ -67,13 +72,17 @@
 							<li><a href="${basepath}/lista-panstw">Słownik państw</a></li>
 						</ul></li>
 				</ul>
-				<p class="navbar-text navbar-right">Witaj <sec:authentication property="principal.username"/>, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a></p>
+				<p class="navbar-text navbar-right">
+					Witaj
+					<sec:authentication property="principal.username" />
+					, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a>
+				</p>
 			</div>
 		</div>
 	</div>
 	<div class="main-panel">
-	<ol class="breadcrumb">
-	  		<li class="active">Składniki</li>
+		<ol class="breadcrumb">
+			<li class="active">Składniki</li>
 		</ol>
 		<div class="left-panel panel panel-primary">
 			<div class="panel-heading">
@@ -104,8 +113,7 @@
 							<tr>
 								<td>${touristEventComponent.type.name}</td>
 								<td>${touristEventComponent.name}</td>
-								<td class="fit-cell-to-content"><input
-									type="button"
+								<td class="fit-cell-to-content"><input type="button"
 									onclick="editTouristEventComponent(${touristEventComponent.id});"
 									value="edytuj" class="btn btn-xs btn-default" /> <input
 									type="button"
@@ -122,7 +130,9 @@
 				<h3>Filtrowanie wyników</h3>
 			</div>
 			<div class="panel-body">
-				<form:form method="post" enctype="multipart/form-data" commandName="touristEventComponentFilterCommand" class="form-horizontal">
+				<form:form method="post" enctype="multipart/form-data"
+					commandName="touristEventComponentFilterCommand"
+					class="form-horizontal">
 					<div class="form-group">
 						<form:label path="name" class="col-md-4 control-label">Nazwa:</form:label>
 						<div class="col-md-8">
@@ -130,7 +140,8 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="submit" class="margin-auto display-block btn btn-default" value="Filtruj" />
+						<input type="submit"
+							class="margin-auto display-block btn btn-default" value="Filtruj" />
 					</div>
 				</form:form>
 			</div>

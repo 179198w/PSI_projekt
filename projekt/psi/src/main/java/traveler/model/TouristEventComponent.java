@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -28,6 +29,7 @@ import org.hibernate.annotations.SelectBeforeUpdate;
 @Table(name = "tourist_event_components")
 @ToString(exclude = {"touristEvents","prices"})
 @Data
+@EqualsAndHashCode(exclude = {"touristEvents","prices"})
 public class TouristEventComponent {
 
 	@Id
@@ -45,7 +47,7 @@ public class TouristEventComponent {
 	@ManyToMany(mappedBy = "touristEventComponents", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<TouristEvent> touristEvents;
 	
-	@OneToMany(mappedBy = "touristEventComponent", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
+	@OneToMany(mappedBy = "touristEventComponent", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Price> prices;
 	
 }

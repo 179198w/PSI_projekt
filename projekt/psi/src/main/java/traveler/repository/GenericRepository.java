@@ -3,6 +3,8 @@ package traveler.repository;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Session;
+
 public interface GenericRepository<E, I extends Serializable> {
 
 	I save(E entity);
@@ -22,5 +24,7 @@ public interface GenericRepository<E, I extends Serializable> {
 	List<E> getAllByPartString(String propertyName, String value);
 	
 	List<E> getAllWithOuterJoin(String... properties);
+	
+	List<E> getAllByQuery(String where);
 
 }

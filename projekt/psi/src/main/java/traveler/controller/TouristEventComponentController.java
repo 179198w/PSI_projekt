@@ -64,4 +64,10 @@ public class TouristEventComponentController {
 		return "redirect:/lista-skladnikow";
 	}
 	
+	@RequestMapping(value = "/usun-skladnik", method = RequestMethod.POST)
+	public String removeTouristEventComponent(Model model, Long touristEventComponentId) {
+		touristEventComponentService.removeComponent(touristEventComponentId);
+		return "redirect:/lista-skladnikow";
+	}
+	
 }
