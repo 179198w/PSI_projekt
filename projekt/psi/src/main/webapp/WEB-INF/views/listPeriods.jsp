@@ -88,9 +88,6 @@
 						<tr>
 							<th>Data od</th>
 							<th>Data do</th>
-							<th>Nazwa</th>
-							<th>Miasto</th>
-							<th>Operator</th>
 							<th class="text-align-center">Akcje</th>
 						</tr>
 					</thead>
@@ -99,9 +96,6 @@
 							<tr>
 								<td>${period.from}</td>
 								<td>${period.to}</td>
-								<td></td>
-								<td></td>
-								<td></td>
 								<td class="fit-cell-to-content"><input type="button"
 									onclick="editPeriod(${period.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
