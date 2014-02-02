@@ -44,8 +44,7 @@ public class TouristEventController {
 	}
 
 	@RequestMapping(value = "/dodaj-impreze-turystyczna", method = RequestMethod.GET)
-	public String addTouristEventForm(Model model) {
-		model.addAttribute("touristEventCommand", new TouristEventCommand());
+	public String addTouristEventForm(Model model, TouristEventCommand touristEventCommand) {
 		model.addAttribute("countries", countryService.listCountries());
 		model.addAttribute("cities", cityService.listCities());
 		model.addAttribute("hotels", hotelService.listHotels());
@@ -56,7 +55,7 @@ public class TouristEventController {
 	@RequestMapping(value = "/dodaj-impreze-turystyczna", method = RequestMethod.POST)
 	public String addTouristEvent(HttpServletRequest request, Model model,@Valid TouristEventCommand touristEventCommand, BindingResult result) throws Exception {
 		if(result.hasErrors()){
-			return "addTouristEvent";
+			return addTouristEventForm(model, touristEventCommand);
 		}
 		touristEventService.addTouristEvent(touristEventCommand, request.getSession().getServletContext().getRealPath("/"));
 		return "redirect:/lista-imprez-turystycznych";

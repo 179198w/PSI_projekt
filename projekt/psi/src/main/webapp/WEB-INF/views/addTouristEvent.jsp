@@ -201,8 +201,8 @@
 				<div class="panel-body">
 					<spring:bind path="countryId">
 						<div class="form-group ${status.error ? 'has-error' : ''}">
-							<form:label path="countryId" cssClass="col-md-5 control-label">Państwo:</form:label>
-							<div class="col-md-4">
+							<form:label path="countryId" cssClass="col-md-4 control-label">Państwo:</form:label>
+							<div class="col-md-8">
 								<form:select path="countryId" class="form-control">
 									<form:option value="0">Wybierz państwo</form:option>
 									<form:options items="${countries}" itemLabel="name"
@@ -214,8 +214,8 @@
 					</spring:bind>
 					<spring:bind path="cityId">
 						<div class="form-group ${status.error ? 'has-error' : ''}">
-							<form:label path="cityId" cssClass="col-md-5 control-label">Miasto:</form:label>
-							<div class="col-md-4">
+							<form:label path="cityId" cssClass="col-md-4 control-label">Miasto:</form:label>
+							<div class="col-md-8">
 								<form:select path="cityId" class="form-control">
 									<form:option value="0">Wybierz miasto</form:option>
 									<form:options items="${cities}" itemLabel="name" itemValue="id" />
