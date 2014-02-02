@@ -24,7 +24,11 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
 	
-	var touristEventComponents = [];
+	var touristEventComponents = [
+		<c:forEach items="${touristEventCommand.touristEventComponentIds}" var="touristEventComponentId">
+			${touristEventComponentId},
+		</c:forEach>	
+	];
 
 	function addOneMorePhoto() {
 		var photos = $('#photos');
@@ -128,7 +132,7 @@
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<form:label path="description" cssClass="col-md-4 control-label">Opis:</form:label>
 							<div class="col-md-4">
-								<form:input path="description" cssClass="form-control input-md" />
+								<form:textarea path="description" cssClass="form-control input-md" />
 								<form:errors path="description" cssClass="help-block" />
 							</div>
 						</div>
@@ -259,6 +263,17 @@
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach items="${touristEventCommand.touristEventComponentIds}" var="touristEventComponentId">
+							<tr>
+								<c:forEach items="${touristEventComponents}" var="touristEventComponent">
+									<c:if test="${touristEventComponentId == touristEventComponent.id}">
+										<td>${touristEventComponent.type.name}</td>
+										<td>${touristEventComponent.name}</td>
+									</c:if>
+								</c:forEach>
+								<td><input type="button" value="usuń" class="btn btn-xs btn-default removeTouristEventComponentButton" touristEventComponentId="${touristEventComponentId}" /></td>
+							</tr>
+						</c:forEach>						
 						</tbody>
 					</table>
 				</div>
