@@ -14,4 +14,10 @@ public interface TouristEventComponentService {
 
 	List<TouristEventComponent> listTouristEventComponent(TouristEventComponentFilterCommand filterCommand);
 
+	TouristEventComponentCommand getTouristEventComponentCommand(Long touristEventComponentId);
+
+	void updateCatalog(TouristEventComponentCommand touristEventComponentCommand);
+
+	TouristEventComponent getTouristEventComponent(Long touristEventComponentId);
+
 }

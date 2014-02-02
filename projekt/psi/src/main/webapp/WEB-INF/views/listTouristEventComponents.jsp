@@ -23,12 +23,12 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
-		function publishTouristEventComponent(touristEventComponentId) {
-			alert(touristEventComponentId);
-		}
 		function editTouristEventComponent(touristEventComponentId) {
-			alert(touristEventComponentId);
+			doPost('${basepath}/edytuj-skladnik', {
+				touristEventComponentId : touristEventComponentId
+			});
 		}
+		
 		function removeTouristEventComponent(touristEventComponentId) {
 			alert(touristEventComponentId);
 		}
@@ -100,9 +100,7 @@
 							<tr>
 								<td>${touristEventComponent.type.name}</td>
 								<td>${touristEventComponent.name}</td>
-								<td class="fit-cell-to-content"><input type="button"
-									onclick="publishTouristEventComponent(${touristEventComponent.id});"
-									value="publikuj" class="btn btn-xs btn-default" /> <input
+								<td class="fit-cell-to-content"><input
 									type="button"
 									onclick="editTouristEventComponent(${touristEventComponent.id});"
 									value="edytuj" class="btn btn-xs btn-default" /> <input

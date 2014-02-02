@@ -37,5 +37,21 @@ public class TouristEventComponentServiceImpl implements TouristEventComponentSe
 	public List<TouristEventComponent> listTouristEventComponent(TouristEventComponentFilterCommand filterCommand) {
 		return touristEventComponentRepository.getFiltered(filterCommand);
 	}
+
+	@Override
+	public TouristEventComponentCommand getTouristEventComponentCommand(Long touristEventComponentId) {
+		return mapperFacade.getObject().map(getTouristEventComponent(touristEventComponentId), TouristEventComponentCommand.class);
+	}
+
+	@Override
+	public TouristEventComponent getTouristEventComponent(Long touristEventComponentId) {
+		return touristEventComponentRepository.get(touristEventComponentId);
+	}
+
+	@Override
+	public void updateCatalog(TouristEventComponentCommand touristEventComponentCommand) {
+		TouristEventComponent touristEventComponent = mapperFacade.getObject().map(touristEventComponentCommand, TouristEventComponent.class);
+		touristEventComponentRepository.update(touristEventComponent);
+	}
 	
 }

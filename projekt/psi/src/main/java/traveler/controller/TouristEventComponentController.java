@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import traveler.command.TouristEventComponentCommand;
 import traveler.command.TouristEventComponentFilterCommand;
@@ -27,8 +28,8 @@ public class TouristEventComponentController {
 	}
 	
 	@RequestMapping(value = "/dodaj-skladnik", method = RequestMethod.GET)
-	public String addTouristEventComponentForm(Model model) {
-		model.addAttribute("touristEventComponentCommand", new TouristEventComponentCommand());
+	public String addTouristEventComponentForm(Model model, TouristEventComponentCommand touristEventComponentCommand) {
+		model.addAttribute("touristEventComponentCommand", touristEventComponentCommand);
 		model.addAttribute("types", TouristEventComponentType.values());
 		return "addTouristEventComponent";
 	}
@@ -36,9 +37,24 @@ public class TouristEventComponentController {
 	@RequestMapping(value = "/dodaj-skladnik", method = RequestMethod.POST)
 	public String addTouristEventComponent(Model model, @Valid TouristEventComponentCommand touristEventComponentCommand, BindingResult result) {
 		if(result.hasErrors()){
-			return "addTouristEventComponent";
+			return addTouristEventComponentForm(model, touristEventComponentCommand);
 		}
 		touristEventComponentService.addTouristEventComponent(touristEventComponentCommand);
+		return "redirect:/lista-skladnikow";
+	}
+	
+	@RequestMapping(value = "/edytuj-skladnik", method = RequestMethod.POST, params = { "touristEventComponentId" })
+	public String editTouristEventComponentForm(Model model, @RequestParam("touristEventComponentId") Long touristEventComponentId) {
+		TouristEventComponentCommand touristEventComponentCommand = touristEventComponentService.getTouristEventComponentCommand(touristEventComponentId);
+		return addTouristEventComponentForm(model, touristEventComponentCommand);
+	}
+	
+	@RequestMapping(value = "/edytuj-skladnik", method = RequestMethod.POST)
+	public String editTouristEventComponent(Model model, @Valid TouristEventComponentCommand touristEventComponentCommand, BindingResult result) {
+		if (result.hasErrors()) {
+			return addTouristEventComponentForm(model, touristEventComponentCommand);
+		}
+		touristEventComponentService.updateCatalog(touristEventComponentCommand);
 		return "redirect:/lista-skladnikow";
 	}
 	

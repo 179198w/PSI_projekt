@@ -10,6 +10,8 @@ import traveler.model.TouristEventComponentType;
 @Data
 public class TouristEventComponentCommand {
 	
+	private Long id;
+	
 	@NotEmpty
 	private String name;
 	
