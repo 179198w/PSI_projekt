@@ -52,6 +52,12 @@ public class CatalogController {
 		return addCatalogForm(model, catalogCommand);
 	}
 	
+	@RequestMapping(value = "/usun-katalog", method = RequestMethod.POST, params = { "catalogId" })
+	public String removeCatalog(Model model, @RequestParam("catalogId") Long catalogId) {
+		catalogService.removeCatalog(catalogId);
+		return "redirect:/lista-katalogow";
+	}
+	
 	@RequestMapping(value = "/edytuj-katalog", method = RequestMethod.POST)
 	public String editCatalog(Model model, @Valid CatalogCommand catalogCommand, BindingResult result) {
 		if (result.hasErrors()) {

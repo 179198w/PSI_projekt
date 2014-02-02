@@ -15,9 +15,11 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -33,6 +35,7 @@ import org.joda.time.LocalDate;
 @SelectBeforeUpdate
 @Table(name = "tourist_events")
 @ToString(exclude = { "photoUrls", "catalogs", "periods", "touristEventComponents", "reservations", "operator", "hotel" })
+@EqualsAndHashCode(exclude = { "photoUrls", "catalogs", "periods", "touristEventComponents", "reservations", "operator", "hotel" })
 @Data
 public class TouristEvent {
 
@@ -57,7 +60,7 @@ public class TouristEvent {
 	@Column(name = "photo_url")
 	private List<String> photoUrls;
 
-	@ManyToMany(mappedBy = "touristEvents", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "touristEvents", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	private List<Catalog> catalogs;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -80,7 +83,7 @@ public class TouristEvent {
 	@OneToMany(mappedBy = "touristEvent", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Period> periods;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinTable(name = "tourist_event_tourist_event_component", joinColumns = { @JoinColumn(name = "tourist_event_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "tourist_event_component_id", nullable = false, updatable = false) })
 	private List<TouristEventComponent> touristEventComponents;
 

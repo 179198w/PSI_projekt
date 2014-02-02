@@ -29,23 +29,24 @@ public class CountryServiceImpl implements CountryService {
 	public List<Country> listCountries() {
 		return countryRepository.getAll();
 	}
-	
+
 	@Override
 	@Cacheable(cacheName = "countries")
-	public List<Country> listCountries(String condition){
+	public List<Country> listCountries(String condition) {
 		return countryRepository.getAllByPartString("name", condition);
 	}
 
 	@Override
 	@TriggersRemove(cacheName = "countries", removeAll = true)
 	public void addCountry(CountryCommand countryCommand) {
-		Country country = mapperFacade.getObject().map(countryCommand, Country.class);
+		Country country = mapperFacade.getObject().map(countryCommand,
+				Country.class);
 		countryRepository.save(country);
 	}
-	
+
 	@Override
-	@TriggersRemove(cacheName = "countries", removeAll = true)
-	public void removeCountry(Long countryId){
+	@TriggersRemove(cacheName = { "countries", "hotels", "cities" }, removeAll = true)
+	public void removeCountry(Long countryId) {
 		countryRepository.delete(countryRepository.get(countryId));
 	}
 
@@ -56,7 +57,8 @@ public class CountryServiceImpl implements CountryService {
 
 	@Override
 	public CountryCommand getCountryCommand(Long countryId) {
-		return mapperFacade.getObject().map(getCountry(countryId), CountryCommand.class);
+		return mapperFacade.getObject().map(getCountry(countryId),
+				CountryCommand.class);
 	}
 
 	@Override

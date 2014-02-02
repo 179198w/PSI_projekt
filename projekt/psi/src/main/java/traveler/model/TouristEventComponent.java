@@ -42,10 +42,10 @@ public class TouristEventComponent {
 	
 	private String description;
 	
-	@ManyToMany(mappedBy = "touristEventComponents", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy = "touristEventComponents", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<TouristEvent> touristEvents;
 	
-	@OneToMany(mappedBy = "touristEventComponent", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "touristEventComponent", fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
 	private List<Price> prices;
 	
 }

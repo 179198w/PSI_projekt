@@ -16,14 +16,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import traveler.command.TouristEventCommand;
 import traveler.command.TouristEventFilterCommand;
+import traveler.model.Catalog;
 import traveler.model.Hotel;
 import traveler.model.Operator;
+import traveler.model.Period;
 import traveler.model.TouristEvent;
 import traveler.model.TouristEventComponent;
+import traveler.repository.CatalogRepository;
 import traveler.repository.HotelRepository;
 import traveler.repository.OperatorRepository;
 import traveler.repository.TouristEventComponentRepository;
 import traveler.repository.TouristEventRepository;
+import traveler.service.CatalogService;
 import traveler.service.TouristEventService;
 import traveler.utils.MapperFacadeFactoryBean;
 
@@ -47,13 +51,18 @@ public class TouristEventServiceImpl implements TouristEventService {
 
 	@Inject
 	private HotelRepository hotelRepository;
-
+	
+	@Inject
+	private CatalogRepository catalogRepository;
+	
 	@Inject
 	private TouristEventComponentRepository touristEventComponentRepository;
 
 	@Override
-	public List<TouristEvent> listTouristEventsWithRelatedData(TouristEventFilterCommand touristEventFilterCommand) {
-		return touristEventRepository.getAllWithRelatedData(touristEventFilterCommand);
+	public List<TouristEvent> listTouristEventsWithRelatedData(
+			TouristEventFilterCommand touristEventFilterCommand) {
+		return touristEventRepository
+				.getAllWithRelatedData(touristEventFilterCommand);
 	}
 
 	@Override
@@ -63,16 +72,20 @@ public class TouristEventServiceImpl implements TouristEventService {
 
 	@Override
 	@Transactional
-	public void addTouristEvent(TouristEventCommand touristEventCommand, String rootPath) {
-		TouristEvent touristEvent = mapperFacade.getObject().map(touristEventCommand, TouristEvent.class);
+	public void addTouristEvent(TouristEventCommand touristEventCommand,
+			String rootPath) {
+		TouristEvent touristEvent = mapperFacade.getObject().map(
+				touristEventCommand, TouristEvent.class);
 
 		fillTouristEvent(touristEventCommand, rootPath, touristEvent);
 		touristEvent.setVisible(false);
 		touristEventRepository.save(touristEvent);
 	}
 
-	private void fillTouristEvent(TouristEventCommand touristEventCommand, String rootPath, TouristEvent touristEvent) {
-		Operator operator = operatorRepository.getBy("name", touristEventCommand.getOperator());
+	private void fillTouristEvent(TouristEventCommand touristEventCommand,
+			String rootPath, TouristEvent touristEvent) {
+		Operator operator = operatorRepository.getBy("name",
+				touristEventCommand.getOperator());
 		if (operator == null) {
 			operator = new Operator();
 			operator.setName(touristEventCommand.getOperator());
@@ -86,7 +99,8 @@ public class TouristEventServiceImpl implements TouristEventService {
 		MultipartFile statue = touristEventCommand.getStatue();
 		if (!statue.isEmpty()) {
 			try {
-				String filename = md5DigestOfFile(statue) + "." + getExtension(statue.getOriginalFilename());
+				String filename = md5DigestOfFile(statue) + "."
+						+ getExtension(statue.getOriginalFilename());
 				saveFile(statue, rootPath + RELATIVE_FILE_PATH + filename);
 				touristEvent.setStatueUrl(RELATIVE_FILE_URL + filename);
 			} catch (IOException e) {
@@ -94,11 +108,14 @@ public class TouristEventServiceImpl implements TouristEventService {
 			}
 		}
 
-		List<String> photosUrls = touristEvent.getPhotoUrls() != null ? touristEvent.getPhotoUrls() : Lists.<String>newArrayList();
+		List<String> photosUrls = touristEvent.getPhotoUrls() != null ? touristEvent
+				.getPhotoUrls() : Lists.<String> newArrayList();
 		for (MultipartFile photo : touristEventCommand.getPhotos()) {
 			if (!photo.isEmpty()) {
 				try {
-					String filename = md5DigestOfFile(photo) + "." + getExtension(photo.getOriginalFilename());;
+					String filename = md5DigestOfFile(photo) + "."
+							+ getExtension(photo.getOriginalFilename());
+					;
 					saveFile(photo, rootPath + RELATIVE_FILE_PATH + filename);
 					photosUrls.add(RELATIVE_FILE_URL + filename);
 				} catch (IOException e) {
@@ -109,8 +126,10 @@ public class TouristEventServiceImpl implements TouristEventService {
 		touristEvent.setPhotoUrls(photosUrls);
 
 		List<TouristEventComponent> touristEventComponents = newArrayList();
-		for (Long touristEventComponentId : touristEventCommand.getTouristEventComponentIds()) {
-			TouristEventComponent touristEventComponent = touristEventComponentRepository.get(touristEventComponentId);
+		for (Long touristEventComponentId : touristEventCommand
+				.getTouristEventComponentIds()) {
+			TouristEventComponent touristEventComponent = touristEventComponentRepository
+					.get(touristEventComponentId);
 			touristEventComponents.add(touristEventComponent);
 		}
 		touristEvent.setTouristEventComponents(touristEventComponents);
@@ -119,6 +138,11 @@ public class TouristEventServiceImpl implements TouristEventService {
 	@Override
 	public void removeTouristEvent(Long touristEventId) {
 		TouristEvent touristEvent = touristEventRepository.get(touristEventId);
+		touristEvent.setTouristEventComponents(null);
+		for(Catalog c:touristEvent.getCatalogs()){
+			c.getTouristEvents().remove(touristEvent);
+			catalogRepository.update(c);
+		}
 		touristEventRepository.delete(touristEvent);
 	}
 
@@ -131,8 +155,10 @@ public class TouristEventServiceImpl implements TouristEventService {
 
 	@Override
 	@Transactional
-	public void updateTouristEventCommand(TouristEventCommand touristEventCommand, String rootPath) {
-		TouristEvent touristEvent = touristEventRepository.get(touristEventCommand.getId());
+	public void updateTouristEventCommand(
+			TouristEventCommand touristEventCommand, String rootPath) {
+		TouristEvent touristEvent = touristEventRepository
+				.get(touristEventCommand.getId());
 		mapperFacade.getObject().map(touristEventCommand, touristEvent);
 
 		fillTouristEvent(touristEventCommand, rootPath, touristEvent);
@@ -144,19 +170,23 @@ public class TouristEventServiceImpl implements TouristEventService {
 	@Transactional
 	public TouristEventCommand getTouristEventCommand(Long touristEventId) {
 		TouristEvent touristEvent = touristEventRepository.get(touristEventId);
-		TouristEventCommand touristEventCommand = mapperFacade.getObject().map(touristEvent, TouristEventCommand.class);
-		
+		TouristEventCommand touristEventCommand = mapperFacade.getObject().map(
+				touristEvent, TouristEventCommand.class);
+
 		touristEventCommand.setOperator(touristEvent.getOperator().getName());
 		touristEventCommand.setHotelId(touristEvent.getHotel().getId());
 		touristEventCommand.setCityId(touristEvent.getHotel().getId());
-		touristEventCommand.setCountryId(touristEvent.getHotel().getCity().getCountry().getId());
-		
+		touristEventCommand.setCountryId(touristEvent.getHotel().getCity()
+				.getCountry().getId());
+
 		List<Long> touristEventComponentIds = newArrayList();
-		for (TouristEventComponent touristEventComponent : touristEvent.getTouristEventComponents()) {
+		for (TouristEventComponent touristEventComponent : touristEvent
+				.getTouristEventComponents()) {
 			touristEventComponentIds.add(touristEventComponent.getId());
 		}
-		touristEventCommand.setTouristEventComponentIds(touristEventComponentIds);
-		
+		touristEventCommand
+				.setTouristEventComponentIds(touristEventComponentIds);
+
 		return touristEventCommand;
 	}
 

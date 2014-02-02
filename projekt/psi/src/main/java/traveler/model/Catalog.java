@@ -2,6 +2,7 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class Catalog {
 	@NotEmpty
 	private String name;
 
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.MERGE)
 	@JoinTable(name = "catalog_tourist_event", joinColumns = { @JoinColumn(name = "catalog_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "tourist_event_id", nullable = false, updatable = false) })
 	private List<TouristEvent> touristEvents;
 	

@@ -23,6 +23,7 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
+
 	var touristEvents = [
 		<c:forEach items="${periodCommand.touristEventIds}" var="touristEventId">
 		'${touristEventId}',
@@ -30,6 +31,22 @@
 	];
 	
 	jQuery(document).ready(function($) {
+		if(("#checkbox").checked){
+			$("#input1").prop('disabled', false);
+			$("#input2").prop('disabled', false);
+		}else{
+			$("#input1").prop('disabled', true);
+			$("#input2").prop('disabled', true);
+		}
+		$("#checkbox").click(function(){
+			if(this.checked){
+				$("#input1").prop('disabled', false);
+				$("#input2").prop('disabled', false);
+			}else{
+				$("#input1").prop('disabled', true);
+				$("#input2").prop('disabled', true);
+			}
+		});
 		
 		$('#addTouristEventButton').click(function() {
 			var touristEvent = $('#touristEvent option:selected');
@@ -81,7 +98,11 @@
 							<li><a href="${basepath}/lista-panstw">Słownik państw</a></li>
 						</ul></li>
 				</ul>
-				<p class="navbar-text navbar-right">Witaj <sec:authentication property="principal.username"/>, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a></p>
+				<p class="navbar-text navbar-right">
+					Witaj
+					<sec:authentication property="principal.username" />
+					, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a>
+				</p>
 			</div>
 		</div>
 	</div>
@@ -98,16 +119,21 @@
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<form:label path="from" cssClass="col-md-4 control-label">Data od:</form:label>
 							<div class="col-md-4">
-								<form:input path="from" cssClass="form-control input-md" placeholder="dd-MM-yyyy"/>
+								<form:input path="from" cssClass="form-control input-md"
+									placeholder="dd-MM-yyyy" />
 								<form:errors path="from" cssClass="help-block" />
 							</div>
 						</div>
 					</spring:bind>
+					<div class="form-group has-error">
+						<p class="help-block">${periodCommand.additionalErrorInfo}</p>
+					</div>
 					<spring:bind path="to">
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<form:label path="to" cssClass="col-md-4 control-label">Data do:</form:label>
 							<div class="col-md-4">
-								<form:input path="to" cssClass="form-control input-md" placeholder="dd-MM-yyyy"/>
+								<form:input path="to" cssClass="form-control input-md"
+									placeholder="dd-MM-yyyy" />
 								<form:errors path="to" cssClass="help-block" />
 							</div>
 						</div>
@@ -115,19 +141,21 @@
 					<div class="form-group">
 						<form:label path="repeatPeriod" class="col-md-4 control-label">Powtórz termin:</form:label>
 						<div class="col-md-3">
-							<form:checkbox path="repeatPeriod"/>
+							<form:checkbox path="repeatPeriod" id="checkbox" />
 						</div>
 					</div>
 					<div class="form-group">
 						<form:label path="repeatCount" class="col-md-4 control-label">Liczba powtórzeń:</form:label>
 						<div class="col-md-3">
-							<form:input path="repeatCount" class="form-control input-md" />
+							<form:input path="repeatCount" class="form-control input-md"
+								id="input1" />
 						</div>
 					</div>
 					<div class="form-group">
 						<form:label path="periodSpace" class="col-md-4 control-label">Odstęp terminów:</form:label>
 						<div class="col-md-3">
-							<form:input path="periodSpace" class="form-control input-md" />
+							<form:input path="periodSpace" class="form-control input-md"
+								id="input2" />
 						</div>
 						<div class="col-md-2">
 							<form:select path="periodSpaceType" class="form-control">
@@ -145,19 +173,25 @@
 				</div>
 				<div class="panel-body">
 					<div id="touristEvents"></div>
-					<div class="form-group">
-						<label class="col-md-4 control-label width-200" for="touristEvent">Nowa impreza w terminie:</label>
-						<div class="col-md-7">
-							<select id="touristEvent" class="form-control float-left width-70pc">
-								<option value="0">Wybierz imprezę</option>
-								<c:forEach items="${touristEvents}" var="touristEvent">
-									<option value="${touristEvent.id}">${touristEvent.name}</option>
-								</c:forEach>
-							</select> <input id="addTouristEventButton" type="button" class="btn btn-default margin-left-10" value="Dodaj" />
+					<spring:bind path="touristEventIds">
+						<div class="form-group ${status.error ? 'has-error' : ''}">
+							<label class="col-md-4 control-label width-200"
+								for="touristEvent">Nowa impreza w terminie:</label>
+							<div class="col-md-7">
+								<select id="touristEvent"
+									class="form-control float-left width-70pc">
+									<option value="0">Wybierz imprezę</option>
+									<c:forEach items="${touristEvents}" var="touristEvent">
+										<option value="${touristEvent.id}">${touristEvent.name}</option>
+									</c:forEach>
+								</select> <input id="addTouristEventButton" type="button"
+									class="btn btn-default margin-left-10" value="Dodaj" />
+								<form:errors path="touristEventIds" cssClass="help-block" />
+							</div>
 						</div>
-					</div>
-
-					<table id="touristEventTable" class="table table-striped table-hover">
+					</spring:bind>
+					<table id="touristEventTable"
+						class="table table-striped table-hover">
 						<thead>
 							<tr>
 								<th>Nazwa</th>
@@ -165,16 +199,19 @@
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach items="${periodCommand.touristEventIds}" var="touristEventId">
-							<tr>
-								<c:forEach items="${touristEvents}" var="touristEvent">
-									<c:if test="${touristEventId == touristEvent.id}">
-										<td>${touristEvent.name}</td>
-									</c:if>
-								</c:forEach>
-								<td><input type="button" value="usuń" class="btn btn-xs btn-default removeTouristEventButton" touristEventId="${touristEventId}" /></td>
-							</tr>
-						</c:forEach>						
+							<c:forEach items="${periodCommand.touristEventIds}"
+								var="touristEventId">
+								<tr>
+									<c:forEach items="${touristEvents}" var="touristEvent">
+										<c:if test="${touristEventId == touristEvent.id}">
+											<td>${touristEvent.name}</td>
+										</c:if>
+									</c:forEach>
+									<td><input type="button" value="usuń"
+										class="btn btn-xs btn-default removeTouristEventButton"
+										touristEventId="${touristEventId}" /></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

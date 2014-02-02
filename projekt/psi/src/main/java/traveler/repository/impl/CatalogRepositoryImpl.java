@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import traveler.command.CatalogFilterCommand;
 import traveler.model.Catalog;
+import traveler.model.TouristEvent;
 import traveler.repository.CatalogRepository;
 
 @Repository
@@ -30,5 +31,5 @@ public class CatalogRepositoryImpl extends GenericRepositoryImpl<Catalog, Long> 
 		}
 		return criteria.list();
 	}
-
+	
 }

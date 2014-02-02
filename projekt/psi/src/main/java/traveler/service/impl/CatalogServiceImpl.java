@@ -34,7 +34,7 @@ public class CatalogServiceImpl implements CatalogService {
 	public List<Catalog> listCatalogs() {
 		return catalogRepository.getAll();
 	}
-
+	
 	@Override
 	public void addCatalog(CatalogCommand catalogCommand) {
 		Catalog catalog = mapperFacade.getObject().map(catalogCommand, Catalog.class);
@@ -50,6 +50,11 @@ public class CatalogServiceImpl implements CatalogService {
 	@Override
 	public List<Catalog> listCatalogs(CatalogFilterCommand filterCommand) {
 		return catalogRepository.listFiltered(filterCommand);
+	}
+	
+	public void removeCatalog(Long catalogId){
+		Catalog cat=catalogRepository.get(catalogId);
+		catalogRepository.delete(cat);
 	}
 
 	@Override

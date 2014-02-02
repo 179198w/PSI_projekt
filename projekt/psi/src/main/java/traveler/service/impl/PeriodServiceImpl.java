@@ -33,16 +33,26 @@ public class PeriodServiceImpl implements PeriodService {
 
 	@Override
 	public void addPeriod(PeriodCommand periodCommand) {
-		int repeatCount = periodCommand.getRepeatPeriod() ? periodCommand.getRepeatCount() : 1; 
-		
+		int repeatCount = periodCommand.getRepeatPeriod() ? periodCommand
+				.getRepeatCount() : 1;
+
 		for (Long touristEventId : periodCommand.getTouristEventIds()) {
-			TouristEvent touristEvent = touristEventRepository.get(touristEventId);
-			
+			TouristEvent touristEvent = touristEventRepository
+					.get(touristEventId);
+
 			for (int repetition = 0; repetition < repeatCount; repetition++) {
 				Period period = new Period();
-				
-				LocalDate from = periodCommand.getRepeatPeriod() ? calculateDate(periodCommand.getFrom(), periodCommand.getPeriodSpaceType(), periodCommand.getPeriodSpace(), repetition) : periodCommand.getFrom();
-				LocalDate to = periodCommand.getRepeatPeriod() ? calculateDate(periodCommand.getTo(), periodCommand.getPeriodSpaceType(), periodCommand.getPeriodSpace(), repetition) : periodCommand.getTo();
+
+				LocalDate from = periodCommand.getRepeatPeriod() ? calculateDate(
+						periodCommand.getFrom(),
+						periodCommand.getPeriodSpaceType(),
+						periodCommand.getPeriodSpace(), repetition)
+						: periodCommand.getFrom();
+				LocalDate to = periodCommand.getRepeatPeriod() ? calculateDate(
+						periodCommand.getTo(),
+						periodCommand.getPeriodSpaceType(),
+						periodCommand.getPeriodSpace(), repetition)
+						: periodCommand.getTo();
 
 				period.setFrom(from);
 				period.setTo(to);
@@ -51,8 +61,9 @@ public class PeriodServiceImpl implements PeriodService {
 			}
 		}
 	}
-	
-	private LocalDate calculateDate(LocalDate date, String type, Integer space, Integer times) {
+
+	private LocalDate calculateDate(LocalDate date, String type, Integer space,
+			Integer times) {
 		if ("days".equals(type)) {
 			return date.plusDays(space * times);
 		} else if ("weeks".equals(type)) {
@@ -66,6 +77,12 @@ public class PeriodServiceImpl implements PeriodService {
 	@Override
 	public List<Period> listPeriods(PeriodFilterCommand filterCommand) {
 		return periodRepository.getFiltered(filterCommand);
+	}
+
+	public void removePeriod(Long periodId) {
+		Period period = periodRepository.get(periodId);
+		period.setPrices(null);
+		periodRepository.delete(period);
 	}
 
 	@Override
@@ -91,7 +108,8 @@ public class PeriodServiceImpl implements PeriodService {
 		period.setId(periodEditCommand.getId());
 		period.setTo(periodEditCommand.getTo());
 		period.setFrom(periodEditCommand.getFrom());
-		period.setTouristEvent(touristEventRepository.get(periodEditCommand.getTouristEventId()));
+		period.setTouristEvent(touristEventRepository.get(periodEditCommand
+				.getTouristEventId()));
 		periodRepository.update(period);
 	}
 
@@ -99,5 +117,5 @@ public class PeriodServiceImpl implements PeriodService {
 	public List<Period> listPeriods(Long touristEventId) {
 		return periodRepository.getAllBy("touristEvent.id", touristEventId);
 	}
-	
+
 }

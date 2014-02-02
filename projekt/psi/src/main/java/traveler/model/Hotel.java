@@ -2,6 +2,7 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -53,7 +54,7 @@ public class Hotel {
 	@JoinColumn(name = "city_id")
 	private City city;
 
-	@OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<TouristEvent> touristEvents;
 
 }

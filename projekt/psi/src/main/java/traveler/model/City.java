@@ -2,6 +2,7 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -38,7 +39,7 @@ public class City {
 	@NotEmpty
 	private String name;
 
-	@OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "city", fetch = FetchType.LAZY, cascade={CascadeType.ALL})
 	private List<Hotel> hotels;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false)

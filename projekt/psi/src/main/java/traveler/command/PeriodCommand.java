@@ -2,6 +2,7 @@ package traveler.command;
 
 import java.util.List;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
@@ -28,6 +29,9 @@ public class PeriodCommand {
 	
 	private String periodSpaceType;
 	
+	@NotNull
 	private List<Long> touristEventIds;
+	
+	private String additionalErrorInfo;
 	
 }

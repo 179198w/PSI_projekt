@@ -27,32 +27,46 @@ public class PriceController {
 
 	@Inject
 	private TouristEventService touristEventService;
-	
+
 	@Inject
 	private PeriodService periodService;
-	
+
 	@Inject
 	private TouristEventComponentService touristEventComponentService;
-	
+
 	@RequestMapping("/lista-cen")
 	public String listPrices(Model model, PriceFilterCommand priceFilterCommand) {
-		model.addAttribute("prices", priceService.listPricesWithRelatedData(priceFilterCommand));
+		if (priceFilterCommand.getType() == null) {
+			model.addAttribute("prices", priceService.listPrices());
+		} else {
+			model.addAttribute("prices",
+					priceService.listPricesWithRelatedData(priceFilterCommand));
+		}
 		model.addAttribute("types", PriceType.values());
 		return "listPrices";
+	}
+	
+	@RequestMapping(value = "/usun-cene", method = RequestMethod.POST)
+	public String removePrice(Model model, Long priceId) throws Exception {
+		priceService.removePrice(priceId);
+		return "redirect:/lista-cen";
 	}
 
 	@RequestMapping(value = "/dodaj-cene", method = RequestMethod.GET)
 	public String addPriceForm(Model model, PriceCommand priceCommand) {
 		model.addAttribute("priceCommand", priceCommand);
 		model.addAttribute("types", PriceType.values());
-		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
+		model.addAttribute("touristEvents",
+				touristEventService.listTouristEvents());
 		model.addAttribute("periods", periodService.listPeriods());
-		model.addAttribute("touristEventComponents", touristEventComponentService.listTouristEventComponent());
+		model.addAttribute("touristEventComponents",
+				touristEventComponentService.listTouristEventComponent());
 		return "addPrice";
 	}
 
 	@RequestMapping(value = "/dodaj-cene", method = RequestMethod.POST)
-	public String addPrice(Model model, @Valid PriceCommand priceCommand, BindingResult result) {
+	public String addPrice(Model model, @Valid PriceCommand priceCommand,
+			BindingResult result) {
 		if (result.hasErrors()) {
 			return addPriceForm(model, priceCommand);
 		}
@@ -60,25 +74,37 @@ public class PriceController {
 		return "redirect:/lista-cen";
 	}
 
-
 	@RequestMapping(value = "/edytuj-cene", method = RequestMethod.POST, params = { "priceId" })
-	public String editPriceForm(Model model, @RequestParam("priceId") Long priceId) {
-		PriceEditCommand priceEditCommand = priceService.getPriceEditCommand(priceId);
+	public String editPriceForm(Model model,
+			@RequestParam("priceId") Long priceId) {
+		PriceEditCommand priceEditCommand = priceService
+				.getPriceEditCommand(priceId);
 		model.addAttribute("priceEditCommand", priceEditCommand);
 		model.addAttribute("types", PriceType.values());
-		model.addAttribute("touristEvents", touristEventService.listTouristEvents());
-		model.addAttribute("periods", periodService.listPeriods(priceEditCommand.getTouristEventId()));
-		model.addAttribute("touristEventComponents", touristEventComponentService.listTouristEventComponent(priceEditCommand.getTouristEventId()));
+		model.addAttribute("touristEvents",
+				touristEventService.listTouristEvents());
+		model.addAttribute("periods",
+				periodService.listPeriods(priceEditCommand.getTouristEventId()));
+		model.addAttribute("touristEventComponents",
+				touristEventComponentService
+						.listTouristEventComponent(priceEditCommand
+								.getTouristEventId()));
 		return "editPrice";
 	}
-	
+
 	@RequestMapping(value = "/edytuj-cene", method = RequestMethod.POST)
-	public String editPriceForm(Model model, @Valid PriceEditCommand priceEditCommand, BindingResult result) {
+	public String editPriceForm(Model model,
+			@Valid PriceEditCommand priceEditCommand, BindingResult result) {
 		if (result.hasErrors()) {
 			model.addAttribute("types", PriceType.values());
-			model.addAttribute("touristEvents", touristEventService.listTouristEvents());
-			model.addAttribute("periods", periodService.listPeriods(priceEditCommand.getTouristEventId()));
-			model.addAttribute("touristEventComponents", touristEventComponentService.listTouristEventComponent(priceEditCommand.getTouristEventId()));
+			model.addAttribute("touristEvents",
+					touristEventService.listTouristEvents());
+			model.addAttribute("periods", periodService
+					.listPeriods(priceEditCommand.getTouristEventId()));
+			model.addAttribute("touristEventComponents",
+					touristEventComponentService
+							.listTouristEventComponent(priceEditCommand
+									.getTouristEventId()));
 			return "editPrice";
 		}
 		priceService.updatePrice(priceEditCommand);

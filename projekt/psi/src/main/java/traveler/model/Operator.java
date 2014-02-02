@@ -2,6 +2,7 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class Operator {
 	@Type(type="text")
 	private String description;
 	
-	@OneToMany(mappedBy = "operator", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "operator", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<TouristEvent> touristEvents;
 	
 }

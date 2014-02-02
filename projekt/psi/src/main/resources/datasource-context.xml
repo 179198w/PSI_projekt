@@ -11,6 +11,9 @@
 		<property name="url" value="jdbc:postgresql://localhost:5432/traveler" />
 		<property name="username" value="postgres" />
 		<property name="password" value="postgres" />
+<!-- 		<property name="url" value="jdbc:postgresql://localhost:5433/traveler_repo" />
+		<property name="username" value="postgres" />
+		<property name="password" value="" /> -->
 	</bean>
 	
 </beans>

@@ -2,6 +2,7 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,8 +13,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -27,30 +32,40 @@ import org.hibernate.annotations.SelectBeforeUpdate;
 @SelectBeforeUpdate
 @Table(name = "prices")
 @Data
-@ToString(exclude = {"reservations"})
+@ToString(exclude = { "reservations", "touristEventComponent", "period" })
+@EqualsAndHashCode(exclude = { "reservations", "touristEventComponent",
+		"period" })
 public class Price {
 
 	@Id
 	@GeneratedValue(generator = "increment")
-	@GenericGenerator(name = "increment", strategy = "increment") // TODO: change to sequence
+	@GenericGenerator(name = "increment", strategy = "increment")
+	// TODO: change to sequence
 	private Long id;
-	
+
+	@Max(value = 100000)
+	@Min(value = 0)
+	@NotNull
 	private Integer adultValue;
-	
+
+	@Max(value = 100000)
+	@Min(value = 0)
+	@NotNull
 	private Integer childValue;
-	
+
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private PriceType type;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "period_id")
 	private Period period;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "tourist_event_component_id")
 	private TouristEventComponent touristEventComponent;
-	
-	@ManyToMany(mappedBy = "prices", fetch = FetchType.LAZY)
+
+	@ManyToMany(mappedBy = "prices", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Reservation> reservations;
-	
+
 }

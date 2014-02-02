@@ -2,6 +2,7 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,9 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 import javax.persistence.Table;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -28,7 +31,8 @@ import org.joda.time.LocalDate;
 @SelectBeforeUpdate
 @Table(name = "periods")
 @Data
-@ToString(exclude = {"prices"})
+@ToString(exclude = {"prices","touristEvent"})
+@EqualsAndHashCode(exclude={"prices","touristEvent"})
 public class Period {
 	
 	@Id
@@ -48,7 +52,7 @@ public class Period {
 	@JoinColumn(name = "tourist_event_id")
 	private TouristEvent touristEvent;
 	
-	@OneToMany(mappedBy = "period", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "period", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Price> prices;
 	
 }

@@ -16,6 +16,8 @@ public interface PriceService {
 	void addPrice(PriceCommand priceCommand);
 
 	PriceEditCommand getPriceEditCommand(Long priceId);
+	
+	void removePrice(Long priceId);
 
 	void updatePrice(PriceEditCommand priceEditCommand);
 

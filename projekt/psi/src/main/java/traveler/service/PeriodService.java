@@ -18,6 +18,8 @@ public interface PeriodService {
 	PeriodEditCommand getPeriodEditCommand(Long periodId);
 
 	void updatePeriod(PeriodEditCommand periodEditCommand);
+	
+	void removePeriod(Long periodId);
 
 	Period getPeriod(Long periodId);
 

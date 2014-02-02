@@ -2,6 +2,7 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -53,7 +54,7 @@ public class Reservation {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private TouristEvent touristEvent;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY, cascade=CascadeType.MERGE)
 	@JoinTable(name = "reservation_customer", joinColumns = { @JoinColumn(name = "reservation_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "customer_id", nullable = false, updatable = false) })
 	private List<Customer> customers;
 	

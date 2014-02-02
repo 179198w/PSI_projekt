@@ -24,6 +24,15 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
 <script>
+
+function removePrice(priceId) {
+	var c=confirm("Czy na pewno chcesz usunąć cenę?");
+	if(c==true){
+	doPost('${basepath}/usun-cene', {
+		priceId : priceId
+	});
+	}
+}
 	function editPrice(priceId) {
 		doPost('${basepath}/edytuj-cene', {
 			priceId : priceId
@@ -63,7 +72,11 @@
 							<li><a href="${basepath}/lista-panstw">Słownik państw</a></li>
 						</ul></li>
 				</ul>
-				<p class="navbar-text navbar-right">Witaj <sec:authentication property="principal.username"/>, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a></p>
+				<p class="navbar-text navbar-right">
+					Witaj
+					<sec:authentication property="principal.username" />
+					, <a href="${basepath}/j_spring_security_logout">Wyloguj się</a>
+				</p>
 			</div>
 		</div>
 	</div>
@@ -102,8 +115,12 @@
 								<td>${price.period.to}</td>
 								<td>${price.type.name}</td>
 								<td>${price.touristEventComponent.name}</td>
-								<td class="text-align-right"><fmt:formatNumber minFractionDigits="2" maxFractionDigits="2" value="${price.adultValue/100}"/></td>
-								<td class="text-align-right"><fmt:formatNumber minFractionDigits="2" maxFractionDigits="2" value="${price.childValue/100}"/></td>
+								<td class="text-align-right"><fmt:formatNumber
+										minFractionDigits="2" maxFractionDigits="2"
+										value="${price.adultValue/100}" /></td>
+								<td class="text-align-right"><fmt:formatNumber
+										minFractionDigits="2" maxFractionDigits="2"
+										value="${price.childValue/100}" /></td>
 								<td class="fit-cell-to-content"><input type="button"
 									onclick="editPrice(${price.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
@@ -120,18 +137,20 @@
 				<h3>Filtrowanie wyników</h3>
 			</div>
 			<div class="panel-body">
-				<form:form method="post" enctype="multipart/form-data" commandName="priceFilterCommand" class="form-horizontal">
+				<form:form method="post" enctype="multipart/form-data"
+					commandName="priceFilterCommand" class="form-horizontal">
 					<div class="form-group">
 						<form:label path="type" class="col-md-4 control-label">Typ:</form:label>
 						<div class="col-md-8">
 							<form:select path="type" class="form-control">
-									<form:option value="${null}">Wybierz typ</form:option>
-									<form:options items="${types}" itemLabel="name"/>
-								</form:select>
+								<form:option value="${null}">Wybierz typ</form:option>
+								<form:options items="${types}" itemLabel="name" />
+							</form:select>
 						</div>
 					</div>
 					<div class="form-group">
-						<input type="submit" class="margin-auto display-block btn btn-default" value="Filtruj" />
+						<input type="submit"
+							class="margin-auto display-block btn btn-default" value="Filtruj" />
 					</div>
 				</form:form>
 			</div>

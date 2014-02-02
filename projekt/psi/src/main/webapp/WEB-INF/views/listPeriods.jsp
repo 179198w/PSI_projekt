@@ -23,6 +23,15 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
+
+function removePeriod(periodId) {
+	var c=confirm("Czy na pewno chcesz usunąć termin?");
+	if(c==true){
+	doPost('${basepath}/usun-termin', {
+		periodId: periodId
+	});
+	}
+}
 	function editPeriod(periodId) {
 		doPost('${basepath}/edytuj-termin', {
 			periodId : periodId

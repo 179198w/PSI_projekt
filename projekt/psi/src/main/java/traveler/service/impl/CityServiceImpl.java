@@ -62,7 +62,7 @@ public class CityServiceImpl implements CityService {
 	}
 
 	@Override
-	@TriggersRemove(cacheName = "cities", removeAll = true)
+	@TriggersRemove(cacheName = {"cities","hotels"}, removeAll = true)
 	public void removeCity(Long cityId) {
 		City city = getCity(cityId);
 		cityRepository.delete(city);

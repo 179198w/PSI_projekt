@@ -2,6 +2,7 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -55,7 +56,7 @@ public class Customer {
 	
 	private String phone;
 	
-	@ManyToMany(mappedBy = "customers", fetch = FetchType.LAZY)
+	@ManyToMany(mappedBy = "customers", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	private List<Reservation> reservations;
 	
 }

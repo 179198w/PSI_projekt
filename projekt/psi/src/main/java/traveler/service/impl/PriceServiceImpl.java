@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import traveler.command.PriceCommand;
 import traveler.command.PriceEditCommand;
 import traveler.command.PriceFilterCommand;
+import traveler.model.City;
 import traveler.model.Period;
 import traveler.model.Price;
 import traveler.model.PriceType;
@@ -44,11 +45,16 @@ public class PriceServiceImpl implements PriceService {
 	public List<Price> listPricesWithRelatedData() {
 		return priceRepository.getAllWithOuterJoin("period", "touristEventComponent");
 	}
-
+	
+	public void removePrice(Long priceId){
+		Price price= priceRepository.get(priceId);
+		priceRepository.delete(price);
+	}
+	
 	@Override
 	public void addPrice(PriceCommand priceCommand) {
-		priceCommand.setAdultValue(100 * priceCommand.getAdultValue());
-		priceCommand.setChildValue(100 * priceCommand.getChildValue());
+		priceCommand.setAdultValue(priceCommand.getAdultValue());
+		priceCommand.setChildValue(priceCommand.getChildValue());
 
 		for (Long periodId : priceCommand.getPeriodIds()) {
 			Price price = mapperFacade.getObject().map(priceCommand, Price.class);
