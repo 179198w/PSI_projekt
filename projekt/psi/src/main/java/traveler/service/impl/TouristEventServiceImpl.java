@@ -67,7 +67,7 @@ public class TouristEventServiceImpl implements TouristEventService {
 		TouristEvent touristEvent = mapperFacade.getObject().map(touristEventCommand, TouristEvent.class);
 
 		fillTouristEvent(touristEventCommand, rootPath, touristEvent);
-
+		touristEvent.setVisible(false);
 		touristEventRepository.save(touristEvent);
 	}
 
