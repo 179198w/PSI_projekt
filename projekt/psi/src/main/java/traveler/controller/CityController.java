@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import traveler.command.CityCommand;
 import traveler.service.CityService;
@@ -22,6 +23,12 @@ public class CityController {
 	@Inject
 	private CountryService countryService;
 
+	@RequestMapping("/ajax/lista-miast")
+	public String ajaxListCities(Model model, @RequestParam("countryId") Long countryId) {
+		model.addAttribute("cities", cityService.listCities(countryId));
+		return "ajaxListCities";
+	}
+	
 	@RequestMapping("/lista-miast")
 	public String listCities(Model model) {
 		model.addAttribute("cities", cityService.listCities());

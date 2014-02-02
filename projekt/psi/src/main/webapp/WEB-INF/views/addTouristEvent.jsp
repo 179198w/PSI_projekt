@@ -23,81 +23,55 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
+	
 	var touristEventComponents = [];
 
 	function addOneMorePhoto() {
 		var photos = $('#photos');
 		var photosCount = $(':input[name^="photos"]').length;
 
-		$('<input type="file">').attr('name', 'photos[' + photosCount + ']')
-				.addClass('input-file').addClass('margin-top-10').appendTo(
-						photos);
+		$('<input type="file">')
+			.attr('name', 'photos[' + photosCount + ']')
+			.addClass('input-file')
+			.addClass('margin-top-10').appendTo(photos);
 	}
 
-	jQuery(document)
-			.ready(
-					function($) {
+	jQuery(document).ready(function($) {
 
-						$('#addTouristEventComponentButton')
-								.click(
-										function() {
-											var touristEventComponent = $('#touristEventComponent option:selected');
-											if (touristEventComponent.val() != 0
-													&& $
-															.inArray(
-																	touristEventComponent
-																			.val(),
-																	touristEventComponents) == -1) {
-												touristEventComponents
-														.push(touristEventComponent
-																.val());
-												var touristEventComponentTable = $('#touristEventComponentTable');
-												touristEventComponentTable
-														.append('<tr><td>'
-																+ touristEventComponent
-																		.attr('type')
-																+ '</td><td>'
-																+ touristEventComponent
-																		.attr('name')
-																+ '</td><td><input type="button" value="usuń" class="btn btn-xs btn-default removeTouristEventComponentButton" touristEventComponentId="'
-																+ touristEventComponent
-																		.val()
-																+ '" /></td></tr>');
-											}
-										});
+		$('#addTouristEventComponentButton').click(function() {
+			var touristEventComponent = $('#touristEventComponent option:selected');
+			if (touristEventComponent.val() != 0 && $.inArray(touristEventComponent.val(), touristEventComponents) == -1) {
+				touristEventComponents.push(touristEventComponent.val());
+				var touristEventComponentTable = $('#touristEventComponentTable');
+				touristEventComponentTable
+					.append('<tr><td>' + touristEventComponent.attr('type') + 
+							'</td><td>' + touristEventComponent.attr('name') + 
+							'</td><td><input type="button" value="usuń" class="btn btn-xs btn-default removeTouristEventComponentButton" touristEventComponentId="' + touristEventComponent.val() + '" /></td></tr>');
+			}
+		});
 
-						$(document).on(
-								'click',
-								'.removeTouristEventComponentButton',
-								function() {
-									var touristEventComponentId = $(this).attr(
-											'touristEventComponentId');
-									touristEventComponents.splice($.inArray(
-											touristEventComponentId,
-											touristEventComponents), 1);
-									$(this).closest('tr').remove();
-								});
+		$(document).on('click', '.removeTouristEventComponentButton', function() {
+			var touristEventComponentId = $(this).attr('touristEventComponentId');
+			touristEventComponents.splice($.inArray(touristEventComponentId, touristEventComponents), 1);
+			$(this).closest('tr').remove();
+		});
 
-						$('input[type=\'submit\']')
-								.click(
-										function() {
-											var hiddenInputContainer = $('#touristEventComponents');
-											for ( var i = 0; i < touristEventComponents.length; i++) {
-												$('<input type="hidden">')
-														.attr(
-																'name',
-																'touristEventComponentIds['
-																		+ i
-																		+ ']')
-														.attr(
-																'value',
-																touristEventComponents[i])
-														.appendTo(
-																hiddenInputContainer);
-											}
-										});
+		$('input[type=\'submit\']').click(function() {
+			var hiddenInputContainer = $('#touristEventComponents');
+			for (var i = 0; i < touristEventComponents.length; i++) {
+				$('<input type="hidden">').attr('name', 'touristEventComponentIds[' + i + ']').attr('value', touristEventComponents[i]).appendTo(hiddenInputContainer);
+			}
+		});
+		
+		$('#countryId').change(function() {
+			var countryId = $('#countryId option:selected').val();
+			$.post('${basepath}/ajax/lista-miast', { countryId: countryId })
+				.done(function(data) {
+					$('#cityId').html(data);
+			 	});
+		});
 
-					});
+	});
 </script>
 </head>
 <body>
@@ -260,10 +234,9 @@
 											${touristEventComponent.name}</option>
 									</c:forEach>
 								</select>
-								<form:errors path="touristEventComponentIds"
-									cssClass="help-block" />
 								<input id="addTouristEventComponentButton" type="button"
 									class="btn btn-default margin-left-10" value="Dodaj" />
+								<form:errors path="touristEventComponentIds" cssClass="help-block" />
 							</div>
 						</div>
 					</spring:bind>

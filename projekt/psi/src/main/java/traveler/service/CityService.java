@@ -17,4 +17,6 @@ public interface CityService {
 	
 	void removeCity(Long cityId);
 
+	List<City> listCities(Long countryId);
+
 }

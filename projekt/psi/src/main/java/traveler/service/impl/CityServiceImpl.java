@@ -66,4 +66,9 @@ public class CityServiceImpl implements CityService {
 		cityRepository.delete(city);
 	}
 
+	@Override
+	public List<City> listCities(Long countryId) {
+		return cityRepository.getAllBy("country.id", countryId);
+	}
+
 }
