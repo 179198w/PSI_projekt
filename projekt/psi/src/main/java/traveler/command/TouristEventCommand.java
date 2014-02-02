@@ -13,6 +13,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Data
 public class TouristEventCommand {
+
+	private Long id;
 	
 	@NotEmpty
 	private String name;

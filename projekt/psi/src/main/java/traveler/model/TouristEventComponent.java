@@ -2,14 +2,13 @@ package traveler.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -43,8 +42,7 @@ public class TouristEventComponent {
 	
 	private String description;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "tourist_event_component_tourist_event", joinColumns = { @JoinColumn(name = "tourist_event_component_id", nullable = false, updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "tourist_event_id", nullable = false, updatable = false) })
+	@ManyToMany(mappedBy = "touristEventComponents", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<TouristEvent> touristEvents;
 	
 	@OneToMany(mappedBy = "touristEventComponent", fetch = FetchType.LAZY)

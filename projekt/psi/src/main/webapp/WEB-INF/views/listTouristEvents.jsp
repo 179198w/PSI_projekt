@@ -22,7 +22,7 @@
 		}
 		
 		function editTouristEvent(touristEventId) {
-			alert(touristEventId);
+			doPost('${basepath}/edytuj-impreze-turystyczna', {touristEventId: touristEventId});
 		}
 		
 		function removeTouristEvent(touristEventId) {

@@ -44,7 +44,7 @@ public class TouristEventServiceImpl implements TouristEventService {
 
 	@Inject
 	private HotelRepository hotelRepository;
-	
+
 	@Inject
 	private TouristEventComponentRepository touristEventComponentRepository;
 
@@ -63,20 +63,22 @@ public class TouristEventServiceImpl implements TouristEventService {
 	public void addTouristEvent(TouristEventCommand touristEventCommand, String rootPath) {
 		TouristEvent touristEvent = mapperFacade.getObject().map(touristEventCommand, TouristEvent.class);
 
-		if (touristEventCommand.getOperator() != null) {
-			Operator operator = operatorRepository.getBy("name", touristEventCommand.getOperator());
-			if (operator == null) {
-				operator = new Operator();
-				operator.setName(touristEventCommand.getOperator());
-				operatorRepository.save(operator);
-			}
-			touristEvent.setOperator(operator);
-		}
+		fillTouristEvent(touristEventCommand, rootPath, touristEvent);
 
-		if (touristEventCommand.getHotelId() != null) {
-			Hotel hotel = hotelRepository.get(touristEventCommand.getHotelId());
-			touristEvent.setHotel(hotel);
+		touristEventRepository.save(touristEvent);
+	}
+
+	private void fillTouristEvent(TouristEventCommand touristEventCommand, String rootPath, TouristEvent touristEvent) {
+		Operator operator = operatorRepository.getBy("name", touristEventCommand.getOperator());
+		if (operator == null) {
+			operator = new Operator();
+			operator.setName(touristEventCommand.getOperator());
+			operatorRepository.save(operator);
 		}
+		touristEvent.setOperator(operator);
+
+		Hotel hotel = hotelRepository.get(touristEventCommand.getHotelId());
+		touristEvent.setHotel(hotel);
 
 		MultipartFile statue = touristEventCommand.getStatue();
 		if (!statue.isEmpty()) {
@@ -102,16 +104,14 @@ public class TouristEventServiceImpl implements TouristEventService {
 			}
 		}
 		touristEvent.setPhotoUrls(photosUrls);
-		
+
 		List<TouristEventComponent> touristEventComponents = newArrayList();
 		for (Long touristEventComponentId : touristEventCommand.getTouristEventComponentIds()) {
 			TouristEventComponent touristEventComponent = touristEventComponentRepository.get(touristEventComponentId);
-			touristEventComponent.getTouristEvents().add(touristEvent);
+			//touristEventComponent.getTouristEvents().add(touristEvent);
 			touristEventComponents.add(touristEventComponent);
 		}
 		touristEvent.setTouristEventComponents(touristEventComponents);
-		
-		touristEventRepository.save(touristEvent);
 	}
 
 	@Override
@@ -125,6 +125,36 @@ public class TouristEventServiceImpl implements TouristEventService {
 		TouristEvent touristEvent = touristEventRepository.get(touristEventId);
 		touristEvent.setVisible(!touristEvent.getVisible());
 		touristEventRepository.update(touristEvent);
+	}
+
+	@Override
+	@Transactional
+	public void updateTouristEventCommand(TouristEventCommand touristEventCommand, String rootPath) {
+		TouristEvent touristEvent = mapperFacade.getObject().map(touristEventCommand, TouristEvent.class);
+
+		fillTouristEvent(touristEventCommand, rootPath, touristEvent);
+
+		touristEventRepository.update(touristEvent);
+	}
+
+	@Override
+	@Transactional
+	public TouristEventCommand getTouristEventCommand(Long touristEventId) {
+		TouristEvent touristEvent = touristEventRepository.get(touristEventId);
+		TouristEventCommand touristEventCommand = mapperFacade.getObject().map(touristEvent, TouristEventCommand.class);
+		
+		touristEventCommand.setOperator(touristEvent.getOperator().getName());
+		touristEventCommand.setHotelId(touristEvent.getHotel().getId());
+		touristEventCommand.setCityId(touristEvent.getHotel().getId());
+		touristEventCommand.setCountryId(touristEvent.getHotel().getCity().getCountry().getId());
+		
+		List<Long> touristEventComponentIds = newArrayList();
+		for (TouristEventComponent touristEventComponent : touristEvent.getTouristEventComponents()) {
+			touristEventComponentIds.add(touristEventComponent.getId());
+		}
+		touristEventCommand.setTouristEventComponentIds(touristEventComponentIds);
+		
+		return touristEventCommand;
 	}
 
 }

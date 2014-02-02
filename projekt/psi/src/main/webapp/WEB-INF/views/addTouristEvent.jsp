@@ -119,6 +119,7 @@
 					<h3>Informacje</h3>
 				</div>
 				<div class="panel-body">
+					<form:hidden path="id" />
 					<spring:bind path="name">
 						<div class="form-group ${status.error ? 'has-error' : ''}">
 							<form:label path="name" cssClass="col-md-4 control-label">Nazwa:</form:label>

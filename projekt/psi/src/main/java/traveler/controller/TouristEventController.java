@@ -45,6 +45,7 @@ public class TouristEventController {
 
 	@RequestMapping(value = "/dodaj-impreze-turystyczna", method = RequestMethod.GET)
 	public String addTouristEventForm(Model model, TouristEventCommand touristEventCommand) {
+		model.addAttribute("touristEventCommand", touristEventCommand);
 		model.addAttribute("countries", countryService.listCountries());
 		model.addAttribute("cities", cityService.listCities());
 		model.addAttribute("hotels", hotelService.listHotels());
@@ -67,10 +68,19 @@ public class TouristEventController {
 		return "redirect:/lista-imprez-turystycznych";
 	}
 
+	@RequestMapping(value = "/edytuj-impreze-turystyczna", method = RequestMethod.POST, params = { "touristEventId" })
+	public String editTouristEventForm(Model model, @RequestParam("touristEventId") Long touristEventId) throws Exception {
+		TouristEventCommand touristEventCommand = touristEventService.getTouristEventCommand(touristEventId);
+		return addTouristEventForm(model, touristEventCommand);
+	}
+	
 	@RequestMapping(value = "/edytuj-impreze-turystyczna", method = RequestMethod.POST)
-	public String editTouristEvent(Model model, Long touristEventId) throws Exception {
-
-		return "editTouristEvent";
+	public String editTouristEvent(HttpServletRequest request, Model model, @Valid TouristEventCommand touristEventCommand, BindingResult result) {
+		if (result.hasErrors()) {
+			return addTouristEventForm(model, touristEventCommand);
+		}
+		touristEventService.updateTouristEventCommand(touristEventCommand, request.getSession().getServletContext().getRealPath("/"));
+		return "redirect:/lista-imprez-turystycznych";
 	}
 
 	@RequestMapping(value = "/publikuj-lub-ukryj-impreze-turystyczna", method = RequestMethod.POST)

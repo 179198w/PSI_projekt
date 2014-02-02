@@ -18,4 +18,8 @@ public interface TouristEventService {
 
 	void publishOrHideTouristEvent(Long touristEventId);
 
+	void updateTouristEventCommand(TouristEventCommand touristEventCommand, String rootPath);
+
+	TouristEventCommand getTouristEventCommand(Long touristEventId);
+
 }
