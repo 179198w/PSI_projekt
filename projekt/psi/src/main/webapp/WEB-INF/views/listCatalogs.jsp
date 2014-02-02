@@ -23,16 +23,16 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 <script>
-		function editCatalog(catalogId) {
-			doPost('${basepath}/edytuj-katalog', {
-				catalogId : catalogId
-			});
-		}
-		function removeCatalog(catalogId) {
-			doPost('${basepath}/usun-katalog', {catalogId: catalogId});
-		}
-		
-		function doPost(url, params) {
+function editCatalog(catalogId) {
+	doPost('${basepath}/edytuj-katalog', {
+		catalogId : catalogId
+	});
+}
+function removeCatalog(catalogId) {
+	doPost('${basepath}/usun-katalog', {catalogId: catalogId});
+}
+
+function doPost(url, params) {
             var $form = $('<form method="POST">').attr('action', url);
             $.each(params, function(name, value) {
                 $('<input type="hidden">')
@@ -42,8 +42,8 @@
             });
             $form.appendTo('body');
             $form.submit();
-        }
-	</script>
+}
+</script>
 </head>
 <body>
 	<div class="navbar navbar-default">

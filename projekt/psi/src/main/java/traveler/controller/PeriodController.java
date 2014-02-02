@@ -25,6 +25,12 @@ public class PeriodController {
 	@Inject
 	private TouristEventService touristEventService;
 
+	@RequestMapping("/ajax/lista-terminow")
+	public String ajaxListCities(Model model, @RequestParam("touristEventId") Long touristEventId) {
+		model.addAttribute("periods", periodService.listPeriods(touristEventId));
+		return "ajaxListPeriods";
+	}
+	
 	@RequestMapping("/lista-terminow")
 	public String listPeriods(Model model, PeriodFilterCommand filterCommand) {
 		model.addAttribute("periods", periodService.listPeriods(filterCommand));

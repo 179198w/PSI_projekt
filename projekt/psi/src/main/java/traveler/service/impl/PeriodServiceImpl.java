@@ -94,5 +94,10 @@ public class PeriodServiceImpl implements PeriodService {
 		period.setTouristEvent(touristEventRepository.get(periodEditCommand.getTouristEventId()));
 		periodRepository.update(period);
 	}
+
+	@Override
+	public List<Period> listPeriods(Long touristEventId) {
+		return periodRepository.getAllBy("touristEvent.id", touristEventId);
+	}
 	
 }

@@ -64,12 +64,16 @@ html,body {
 	text-align: center;
 }
 
-label.col-md-4 {
-	width: 100px;
+.text-align-center th {
+	text-align: center;
 }
 
-.text-align-center {
-	text-align: center;
+.text-align-right {
+	text-align: right;
+}
+
+label.col-md-4 {
+	width: 100px;
 }
 
 .fit-cell-to-content {

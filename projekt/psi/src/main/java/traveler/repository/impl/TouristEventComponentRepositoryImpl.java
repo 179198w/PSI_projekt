@@ -31,4 +31,13 @@ public class TouristEventComponentRepositoryImpl extends GenericRepositoryImpl<T
 		return criteria.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<TouristEventComponent> getAllByTouristEvent(Long touristEventId) {
+		Criteria criteria = session().createCriteria(getEntityClass());
+		criteria.createAlias("touristEvents", "touristEvents");
+		criteria.add(Restrictions.eq("touristEvents.id", touristEventId));
+		return criteria.list();
+	}
+
 }

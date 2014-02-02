@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Lista cenników</title>
+<title>Cennik</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -23,6 +23,25 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
+<script>
+	function editPrice(priceId) {
+		doPost('${basepath}/edytuj-cene', {
+			priceId : priceId
+		});
+	}
+	
+	function doPost(url, params) {
+	    var $form = $('<form method="POST">').attr('action', url);
+	    $.each(params, function(name, value) {
+	        $('<input type="hidden">')
+	            .attr('name', name)
+	            .attr('value', value)
+	            .appendTo($form);
+	    });
+	    $form.appendTo('body');
+	    $form.submit();
+	}
+</script>
 <body>
 	<div class="navbar navbar-default">
 		<div class="container">
@@ -64,7 +83,7 @@
 				<h3>Wyniki wyszukiwania cen</h3>
 			</div>
 			<div class="panel-body">
-				<table class="table table-striped table-hover">
+				<table class="table table-striped table-hover text-align-center">
 					<thead>
 						<tr>
 							<th>Data od</th>
@@ -73,7 +92,7 @@
 							<th>Składnik</th>
 							<th>Cena normalna</th>
 							<th>Cena ulgowa</th>
-							<th class="text-align-center">Akcje</th>
+							<th>Akcje</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -83,12 +102,12 @@
 								<td>${price.period.to}</td>
 								<td>${price.type.name}</td>
 								<td>${price.touristEventComponent.name}</td>
-								<td>${price.adultValue}</td>
-								<td>${price.childValue}</td>
+								<td class="text-align-right"><fmt:formatNumber minFractionDigits="2" maxFractionDigits="2" value="${price.adultValue/100}"/></td>
+								<td class="text-align-right"><fmt:formatNumber minFractionDigits="2" maxFractionDigits="2" value="${price.childValue/100}"/></td>
 								<td class="fit-cell-to-content"><input type="button"
-									onclick="editCatalog(${price.id});" value="edytuj"
+									onclick="editPrice(${price.id});" value="edytuj"
 									class="btn btn-xs btn-default" /> <input type="button"
-									onclick="removeCatalog(${price.id});" value="usuń"
+									onclick="removePrice(${price.id});" value="usuń"
 									class="btn btn-xs btn-default" /></td>
 							</tr>
 						</c:forEach>

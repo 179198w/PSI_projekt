@@ -53,5 +53,10 @@ public class TouristEventComponentServiceImpl implements TouristEventComponentSe
 		TouristEventComponent touristEventComponent = mapperFacade.getObject().map(touristEventComponentCommand, TouristEventComponent.class);
 		touristEventComponentRepository.update(touristEventComponent);
 	}
+
+	@Override
+	public List<TouristEventComponent> listTouristEventComponent(Long touristEventId) {
+		return touristEventComponentRepository.getAllByTouristEvent(touristEventId);
+	}
 	
 }

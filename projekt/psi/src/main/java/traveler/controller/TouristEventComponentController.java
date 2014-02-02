@@ -21,6 +21,12 @@ public class TouristEventComponentController {
 	@Inject
 	private TouristEventComponentService touristEventComponentService;
 	
+	@RequestMapping("/ajax/lista-skladnikow")
+	public String ajaxListCities(Model model, @RequestParam("touristEventId") Long touristEventId) {
+		model.addAttribute("touristEventComponents", touristEventComponentService.listTouristEventComponent(touristEventId));
+		return "ajaxListTouristEventComponents";
+	}
+	
 	@RequestMapping("/lista-skladnikow")
 	public String listTouristEventComponents(Model model, TouristEventComponentFilterCommand filterCommand) {
 		model.addAttribute("touristEventComponents", touristEventComponentService.listTouristEventComponent(filterCommand));

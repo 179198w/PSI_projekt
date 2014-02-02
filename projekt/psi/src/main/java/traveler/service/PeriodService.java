@@ -21,4 +21,6 @@ public interface PeriodService {
 
 	Period getPeriod(Long periodId);
 
+	List<Period> listPeriods(Long touristEventId);
+
 }

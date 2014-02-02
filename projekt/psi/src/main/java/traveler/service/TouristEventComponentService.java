@@ -20,4 +20,6 @@ public interface TouristEventComponentService {
 
 	TouristEventComponent getTouristEventComponent(Long touristEventComponentId);
 
+	List<TouristEventComponent> listTouristEventComponent(Long touristEventId);
+
 }
