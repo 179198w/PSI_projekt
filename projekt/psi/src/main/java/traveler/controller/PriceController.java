@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import traveler.command.PriceCommand;
 import traveler.command.PriceEditCommand;
+import traveler.command.PriceFilterCommand;
 import traveler.model.PriceType;
 import traveler.service.PeriodService;
 import traveler.service.PriceService;
@@ -34,8 +35,9 @@ public class PriceController {
 	private TouristEventComponentService touristEventComponentService;
 	
 	@RequestMapping("/lista-cen")
-	public String listPrices(Model model) {
-		model.addAttribute("prices", priceService.listPricesWithRelatedData());
+	public String listPrices(Model model, PriceFilterCommand priceFilterCommand) {
+		model.addAttribute("prices", priceService.listPricesWithRelatedData(priceFilterCommand));
+		model.addAttribute("types", PriceType.values());
 		return "listPrices";
 	}
 

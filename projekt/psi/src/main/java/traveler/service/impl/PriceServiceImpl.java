@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import traveler.command.PriceCommand;
 import traveler.command.PriceEditCommand;
+import traveler.command.PriceFilterCommand;
 import traveler.model.Period;
 import traveler.model.Price;
 import traveler.model.PriceType;
@@ -98,6 +99,11 @@ public class PriceServiceImpl implements PriceService {
 		}
 
 		priceRepository.update(price);
+	}
+
+	@Override
+	public List<Price> listPricesWithRelatedData(PriceFilterCommand filterCommand) {
+		return priceRepository.getFiltered(filterCommand);
 	}
 
 }

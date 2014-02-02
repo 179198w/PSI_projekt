@@ -115,6 +115,27 @@
 				</table>
 			</div>
 		</div>
+		<div class="left-panel panel panel-primary">
+			<div class="panel-heading">
+				<h3>Filtrowanie wyników</h3>
+			</div>
+			<div class="panel-body">
+				<form:form method="post" enctype="multipart/form-data" commandName="priceFilterCommand" class="form-horizontal">
+					<div class="form-group">
+						<form:label path="type" class="col-md-4 control-label">Typ:</form:label>
+						<div class="col-md-8">
+							<form:select path="type" class="form-control">
+									<form:option value="${null}">Wybierz typ</form:option>
+									<form:options items="${types}" itemLabel="name"/>
+								</form:select>
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="margin-auto display-block btn btn-default" value="Filtruj" />
+					</div>
+				</form:form>
+			</div>
+		</div>
 	</div>
 </body>
 </html>
