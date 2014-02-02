@@ -75,6 +75,10 @@
 		</div>
 	</div>
 	<div class="main-panel">
+		<ol class="breadcrumb">
+			<li>Słowniki</li>
+	  		<li class="active">Słownik hoteli</li>
+		</ol>
 		<div class="left-panel panel panel-primary">
 			<div class="panel-heading">
 				<h3>Nowy hotel</h3>

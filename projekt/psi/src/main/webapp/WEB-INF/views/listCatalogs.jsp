@@ -71,6 +71,9 @@ function doPost(url, params) {
 		</div>
 	</div>
 	<div class="main-panel">
+	<ol class="breadcrumb">
+	  		<li class="active">Katalogi</li>
+		</ol>
 		<div class="left-panel panel panel-primary">
 			<div class="panel-heading">
 				<h3>Nowy katalog</h3>

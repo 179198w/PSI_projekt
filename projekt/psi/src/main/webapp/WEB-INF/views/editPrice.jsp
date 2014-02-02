@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dodaj cenę</title>
+<title>Edycja ceny</title>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${basepath}/styles/style.css">
@@ -69,6 +69,10 @@ jQuery(document).ready(function($) {
 		</div>
 	</div>
 	<div class="main-panel">
+	<ol class="breadcrumb">
+	  		<li><a href="${basepath}/lista-cen">Cennik</a></li>
+	  		<li class="active">Edycja ceny</li>
+		</ol>
 		<form:form method="post" enctype="multipart/form-data" class="form-horizontal" commandName="priceEditCommand">
 			<div class="long-panel panel panel-primary">
 				<div class="panel-heading">

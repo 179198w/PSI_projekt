@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Lista imprez turystycznych</title>
+<title>${touristEventCommand.id == null ? "Nowa impreza" : "Edycja imprezy"}</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -128,6 +128,10 @@
 		</div>
 	</div>
 	<div class="main-panel">
+	<ol class="breadcrumb">
+	  		<li><a href="${basepath}/lista-imprez-turystycznych">Imprezy</a></li>
+	  		<li class="active">${touristEventCommand.id == null ? "Nowa impreza" : "Edycja imprezy"}</li>
+		</ol>
 		<form:form method="post" enctype="multipart/form-data"
 			class="form-horizontal" commandName="touristEventCommand">
 			<div class="long-panel panel panel-primary">

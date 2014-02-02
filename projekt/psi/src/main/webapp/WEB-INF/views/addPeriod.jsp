@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Dodaj termin</title>
+<title>Nowy termin</title>
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 <link rel="stylesheet"
@@ -87,6 +87,10 @@
 	</div>
 
 	<div class="main-panel">
+	<ol class="breadcrumb">
+			<li><a href="${basepath}/lista-terminow">Terminy</a></li>
+	  		<li class="active">Nowy termin</li>
+		</ol>
 		<form:form method="post" enctype="multipart/form-data"
 			class="form-horizontal" commandName="periodCommand">
 			<div class="long-panel panel panel-primary">
