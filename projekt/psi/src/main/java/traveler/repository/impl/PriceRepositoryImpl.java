@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.sql.JoinType;
 import org.springframework.stereotype.Repository;
 
 import traveler.command.PriceFilterCommand;
@@ -23,7 +24,7 @@ public class PriceRepositoryImpl extends GenericRepositoryImpl<Price, Long> impl
 	public List<Price> getFiltered(PriceFilterCommand filterCommand) {
 		Criteria criteria = session().createCriteria(getEntityClass());
 		criteria.createAlias("period", "period");
-		criteria.createAlias("touristEventComponent", "touristEventComponent");
+		criteria.createAlias("touristEventComponent", "touristEventComponent", JoinType.LEFT_OUTER_JOIN);
 		if (filterCommand.getType() != null) {
 			criteria.add(Restrictions.eq("type", filterCommand.getType()));
 		}

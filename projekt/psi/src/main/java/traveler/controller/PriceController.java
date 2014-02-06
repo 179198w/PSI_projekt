@@ -36,12 +36,7 @@ public class PriceController {
 
 	@RequestMapping("/lista-cen")
 	public String listPrices(Model model, PriceFilterCommand priceFilterCommand) {
-		if (priceFilterCommand.getType() == null) {
-			model.addAttribute("prices", priceService.listPrices());
-		} else {
-			model.addAttribute("prices",
-					priceService.listPricesWithRelatedData(priceFilterCommand));
-		}
+		model.addAttribute("prices", priceService.listPricesWithRelatedData(priceFilterCommand));
 		model.addAttribute("types", PriceType.values());
 		return "listPrices";
 	}

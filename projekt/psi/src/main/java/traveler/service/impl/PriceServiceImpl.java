@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import traveler.command.PriceCommand;
 import traveler.command.PriceEditCommand;
 import traveler.command.PriceFilterCommand;
-import traveler.model.City;
 import traveler.model.Period;
 import traveler.model.Price;
 import traveler.model.PriceType;
