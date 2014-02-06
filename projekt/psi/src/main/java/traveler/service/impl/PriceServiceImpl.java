@@ -53,8 +53,8 @@ public class PriceServiceImpl implements PriceService {
 	
 	@Override
 	public void addPrice(PriceCommand priceCommand) {
-		priceCommand.setAdultValue(priceCommand.getAdultValue());
-		priceCommand.setChildValue(priceCommand.getChildValue());
+		priceCommand.setAdultValue(priceCommand.getAdultValue()*100);
+		priceCommand.setChildValue(priceCommand.getChildValue()*100);
 
 		for (Long periodId : priceCommand.getPeriodIds()) {
 			Price price = mapperFacade.getObject().map(priceCommand, Price.class);
