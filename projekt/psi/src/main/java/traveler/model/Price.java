@@ -42,12 +42,12 @@ public class Price {
 	@GenericGenerator(name = "increment", strategy = "increment")
 	private Long id;
 
-	@Max(value = 100000)
+	@Max(value = 1000000)
 	@Min(value = 0)
 	@NotNull
 	private Integer adultValue;
 
-	@Max(value = 100000)
+	@Max(value = 1000000)
 	@Min(value = 0)
 	@NotNull
 	private Integer childValue;

@@ -14,12 +14,12 @@ public class PriceCommand {
 
 	private Long id;
 	
-	@Max(value=100000)
+	@Max(value=1000000)
 	@Min(value=0)
 	@NotNull
 	private Double adultValue;
 	
-	@Max(value=100000)
+	@Max(value=1000000)
 	@Min(value=0)
 	@NotNull
 	private Double childValue;
