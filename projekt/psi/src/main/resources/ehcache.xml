@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
-	<defaultCache eternal="true" maxElementsInMemory="100" overflowToDisk="false" />
-	<cache name="countries" maxElementsInMemory="100" eternal="true" overflowToDisk="false" />
-	<cache name="cities" maxElementsInMemory="100" eternal="true" overflowToDisk="false" />
-	<cache name="hotels" maxElementsInMemory="100" eternal="true" overflowToDisk="false" />
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+	<defaultCache maxElementsInMemory="1000" eternal="false"
+		timeToIdleSeconds="3600" overflowToDisk="false" />
+	<cache name="countries" maxElementsInMemory="300" eternal="true"
+		overflowToDisk="false" />
+	<cache name="cities" maxElementsInMemory="500" maxElementsOnDisk="1000"
+		eternal="false" timeToIdleSeconds="3600" overflowToDisk="true" />
+	<cache name="hotels" maxElementsInMemory="2000"
+		maxElementsOnDisk="2000" eternal="false" timeToIdleSeconds="3600"
+		overflowToDisk="true" />
 </ehcache>
