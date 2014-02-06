@@ -40,7 +40,6 @@ public class Price {
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
-	// TODO: change to sequence
 	private Long id;
 
 	@Max(value = 100000)
